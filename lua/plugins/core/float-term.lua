@@ -3,7 +3,8 @@ return {
   dependencies = 'nvzone/volt',
   opts = {
     border = 'rounded',
-    winblend = 0,
+    size_h = 200,
+    size_v = 180,
   },
-  cmd = 'ToggleTerm',
+  cmd = 'FloatermToggle',
 }
