@@ -4,6 +4,7 @@ return {
   opts = {
     filetypes = { '*' },
     buftypes = {},
+    user_commands = true,
     lazy_load = false,
     css = true,
     css_fn = true,
@@ -12,5 +13,10 @@ return {
       parsers = { 'css' },
     },
     always_update = true,
+    tailwind = true,
+    tailwind_opts = {
+      update_names = true,
+    },
+    mode = 'background',
   },
 }
