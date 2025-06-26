@@ -1,5 +1,6 @@
 return {
   'sschleemilch/slimline.nvim',
+  lazy = false,
   opts = {
     style = 'fg',
     bold = true,
@@ -29,6 +30,7 @@ return {
           command = 'jString',
         },
       },
+
       path = {
         directory = true, -- Whether to show the directory
         icons = {
