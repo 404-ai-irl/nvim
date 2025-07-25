@@ -3,6 +3,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
+vim.o.conceallevel = 1
+
 -- basic options
 vim.o.termguicolors = true
 vim.o.mouse = 'a'

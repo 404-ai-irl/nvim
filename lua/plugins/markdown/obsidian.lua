@@ -1,12 +1,15 @@
 return {
   'obsidian-nvim/obsidian.nvim',
+
   version = '*', -- recommended, use latest release instead of latest commit
   lazy = true,
   ft = 'markdown',
+
   dependencies = {
     'nvim-lua/plenary.nvim',
     'Saghen/blink.cmp',
   },
+
   opts = {
     workspaces = {
       {
@@ -14,23 +17,25 @@ return {
         path = '~/Documents/Vaults/Artemis/',
       },
     },
+
     preferred_link_style = 'wiki',
+
     open = function()
       require('obsidian').open()
     end,
-    statusline = {
-      enabled = true,
-      format = '{{properties}} properties {{backlinks}} backlinks {{words}} words {{chars}} chars',
-    },
+
     picker = {
       name = require('snacks').picker,
     },
+
     ui = {
       default = true,
     },
+
     templates = {
       default = true,
     },
+
     note_frontmatter_func = function(note)
       -- Add the title of the note as an alias.
       if note.title then
@@ -52,9 +57,11 @@ return {
       min_chars = 2,
       match_case = false,
     },
+
     daily_notes = {
       folder = 'daily',
     },
+
     mappings = {
       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
       ['gf'] = {
@@ -63,6 +70,7 @@ return {
         end,
         opts = { noremap = false, expr = true, buffer = true },
       },
+
       -- Toggle check-boxes.
       ['<leader>ch'] = {
         action = function()
@@ -70,6 +78,7 @@ return {
         end,
         opts = { buffer = true },
       },
+
       -- Smart action depending on context: follow link, show notes with tag, toggle checkbox, or toggle heading fold
       ['<cr>'] = {
         action = function()
