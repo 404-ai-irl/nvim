@@ -1,3 +1,5 @@
+-- Lazy Plugin Manager
+-- https://github.com/folke/lazy.nvim
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -11,3 +13,11 @@ end
 ---@type vim.Option
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
+
+-- Plugins
+require('lazy').setup {
+  spec = {
+    { import = 'plugins' },
+    { import = 'plugins.ui' },
+  },
+}
