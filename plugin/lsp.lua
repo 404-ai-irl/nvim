@@ -1,71 +1,72 @@
-vim.pack.add{
+vim.pack.add {
   { src = 'https://github.com/neovim/nvim-lspconfig' },
-  { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' },
+  { src = 'https://github.com/stevearc/conform.nvim' },
 }
 
-vim.lsp.config('lua_ls', {
-    settings = {
-        Lua = {
-            runtime = {
-                version = 'LuaJIT'
-            },
-            diagnostics = {
-                globals = {
-                    'vim',
-                    'require'
-                },
-            },
-            workspace = {
-                library = vim.api.nvim_get_runtime_file('', true),
-            },
-            telemetry = {enable = false}
-        }
-    }
-})
+--- Auto Formatting ---
+require('conform').setup {
+  formatters_by_ft = {
+    lua = { 'stylua' },
+    rust = { 'rustfmt', lsp_format = 'fallback' },
+    javascript = { 'biome', 'prettier', stop_after_first = true },
+  },
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_format = 'fallback',
+  },
+}
+--- LSP Configs ---
+--- Lua
+---@type vim.lsp.Config
+local lua_ls_conf = {
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        globals = {
+          'vim',
+          'require',
+        },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true),
+      },
+      telemetry = { enable = false },
+    },
+  },
+  capabilities = require('blink.cmp').get_lsp_capabilities(),
+}
 
---- Treesitter
-require('nvim-treesitter.configs').setup({
-    sync_install = true,
-    ensure_installed = {
-        'lua',
-        'yaml',
-        'json',
-        'jsonc',
-        'javascript',
-        'typescript',
-        'vue',
-        'c',
-        'vim',
-        'vimdoc',
-        'markdown',
-        'markdown_inline'
+--- Typescript
+local ts_ls_filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
+-- vue plugin
+local vue_ls_path = vim.fn.expand '~/.bun/bin/vue-language-server'
+local vue_plugin = {
+  name = '@vue/typescript-plugin',
+  location = vue_ls_path,
+  languages = { 'vue' },
+  configNamespace = 'typescript',
+}
+---@type vim.lsp.Config
+local ts_ls_config = {
+  init_options = {
+    plugins = {
+      vue_plugin,
     },
-    auto_install = true,
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-    indent = {
-        enable = true
-    },
-    ignore_install = {},
-    modules = {},
-})
+    filetypes = ts_ls_filetypes,
+  },
+  root_markers = { 'package.json' },
+  capabilities = require('blink.cmp').get_lsp_capabilities(),
+}
+-- vue_ls
+---@type vim.lsp.Config
+local vue_ls_config = {
+  capabilities = require('blink.cmp').get_lsp_capabilities(),
+}
 
--- Auto Updates
-vim.api.nvim_create_autocmd('PackChanged', {
-    desc = 'Handle nvim-treesitter updates',
-    group = vim.api.nvim_create_augroup('nvim-treesitter-pack-update-handler', {clear = true }),
-    callback = function(event)
-        if event.data.kind == 'update' then
-            vim.notify('nvim-treesitter updated, running TSUpdate...', vim.log.levels.INFO)
-            ---@diagnostic disable-next-line: param-type-mismatch
-            local ok = pcall(vim.cmd, 'TSUpdate')
-            if ok then
-                vim.notify('TSUpdate completed successfully!', vim.log.levels.INFO)
-            else
-                vim.notify('TSUpdate command not avaliable yet, skipping', vim.log.levels.WARN)
-            end
-        end
-    end,
-})
+vim.lsp.config('lua_ls', lua_ls_conf)
+vim.lsp.config('ts_ls', ts_ls_config)
+vim.lsp.config('vue_ls', vue_ls_config)
+vim.lsp.enable { 'lua_ls', 'ts_ls', 'vue_ls' }
