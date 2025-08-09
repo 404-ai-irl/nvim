@@ -1,13 +1,13 @@
 -- Collection of various small independent plugins/modules
 return {
   'echasnovski/mini.nvim',
-  version = false,
   config = function()
     -- For fancies
     require('mini.animate').setup()
     require('mini.icons').setup()
 
     -- For QoL
+    require('mini.snippets').setup()
     require('mini.pairs').setup() -- Autopairs
     require('mini.comment').setup() -- `gc` to comment
     require('mini.ai').setup { n_lines = 500 } -- around / inside (Text Objects)
