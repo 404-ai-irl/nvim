@@ -1,73 +1,91 @@
-local add = vim.pack.add
-
-add { 'https://github.com/EdenEast/nightfox.nvim' }
-add { 'https://github.com/rebelot/kanagawa.nvim' }
-
-require('kanagawa').setup {
-    compile = true,
-    undercurl = true,
-    commentStyle = { italic = true },
-    functionStyle = {},
-    keywordStyle = { italic = true },
-    statementStyle = { bold = true },
-    typeStyle = {},
-    transparent = true, -- do not set background color
-    dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-    terminalColors = true, -- define vim.g.terminal_color_{0,17}
-    colors = { -- add/modify theme and palette colors
-      palette = {},
-      theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-    },
-    overrides = function(colors) -- add/modify highlights
-      return {}
-    end,
-    theme = 'dragon', -- Load "wave" theme
-    background = { -- map the value of 'background' option to a theme
-      dark = 'wave', -- try "dragon" !
-      light = 'lotus',
-    }
+vim.pack.add {
+  { src = 'https://github.com/rebelot/kanagawa.nvim' },
+  { src = 'https://github.com/j-hui/fidget.nvim', version = vim.version.range '*' },
+  { src = 'https://github.com/shellRaining/hlchunk.nvim' },
+  { src = 'https://github.com/NMAC427/guess-indent.nvim' },
+  { src = 'https://github.com/folke/noice.nvim' },
+  { src = 'https://github.com/folke/trouble.nvim' },
+  { src = 'https://github.com/MunifTanjim/nui.nvim' },
 }
-require('nightfox').setup({
-  options = {
-    -- Compiled file's destination location
-    compile_path = vim.fn.stdpath("cache") .. "/nightfox",
-    compile_file_suffix = "_compiled", -- Compiled file suffix
-    transparent = false,     -- Disable setting background
-    terminal_colors = true,  -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
-    dim_inactive = false,    -- Non focused panes set to alternative background
-    module_default = true,   -- Default enable value for modules
-    colorblind = {
-      enable = false,        -- Enable colorblind support
-      simulate_only = false, -- Only show simulated colorblind colors and not diff shifted
-      severity = {
-        protan = 0,          -- Severity [0,1] for protan (red)
-        deutan = 0,          -- Severity [0,1] for deutan (green)
-        tritan = 0,          -- Severity [0,1] for tritan (blue)
-      },
-    },
-    styles = {               -- Style to be applied to different syntax groups
-      comments = "NONE",     -- Value is any valid attr-list value `:help attr-list`
-      conditionals = "NONE",
-      constants = "NONE",
-      functions = "NONE",
-      keywords = "NONE",
-      numbers = "NONE",
-      operators = "NONE",
-      strings = "NONE",
-      types = "NONE",
-      variables = "NONE",
-    },
-    inverse = {             -- Inverse highlight for different types
-      match_paren = false,
-      visual = false,
-      search = false,
-    },
-    modules = {             -- List of various plugins and additional options
-      -- ...
+
+require('noice').setup {
+  lsp = {
+    override = {
+      ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+      ['vim.lsp.util.stylize_markdown'] = true,
     },
   },
-  palettes = {},
-  specs = {},
-  groups = {},
+  presets = {
+    bottom_search = false, -- use a classic bottom cmdline for search
+    command_palette = true, -- position the cmdline and popupmenu together
+    long_message_to_split = true, -- long messages will be sent to a split
+    inc_rename = false, -- enables an input dialog for inc-rename.nvim
+    lsp_doc_border = false, -- add a border to hover docs and signature help
+  },
+}
+
+require('trouble').setup {}
+
+-- Setup hlchunk on BufReadPre and BufNewFile events
+local group = vim.api.nvim_create_augroup('IndentSetup', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
+  group = group,
+  once = true, -- Only run once to avoid multiple setups
+  callback = function()
+    vim.cmd.packadd 'hlchunk.nvim'
+    require('hlchunk').setup {
+      chunk = {
+        enable = true,
+        use_treesitter = true,
+      },
+      indent = {
+        enable = false,
+        use_treesitter = true,
+        chars = {
+          '│',
+          '¦',
+          '┆',
+          '┊',
+        },
+      },
+      line_num = {
+        enable = true,
+      },
+      blank = {
+        enable = false,
+        chars = { '󱕆' },
+        style = { fg = 'Background' },
+      },
+    }
+  end,
 })
+
+--- Fidget Notifications
+-- require('fidget').setup {
+--   progress = {
+--     poll_rate = 0,
+--   },
+-- }
+
+require('kanagawa').setup {
+  compile = true,
+  undercurl = false,
+  commentStyle = { italic = true },
+  functionStyle = {},
+  keywordStyle = { italic = true },
+  statementStyle = { bold = true },
+  typeStyle = { italic = true },
+  transparent = true, -- do not set background color
+  dimInactive = true, -- dim inactive window `:h hl-NormalNC`
+  terminalColors = true, -- define vim.g.terminal_color_{0,17}
+  colors = { -- add/modify theme and palette colors
+    palette = {},
+    theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+  },
+  background = { -- map the value of 'background' option to a theme
+    dark = 'dragon', -- try "dragon" !
+    light = 'lotus',
+  },
+}
+
 vim.cmd 'colorscheme kanagawa'

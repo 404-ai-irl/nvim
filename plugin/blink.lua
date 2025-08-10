@@ -55,6 +55,10 @@ require('blink.cmp').setup {
   cmdline = { enabled = true },
   term = { enabled = true },
   signature = { enabled = true },
+  appearance = {
+    nerd_font_variant = 'normal',
+  },
+  snippets = { preset = 'mini_snippets' },
 }
 
 require('blink.chartoggle').setup {

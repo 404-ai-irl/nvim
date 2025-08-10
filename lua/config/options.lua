@@ -47,9 +47,12 @@ vim.o.splitbelow = true
 vim.o.inccommand = 'split'
 
 -- indentation
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.softtabstop = 4
+local tabstop = vim.o.tabstop
+tabstop = 2
+vim.o.tabstop = tabstop
+vim.o.shiftwidth = tabstop
+vim.o.softtabstop = tabstop
+
 vim.o.expandtab = true
 vim.o.breakindent = true
 
