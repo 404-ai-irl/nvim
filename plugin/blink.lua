@@ -5,7 +5,6 @@ vim.pack.add {
   { src = 'https://github.com/alexandre-abrioux/blink-cmp-npm.nvim' },
   { src = 'https://github.com/L3MON4D3/LuaSnip' },
   { src = 'https://github.com/rafamadriz/friendly-snippets' },
-  { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
 }
 
 require('blink.cmp').setup {
@@ -28,8 +27,16 @@ require('blink.cmp').setup {
     },
   },
   completion = {
-    documentation = { auto_show = true, auto_show_delay_ms = 500 },
+    documentation = {
+      auto_show = true,
+      auto_show_delay_ms = 500,
+      window = {
+        border = 'rounded',
+        winblend = 100,
+      },
+    },
     menu = {
+      border = 'rounded',
       draw = {
         components = {
           kind_icon = {

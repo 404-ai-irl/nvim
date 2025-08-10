@@ -1,13 +1,19 @@
 vim.pack.add {
   { src = 'https://github.com/rebelot/kanagawa.nvim' },
-  { src = 'https://github.com/j-hui/fidget.nvim', version = vim.version.range '*' },
   { src = 'https://github.com/shellRaining/hlchunk.nvim' },
   { src = 'https://github.com/NMAC427/guess-indent.nvim' },
   { src = 'https://github.com/folke/noice.nvim' },
   { src = 'https://github.com/folke/trouble.nvim' },
   { src = 'https://github.com/MunifTanjim/nui.nvim' },
+  { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
 }
 
+--- Fidget Notifications
+-- require('fidget').setup {
+--   progress = {
+--     poll_rate = 0,
+--   },
+-- }
 require('noice').setup {
   lsp = {
     override = {
@@ -20,7 +26,7 @@ require('noice').setup {
     command_palette = true, -- position the cmdline and popupmenu together
     long_message_to_split = true, -- long messages will be sent to a split
     inc_rename = false, -- enables an input dialog for inc-rename.nvim
-    lsp_doc_border = false, -- add a border to hover docs and signature help
+    lsp_doc_border = true, -- add a border to hover docs and signature help
   },
 }
 
@@ -32,7 +38,6 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
   group = group,
   once = true, -- Only run once to avoid multiple setups
   callback = function()
-    vim.cmd.packadd 'hlchunk.nvim'
     require('hlchunk').setup {
       chunk = {
         enable = true,
@@ -59,13 +64,6 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
     }
   end,
 })
-
---- Fidget Notifications
--- require('fidget').setup {
---   progress = {
---     poll_rate = 0,
---   },
--- }
 
 require('kanagawa').setup {
   compile = true,
