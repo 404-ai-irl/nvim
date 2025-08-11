@@ -3,11 +3,10 @@ vim.pack.add {
   { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
 }
 
-
-
 -- Render-markdown.nvim setup
 require('render-markdown').setup {
   enabled = true,
+  completions = { blink = { enabled = true } },
   max_file_size = 10.0,
   debounce = 100,
   render_modes = { 'n', 'c', 't' },
@@ -118,10 +117,17 @@ require('render-markdown').setup {
     padding = 1,
     min_width = 0,
     border = {
-      '┌', '┬', '┐',
-      '├', '┼', '┤',
-      '└', '┴', '┘',
-      '│', '─',
+      '┌',
+      '┬',
+      '┐',
+      '├',
+      '┼',
+      '┤',
+      '└',
+      '┴',
+      '┘',
+      '│',
+      '─',
     },
     alignment_indicator = '━',
     head = 'RenderMarkdownTableHead',
@@ -159,3 +165,4 @@ require('render-markdown').setup {
     highlight = 'RenderMarkdownSign',
   },
 }
+

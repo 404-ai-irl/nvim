@@ -170,7 +170,6 @@ local ts_ls_conf = vim.tbl_deep_extend('force', base_config, {
   },
 })
 
-
 -- Tailwind CSS Language Server
 ---@type vim.lsp.Config
 local tailwindcss_conf = vim.tbl_deep_extend('force', base_config, {

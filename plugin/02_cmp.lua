@@ -9,7 +9,7 @@ vim.pack.add {
 
 require('blink.cmp').setup {
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer', 'npm', 'emoji' },
+    default = { 'lsp', 'path', 'snippets', 'npm', 'emoji' },
     providers = {
       emoji = {
         module = 'blink-emoji',
@@ -27,51 +27,22 @@ require('blink.cmp').setup {
     },
   },
   completion = {
+    ghost_text = {
+      --- NOTE: Specific Options avaliable
+      enabled = true,
+    },
     documentation = {
       auto_show = true,
       auto_show_delay_ms = 500,
       window = {
         border = 'rounded',
-        winblend = 100,
+        winblend = 30,
       },
     },
     menu = {
-      border = 'rounded',
+      winblend = 20,
       draw = {
-        components = {
-          kind_icon = {
-            text = function(ctx)
-              local devicons = require 'nvim-web-devicons'
-              local kind_icons = {
-                Text = '󰉿',
-                Variable = '󰆧',
-                Function = '󰊕',
-                Method = '󰆧',
-                Constructor = '',
-                Field = '󰜢',
-                Property = '󰜢',
-                Class = '󰠱',
-                Interface = '',
-                Struct = '󰙅',
-                Module = '',
-                Unit = '󰑭',
-                Value = '󰎠',
-                Enum = '',
-                Keyword = '󰌋',
-                Snippet = '',
-                Color = '󰏘',
-                File = '󰈙',
-                Reference = '󰈇',
-                Folder = '󰉋',
-                EnumMember = '',
-                Constant = '󰏿',
-                TypeParameter = '',
-              }
-              return kind_icons[ctx.kind] or '?'
-            end,
-          },
-          kind = {},
-        },
+        align_to = 'cursor',
       },
     },
   },
