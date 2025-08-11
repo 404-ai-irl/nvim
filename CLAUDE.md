@@ -33,14 +33,24 @@ This is a modern Neovim configuration using Neovim's native package manager (`vi
 
 ### File Management
 - **oil.nvim**: File explorer with floating window (`-` key)
-- **telescope.nvim**: Fuzzy finder with various pickers
+- **snacks.nvim**: Modern picker/fuzzy finder replacing telescope
 
 ### UI Enhancements
 - **kanagawa**: Colorscheme with transparent background and dragon theme
-- **mini.nvim suite**: Multiple modules (icons, pairs, comment, surround, AI text objects, clue help system)
-- **noice.nvim**: Enhanced UI for messages, cmdline, and popupmenu
-- **trouble.nvim**: Diagnostics and quickfix list
+- **mini.nvim suite**: Multiple modules (pairs, comment, surround, AI text objects)
 - **hlchunk.nvim**: Indentation guides and chunk highlighting
+- **trouble.nvim**: Diagnostics and quickfix list
+- **which-key.nvim**: Key binding popup and documentation
+
+### Notifications
+- **noice.nvim**: Enhanced UI for messages, cmdline, and popupmenu
+- **nvim-notify**: Modern notification system
+- **nui.nvim**: UI component library for noice
+
+### Database Tools
+- **vim-dadbod**: Database interface
+- **vim-dadbod-ui**: Database UI with tree view
+- **vim-dadbod-completion**: SQL completion integration
 
 ### Treesitter
 - Core treesitter with auto-install for common languages
@@ -52,7 +62,7 @@ This is a modern Neovim configuration using Neovim's native package manager (`vi
 
 ### Plugin Management
 - Check plugin status: `:PackStatus` (native Neovim command)
-- Update plugins: `:PackUpdate` (native Neovim command)
+- Update plugins: `:PackUpdate` (custom command for all packages)
 - Clean plugins: `:PackClean` (native Neovim command)
 
 ### LSP Commands
@@ -75,12 +85,20 @@ This is a modern Neovim configuration using Neovim's native package manager (`vi
 - Tree view: `<leader>e` (blink tree)
 - Escape insert mode: `jj` or `jk`
 
-### Telescope
+### Picker (Snacks)
 - Find files: `<leader>ff`
 - Live grep: `<leader>fg`
 - Buffers: `<leader>fb`
 - Help tags: `<leader>fh`
+- Man pages: `<leader>fm`
 - Colorschemes: `<leader>fc`
+- LSP symbols: `<leader>ft`
+
+### Database
+- Toggle DBUI: `<leader>du`
+- Find DB buffer: `<leader>df`
+- Rename DB buffer: `<leader>dr`
+- Last query info: `<leader>dq`
 
 ### Utility
 - Toggle comma at EOL: `,`
@@ -93,14 +111,18 @@ This is a modern Neovim configuration using Neovim's native package manager (`vi
 ```
 ├── init.lua                 # Entry point, loads config modules
 ├── plugin/                  # Active plugin configurations (vim.pack.add)
-│   ├── blink.lua           # Completion system
+│   ├── 00_blink.lua        # Completion system (loads first)
 │   ├── lsp.lua             # LSP and formatting setup
-│   ├── telescope.lua       # Fuzzy finder
-│   ├── ui.lua              # UI plugins (kanagawa, noice, trouble)
+│   ├── snacks.lua          # Modern picker/fuzzy finder
+│   ├── ui.lua              # UI plugins (kanagawa, trouble, hlchunk)
+│   ├── notifications.lua   # Notification system (noice, nvim-notify)
 │   ├── mini.lua            # Mini.nvim suite
 │   ├── treesitter.lua      # Syntax highlighting
 │   ├── oil.lua             # File explorer
-│   └── schemastore.lua     # JSON schema support
+│   ├── which-key.lua       # Key binding documentation
+│   ├── db.lua              # Database tools (dadbod)
+│   ├── schemastore.lua     # JSON schema support
+│   └── pack-update.lua     # Package update command
 ├── lua/config/             # Core configuration
 │   ├── options.lua         # Neovim options
 │   ├── keymaps.lua         # Global key mappings

@@ -41,20 +41,19 @@ require('blink.cmp').setup {
         components = {
           kind_icon = {
             text = function(ctx)
-              local kind_icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
-              return kind_icon
-            end,
-            highlight = function(ctx)
-              local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
-              return hl
-            end,
-          },
-          kind = {
-            highlight = function(ctx)
-              local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
-              return hl
+              local devicons = require('nvim-web-devicons')
+              local kind_icons = {
+                Text = '󰉿', Variable = '󰆧', Function = '󰊕', Method = '󰆧',
+                Constructor = '', Field = '󰜢', Property = '󰜢', Class = '󰠱',
+                Interface = '', Struct = '󰙅', Module = '', Unit = '󰑭',
+                Value = '󰎠', Enum = '', Keyword = '󰌋', Snippet = '',
+                Color = '󰏘', File = '󰈙', Reference = '󰈇', Folder = '󰉋',
+                EnumMember = '', Constant = '󰏿', TypeParameter = '',
+              }
+              return kind_icons[ctx.kind] or '?'
             end,
           },
+          kind = {},
         },
       },
     },
