@@ -23,8 +23,6 @@ require('mason-lspconfig').setup {
   -- Automatically install these language servers
   ensure_installed = {
     'lua_ls',
-    'rust_analyzer',
-    'pyright',
     'ts_ls',
     'vue_ls',
     'tailwindcss',
@@ -40,7 +38,6 @@ require('mason-lspconfig').setup {
 require('conform').setup {
   formatters_by_ft = {
     lua = { 'stylua' },
-    rust = { 'rustfmt', lsp_format = 'fallback' },
     javascript = { 'biome', 'prettier', stop_after_first = true },
     typescript = { 'biome', 'prettier', stop_after_first = true },
     javascriptreact = { 'biome', 'prettier', stop_after_first = true },
@@ -49,7 +46,7 @@ require('conform').setup {
     svelte = { 'prettier' },
     python = { 'black', 'isort' },
     html = { 'prettier' },
-    css = { 'prettier' },
+    css = { 'biome' },
     json = { 'biome' },
     yaml = { 'biome' },
   },
@@ -173,33 +170,6 @@ local ts_ls_conf = vim.tbl_deep_extend('force', base_config, {
   },
 })
 
--- Python Language Server
----@type vim.lsp.Config
-local pyright_conf = vim.tbl_deep_extend('force', base_config, {
-  settings = {
-    python = {
-      analysis = {
-        typeCheckingMode = 'basic',
-        autoImportCompletions = true,
-      },
-    },
-  },
-})
-
--- Rust Analyzer
----@type vim.lsp.Config
-local rust_analyzer_conf = vim.tbl_deep_extend('force', base_config, {
-  settings = {
-    ['rust-analyzer'] = {
-      cargo = {
-        allFeatures = true,
-      },
-      checkOnSave = {
-        command = 'clippy',
-      },
-    },
-  },
-})
 
 -- Tailwind CSS Language Server
 ---@type vim.lsp.Config
@@ -228,8 +198,6 @@ local cssls_conf = base_config
 -- Register LSP configurations
 vim.lsp.config('lua_ls', lua_ls_conf)
 vim.lsp.config('ts_ls', ts_ls_conf)
-vim.lsp.config('pyright', pyright_conf)
-vim.lsp.config('rust_analyzer', rust_analyzer_conf)
 vim.lsp.config('tailwindcss', tailwindcss_conf)
 vim.lsp.config('html', html_conf)
 vim.lsp.config('cssls', cssls_conf)
@@ -238,8 +206,6 @@ vim.lsp.config('cssls', cssls_conf)
 vim.lsp.enable {
   'lua_ls',
   'ts_ls',
-  'pyright',
-  'rust_analyzer',
   'tailwindcss',
   'html',
   'cssls',
@@ -264,7 +230,7 @@ vim.diagnostic.config {
   update_in_insert = false,
   severity_sort = true,
   float = {
-    focusable = false,
+    focusable = true,
     style = 'minimal',
     border = 'rounded',
     source = true, -- | 'if-many'

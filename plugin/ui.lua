@@ -2,7 +2,6 @@ vim.pack.add {
   { src = 'https://github.com/rebelot/kanagawa.nvim' },
   { src = 'https://github.com/shellRaining/hlchunk.nvim' },
   { src = 'https://github.com/NMAC427/guess-indent.nvim' },
-  { src = 'https://github.com/folke/trouble.nvim' },
   { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
 }
 
@@ -12,8 +11,7 @@ vim.pack.add {
 --     poll_rate = 0,
 --   },
 -- }
-
-require('trouble').setup {}
+--}
 
 -- Setup hlchunk on BufReadPre and BufNewFile events
 local group = vim.api.nvim_create_augroup('IndentSetup', { clear = true })

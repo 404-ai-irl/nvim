@@ -151,3 +151,6 @@ This is a modern Neovim configuration using Neovim's native package manager (`vi
 - Transparent background enabled for terminal integration
 - Auto-formatting on save with fallback to LSP formatting
 - Remember that im using nvim 0.12 nightly
+- When using vim.pack.add() always use the full src url
+- For telescope-fzf-native.nvim, use cmake build command to compile native library
+- Extensions like fzf-native may require build tools (base-devel, cmake) on Arch Linux
