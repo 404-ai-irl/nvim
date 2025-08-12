@@ -1,8 +1,3 @@
-vim.pack.add {
-  { src = 'https://github.com/obsidian-nvim/obsidian.nvim' },
-  { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
-}
-
 -- Render-markdown.nvim setup
 require('render-markdown').setup {
   enabled = true,
@@ -165,4 +160,3 @@ require('render-markdown').setup {
     highlight = 'RenderMarkdownSign',
   },
 }
-

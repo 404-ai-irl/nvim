@@ -1,16 +1,3 @@
-vim.pack.add {
-  {
-    src = 'https://github.com/tpope/vim-dadbod',
-  },
-
-  {
-    src = 'https://github.com/kristijanhusak/vim-dadbod-ui',
-  },
-  {
-    src = 'https://github.com/kristijanhusak/vim-dadbod-completion',
-  }
-}
-
 vim.g.db_ui_auto_execute_table_helpers = 1
 vim.g.db_ui_save_location = vim.fn.stdpath 'data' .. '/dadbod_ui'
 vim.g.db_ui_show_database_icon = 1

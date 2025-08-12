@@ -1,5 +1,3 @@
-vim.pack.add({ 'https://github.com/stevearc/oil.nvim' }, { 'https://github.com/JezerM/oil-lsp-diagnostics.nvim' })
-
 require('oil').setup {
   columns = { 'ctime', 'mtime', 'icon' },
   float = {

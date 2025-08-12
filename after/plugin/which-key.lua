@@ -1,7 +1,3 @@
-vim.pack.add {
-  { src = 'https://github.com/folke/which-key.nvim' },
-}
-
 require('which-key').setup {
   preset = 'modern',
   delay = 500,
@@ -35,7 +31,7 @@ require('which-key').add {
   { '<leader>fm', desc = 'Man pages' },
   { '<leader>fc', desc = 'Colorschemes' },
   { '<leader>ft', desc = 'LSP symbols' },
-  { '<leader>sf', desc = 'Snacks files' },
+  { '<leader>ff', desc = 'Snacks files' },
   { '<leader>sg', desc = 'Snacks grep' },
   { '<leader>sb', desc = 'Snacks buffers' },
   { '<leader>sr', desc = 'Snacks recent' },

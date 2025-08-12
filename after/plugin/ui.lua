@@ -1,13 +1,3 @@
---- Needed by other plugins
-vim.pack.add {
-  { src = 'https://github.com/rebelot/kanagawa.nvim' },
-  { src = 'https://github.com/nvim-lua/plenary.nvim' },
-  { src = 'https://github.com/MunifTanjim/nui.nvim' },
-  { src = 'https://github.com/rcarriga/nvim-notify' },
-  { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
-  { src = 'https://github.com/shellRaining/hlchunk.nvim' },
-  { src = 'https://github.com/NMAC427/guess-indent.nvim' },
-}
 -- Setup hlchunk on BufReadPre and BufNewFile events
 local group = vim.api.nvim_create_augroup('IndentSetup', { clear = true })
 vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
@@ -21,6 +11,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
       },
       line_num = {
         enable = true,
+        style = { fg = 'Background' },
       },
       blank = {
         enable = false,

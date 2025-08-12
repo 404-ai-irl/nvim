@@ -1,19 +1,3 @@
-vim.pack.add {
-  {
-    src = 'https://github.com/nvim-treesitter/nvim-treesitter',
-    version = 'master',
-    name = 'TS_core',
-  },
-  {
-    src = 'https://github.com/nvim-treesitter/nvim-treesitter-context',
-    name = 'TS_context',
-  },
-  {
-    src = 'https://github.com/windwp/nvim-ts-autotag',
-    name = 'TS_autotag',
-  },
-}
-
 --- Treesitter Configs
 --- Core
 require('nvim-treesitter.configs').setup {

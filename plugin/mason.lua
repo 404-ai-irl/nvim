@@ -1,14 +1,3 @@
--- Mason setup with blink.cmp integration and conform formatting
--- Uses Neovim 0.12+  for vim.lsp.config() API and vim.pack API
-
-vim.pack.add {
-  { src = 'https://github.com/neovim/nvim-lspconfig' },
-  { src = 'https://github.com/williamboman/mason.nvim' },
-  { src = 'https://github.com/williamboman/mason-lspconfig.nvim' },
-  { src = 'https://github.com/stevearc/conform.nvim' },
-}
-
---- Mason LSP Setup
 require('mason').setup {
   ui = {
     icons = {

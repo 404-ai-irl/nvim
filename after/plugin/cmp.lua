@@ -1,12 +1,3 @@
-vim.pack.add {
-  { src = 'https://github.com/Saghen/blink.cmp', version = vim.version.range '1.*' },
-  { src = 'https://github.com/Saghen/blink.nvim', version = 'main' },
-  { src = 'https://github.com/moyiz/blink-emoji.nvim' },
-  { src = 'https://github.com/alexandre-abrioux/blink-cmp-npm.nvim' },
-  { src = 'https://github.com/L3MON4D3/LuaSnip' },
-  { src = 'https://github.com/rafamadriz/friendly-snippets' },
-}
-
 require('blink.cmp').setup {
   sources = {
     default = { 'lsp', 'path', 'snippets', 'npm', 'emoji' },
@@ -57,6 +48,15 @@ require('blink.cmp').setup {
 require('blink.chartoggle').setup {
   enabled = true,
 }
+
+-- Clear Vue.js treesitter cache when completion menu closes
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'BlinkCmpMenuClosed',
+  callback = function()
+    local bufnr = vim.api.nvim_get_current_buf()
+    vim.b[bufnr]._vue_ts_cached_is_in_start_tag = nil
+  end,
+})
 
 local kset = vim.keymap.set
 -- , toggles ,
