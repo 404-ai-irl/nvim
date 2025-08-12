@@ -142,8 +142,57 @@ local lua_ls_conf = vim.tbl_deep_extend('force', base_config, {
 })
 
 -- TypeScript Language Server
----@type vim.lsp.Config
+local vue_ls_path = vim.fn.expand '$MASON/packages' .. '/vue-language-server' .. '/node_modules/@vue/language-server'
+local tsserver_filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
+local vue_plugin = {
+  name = '@vue/typescript-plugin',
+  location = vue_ls_path,
+  languages = { 'vue' },
+  configNamespace = 'typescript',
+}
+
+local vue_ls_config = vim.tbl_deep_extend('force', base_config, {
+  on_init = function(client)
+    client.handlers['tsserver/request'] = function(_, result, context)
+      local ts_clients = vim.lsp.get_clients { bufnr = context.bufnr, name = 'ts_ls' }
+      local clients = {}
+
+      vim.list_extend(clients, ts_clients)
+
+      if #clients == 0 then
+        vim.notify('Could not find `ts_ls` lsp client, `vue_ls` would not work without it.', vim.log.levels.ERROR)
+        return
+      end
+      local ts_client = clients[1]
+
+      local param = unpack(result)
+      local id, command, payload = unpack(param)
+      ts_client:exec_cmd({
+        title = 'vue_request_forward', -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
+        command = 'typescript.tsserverRequest',
+        arguments = {
+          command,
+          payload,
+        },
+      }, { bufnr = context.bufnr }, function(_, r)
+        local response = r and r.body
+        -- TODO: handle error or response nil here, e.g. logging
+        -- NOTE: Do NOT return if there's an error or no response, just return nil back to the vue_ls to prevent memory leak
+        local response_data = { { id, response } }
+
+        ---@diagnostic disable-next-line: param-type-mismatch
+        client:notify('tsserver/response', response_data)
+      end)
+    end
+  end,
+})
+
+---@class vim.lsp.
 local ts_ls_conf = vim.tbl_deep_extend('force', base_config, {
+  init_options = {
+    plugins = { vue_plugin },
+  },
+  filetypes = tsserver_filetypes,
   settings = {
     typescript = {
       inlayHints = {
@@ -197,6 +246,7 @@ local cssls_conf = base_config
 -- Register LSP configurations
 vim.lsp.config('lua_ls', lua_ls_conf)
 vim.lsp.config('ts_ls', ts_ls_conf)
+vim.lsp.config('vue_ls', vue_ls_config)
 vim.lsp.config('tailwindcss', tailwindcss_conf)
 vim.lsp.config('html', html_conf)
 vim.lsp.config('cssls', cssls_conf)
@@ -205,6 +255,7 @@ vim.lsp.config('cssls', cssls_conf)
 vim.lsp.enable {
   'lua_ls',
   'ts_ls',
+  'vue_ls',
   'tailwindcss',
   'html',
   'cssls',

@@ -1,31 +1,28 @@
-vim.api.nvim_create_user_command('PackUpdate', function()
-  vim.notify('Updating all packages...', vim.log.levels.INFO)
-  
-  local updated_count = 0
-  local failed_count = 0
-  local output_lines = {}
-  
-  for name, plugin in pairs(vim.pack.installed) do
-    if plugin.spec and plugin.spec.src then
-      vim.notify('Updating ' .. name .. '...', vim.log.levels.INFO)
-      
-      local success, err = pcall(function()
-        vim.pack.update(name)
-        updated_count = updated_count + 1
-        table.insert(output_lines, '✓ Updated: ' .. name)
-      end)
-      
-      if not success then
-        failed_count = failed_count + 1
-        table.insert(output_lines, '✗ Failed: ' .. name .. ' - ' .. tostring(err))
-      end
-    end
-  end
-  
-  local summary = string.format('\nPackage Update Summary:\n✓ Updated: %d\n✗ Failed: %d', updated_count, failed_count)
-  table.insert(output_lines, summary)
-  
-  vim.notify(table.concat(output_lines, '\n'), vim.log.levels.INFO, { title = 'PackUpdate Complete' })
-end, {
-  desc = 'Update all installed packages'
-})
+vim.pack.add {
+  { src = 'https://github.com/nvim-telescope/telescope.nvim' },
+}
+
+require('telescope').setup {
+  defaults = {
+    sorting_strategy = 'ascending', -- or 'ascending'
+    selection_strategy = 'reset', -- or 'follow', 'row', 'closest', 'none'
+    scrolling_strategy = 'cycle', -- or 'limit'
+    winblend = 30,
+    prompt_prefix = '🔭 ',
+    selection_caret = '=>',
+    cache_picker = {
+      num_pickers = 3,
+      limit_entries = 1000, -- default
+      ignore_empty_prompt = true,
+    },
+    pickers = {},
+    extensions = {},
+  },
+}
+
+local builtin = require 'telescope.builtin'
+
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })

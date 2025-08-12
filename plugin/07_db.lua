@@ -1,41 +1,20 @@
-vim.pack.add {
-  {
-    src = 'https://github.com/tpope/vim-dadbod',
-  },
+vim.pack.add { 'https://github.com/echasnovski/mini.nvim' }
 
-  {
-    src = 'https://github.com/kristijanhusak/vim-dadbod-ui',
+require('mini.icons').setup()
+require('mini.snippets').setup {}
+require('mini.comment').setup() -- `gc` to comment
+require('mini.ai').setup { n_lines = 500 } -- around / inside (Text Objects)
+require('mini.surround').setup() -- surround words, create surrounds eg: `swa`
+
+require('mini.move').setup { -- Super + Movement to move lines
+  mappings = {
+    left = '<D-h>',
+    right = '<D-l>',
+    down = '<D-j>',
+    up = '<D-k>',
+    line_left = '<D-h>',
+    line_right = '<D-l>',
+    line_down = '<D-j>',
+    line_up = '<D-k>',
   },
-  {
-    src = 'https://github.com/kristijanhusak/vim-dadbod-completion',
-  }
 }
-
-vim.g.db_ui_auto_execute_table_helpers = 1
-vim.g.db_ui_save_location = vim.fn.stdpath 'data' .. '/dadbod_ui'
-vim.g.db_ui_show_database_icon = 1
-vim.g.db_ui_tmp_query_location = vim.fn.stdpath 'data' .. '/dadbod_ui/tmp'
-vim.g.db_ui_use_nerd_fonts = 1
-vim.g.db_ui_execute_on_save = 0
-vim.g.db_ui_winwidth = 30
-vim.g.db_ui_notification_width = 50
-
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
-keymap('n', '<leader>du', ':DBUIToggle<CR>', opts)
-keymap('n', '<leader>df', ':DBUIFindBuffer<CR>', opts)
-keymap('n', '<leader>dr', ':DBUIRenameBuffer<CR>', opts)
-keymap('n', '<leader>dq', ':DBUILastQueryInfo<CR>', opts)
-
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'sql', 'mysql', 'plsql' },
-  callback = function()
-    require('cmp').setup.buffer {
-      sources = {
-        { name = 'vim-dadbod-completion' },
-        { name = 'buffer' },
-      },
-    }
-  end,
-})
