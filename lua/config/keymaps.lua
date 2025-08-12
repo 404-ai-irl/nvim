@@ -3,7 +3,7 @@
 vim.keymap.set('i', 'jj', '<Esc>', { desc = 'JJ Esc' })
 vim.keymap.set('i', 'jk', '<Esc>', { desc = 'JK Esc' })
 -- Toggle Highlights
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Escape to clear search highlight'})
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Escape to clear search highlight' })
 -- Diagnostics
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -12,6 +12,11 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('n', '<leader>bx', function()
   vim.cmd 'bdelete'
 end, { desc = 'Delete buffer' })
+
+---@class wk.Opts
+local wk_options = {
+  preset = 'modern',
+}
 
 --- Window / Panes
 -- Navigation
