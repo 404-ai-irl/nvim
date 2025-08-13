@@ -14,6 +14,7 @@ vim.notify = require 'notify'
 add {
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' },
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' },
   { src = 'https://github.com/windwp/nvim-ts-autotag' },
 }
 
@@ -33,14 +34,13 @@ add {
   { src = 'https://github.com/williamboman/mason-lspconfig.nvim' },
   { src = 'https://github.com/stevearc/conform.nvim' },
 }
+
 -- Typescript
 add {
   { src = 'https://github.com/dmmulroy/ts-error-translator.nvim' },
   { src = 'https://github.com/dmmulroy/tsc.nvim' },
+  { src = 'https://github.com/pmizio/typescript-tools.nvim' },
 }
-
-require('tsc').setup {}
-require('ts-error-translator').setup {}
 -- Markdown
 add {
   { src = 'https://github.com/obsidian-nvim/obsidian.nvim' },

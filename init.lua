@@ -1,1 +1,1 @@
-require 'config'
+require '404-ai-irl'

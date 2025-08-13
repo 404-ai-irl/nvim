@@ -1,7 +1,7 @@
 require('which-key').setup {
   preset = 'modern',
-  delay = 500,
-  expand = 1,
+  delay = 150,
+  expand = 3,
   notify = false,
   replace = {
     key = {
@@ -12,8 +12,6 @@ require('which-key').setup {
   },
   spec = {
     { '<leader>b', group = 'buffer' },
-    { '<leader>f', group = 'find/picker' },
-    { '<leader>s', group = 'snacks picker' },
     { '<leader>d', group = 'database' },
     { '<leader>g', group = 'git' },
     { '<leader>l', group = 'lsp' },
@@ -31,11 +29,6 @@ require('which-key').add {
   { '<leader>fm', desc = 'Man pages' },
   { '<leader>fc', desc = 'Colorschemes' },
   { '<leader>ft', desc = 'LSP symbols' },
-  { '<leader>ff', desc = 'Snacks files' },
-  { '<leader>sg', desc = 'Snacks grep' },
-  { '<leader>sb', desc = 'Snacks buffers' },
-  { '<leader>sr', desc = 'Snacks recent' },
-  { '<leader>sh', desc = 'Snacks help' },
   { '<leader>du', desc = 'Toggle DBUI' },
   { '<leader>df', desc = 'Find DB buffer' },
   { '<leader>dr', desc = 'Rename DB buffer' },

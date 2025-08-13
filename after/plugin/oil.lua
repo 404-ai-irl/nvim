@@ -1,5 +1,5 @@
 require('oil').setup {
-  columns = { 'ctime', 'mtime', 'icon' },
+  columns = { 'mtime', 'icon' },
   float = {
     max_width = 0.6,
     max_height = 0.6,

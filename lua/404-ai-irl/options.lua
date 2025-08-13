@@ -37,7 +37,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- enable gutter
-vim.o.signcolumn = 'yes'
+vim.o.signcolumn = 'auto:3'
 
 -- rendering
 -- vim.o.updatetime = 250
