@@ -18,9 +18,11 @@ vim.o.list = true
 vim.opt.listchars = { tab = '-->', trail = '·', nbsp = '␣' }
 
 -- safety QoL
-vim.o.undofile = true
+vim.o.undofile = false
+vim.o.swapfile = false
 
 -- display settings
+vim.o.wrap = false
 vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
@@ -35,7 +37,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- enable gutter
-vim.o.signcolumn = 'no'
+vim.o.signcolumn = 'yes'
 
 -- rendering
 -- vim.o.updatetime = 250

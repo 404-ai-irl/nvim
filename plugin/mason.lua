@@ -13,6 +13,7 @@ require('mason-lspconfig').setup {
   ensure_installed = {
     'lua_ls',
     'ts_ls',
+    'biome',
     'vue_ls',
     'tailwindcss',
     'html',
@@ -130,7 +131,7 @@ local lua_ls_conf = vim.tbl_deep_extend('force', base_config, {
   },
 })
 
--- TypeScript Language Server
+--- Vue setup - WIP
 local vue_ls_path = vim.fn.expand '$MASON/packages' .. '/vue-language-server' .. '/node_modules/@vue/language-server'
 local tsserver_filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
 local vue_plugin = {
@@ -139,7 +140,6 @@ local vue_plugin = {
   languages = { 'vue' },
   configNamespace = 'typescript',
 }
-
 local vue_ls_config = vim.tbl_deep_extend('force', base_config, {
   on_init = function(client)
     client.handlers['tsserver/request'] = function(_, result, context)
@@ -176,7 +176,7 @@ local vue_ls_config = vim.tbl_deep_extend('force', base_config, {
   end,
 })
 
----@class vim.lsp.
+--- TypeScript Language Server
 local ts_ls_conf = vim.tbl_deep_extend('force', base_config, {
   init_options = {
     plugins = { vue_plugin },
@@ -248,6 +248,7 @@ vim.lsp.enable {
   'tailwindcss',
   'html',
   'cssls',
+  'biome',
 }
 
 --- Diagnostic Configuration ---
@@ -272,7 +273,7 @@ vim.diagnostic.config {
     focusable = true,
     style = 'minimal',
     border = 'rounded',
-    source = true, -- | 'if-many'
+    source = 'if_many', -- | 'if-many'
     header = '',
     prefix = '',
   },
