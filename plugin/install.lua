@@ -71,5 +71,6 @@ add {
   { src = 'https://github.com/JezerM/oil-lsp-diagnostics.nvim' },
   -- Telescope
   { src = 'https://github.com/nvim-telescope/telescope.nvim' },
+  { src = 'https://github.com/nvim-telescope/telescope-fzy-native.nvim' },
   { src = 'https://github.com/2KAbhishek/nerdy.nvim' },
 }

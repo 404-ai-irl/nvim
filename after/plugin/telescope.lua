@@ -12,17 +12,21 @@ require('telescope').setup {
       ignore_empty_prompt = true,
     },
     pickers = {},
-    extensions = {},
+    extensions = {
+      fzy_native = {
+        override_generic_sorter = false,
+        override_file_sorter = true,
+      },
+    },
   },
 }
-
 require('nerdy').setup {
   copy_to_clipboard = true,
 }
-
+require('telescope').load_extension 'fzy_native'
 require('telescope').load_extension 'nerdy'
-vim.keymap.set('n', '<leader>fn', '<cmd>Telescope nerdy<cr>', { desc = 'Telescope find nerd font glyphs' })
 
+vim.keymap.set('n', '<leader>fn', '<cmd>Telescope nerdy<cr>', { desc = 'Telescope find nerd font glyphs' })
 local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
