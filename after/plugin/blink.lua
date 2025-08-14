@@ -5,21 +5,16 @@ require('blink.cmp').setup {
       buffer = {
         name = 'Buffer',
         module = 'blink.cmp.sources.buffer',
-        score_offset = 85,
+        score_offset = -3,
+        max_items = 20,
         opts = {
-          -- Limit buffer completions for performance
-          max_items = 20,
-          keyword_length = 2,
           get_bufnrs = function()
             -- Only use visible buffers for completion
-            local bufs = {}
-            for _, win in ipairs(vim.api.nvim_list_wins()) do
-              local buf = vim.api.nvim_win_get_buf(win)
-              if vim.api.nvim_buf_get_option(buf, 'buflisted') then
-                table.insert(bufs, buf)
-              end
-            end
-            return bufs
+            return vim
+              .iter(vim.api.nvim_list_wins())
+              :map(function(win) return vim.api.nvim_win_get_buf(win) end)
+              :filter(function(buf) return vim.bo[buf].buftype ~= 'nofile' end)
+              :totable()
           end,
         },
       },
@@ -39,10 +34,8 @@ require('blink.cmp').setup {
     },
   },
   fuzzy = {
-    -- Use Rust-based frizbee for 6x performance improvement
-    use_frizbee = true,
-    use_typo_resistance = true,
-    max_items = 200,
+    -- Use the Rust implementation with warning if not available
+    implementation = 'prefer_rust_with_warning',
   },
   completion = {
     accept = {
@@ -62,7 +55,6 @@ require('blink.cmp').setup {
     documentation = {
       auto_show = true,
       auto_show_delay_ms = 300,
-      treesitter_highlighting = true,
       window = {
         border = 'rounded',
         winblend = 30,
@@ -76,7 +68,7 @@ require('blink.cmp').setup {
       border = 'rounded',
       draw = {
         align_to = 'cursor',
-        treesitter_highlighting = true,
+        treesitter = { 'lsp' },
         columns = {
           { 'kind_icon' },
           { 'label', 'label_description', gap = 1 },
@@ -86,7 +78,6 @@ require('blink.cmp').setup {
     },
     list = {
       -- Improve sorting and selection
-      selection = 'auto_insert',
       cycle = {
         from_bottom = true,
         from_top = true,
