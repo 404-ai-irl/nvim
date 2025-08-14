@@ -239,14 +239,10 @@ vim.lsp.config('vue_ls', vue_ls_config)
 vim.lsp.config('tailwindcss', tailwindcss_conf)
 vim.lsp.config('html', html_conf)
 vim.lsp.config('cssls', cssls_conf)
-vim.lsp.handlers['textDocument/publishDiagnostics'] = function(err, result, ctx)
-  require('ts-error-translator').translate_diagnostics(err, result, ctx)
-  vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx)
-end
+
 -- Enable LSP servers
 vim.lsp.enable {
   'lua_ls',
-  'ts_ls',
   'vue_ls',
   'tailwindcss',
   'html',
@@ -263,10 +259,10 @@ vim.diagnostic.config {
   },
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = '󰅚', -- nf-md-close_circle (or use  nf-fa-times_circle)
-      [vim.diagnostic.severity.WARN] = '󰀪', -- nf-md-alert (or use  nf-fa-exclamation_triangle)
-      [vim.diagnostic.severity.HINT] = '󰌶', -- nf-md-lightbulb (or use  nf-fa-lightbulb_o)
-      [vim.diagnostic.severity.INFO] = '󰋽', -- nf-md-information (or use  nf-fa-info_circle)
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.HINT] = '',
+      [vim.diagnostic.severity.INFO] = '',
     },
   },
   underline = true,
