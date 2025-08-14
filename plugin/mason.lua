@@ -7,24 +7,30 @@ require('mason').setup {
     },
   },
 }
-
-require('mason-lspconfig').setup {
-  -- Automatically install these language servers
+---@type MasonLspconfigSettings
+local m_lsp_config = {
   ensure_installed = {
     'lua_ls',
     'ts_ls',
-    'biome',
+    'vtsls',
     'vue_ls',
+    'biome',
     'tailwindcss',
     'html',
     'cssls',
-    'jsonls',
-    'yamlls',
   },
-  automatic_installation = true,
+  automatic_enable = true, -- or { exclude = {'ignore_this_lsp'}}
 }
+require('mason-lspconfig').setup(m_lsp_config)
 
 --- Auto Formatting with Conform ---
+---@type conform.FormatterConfig
+---@type conform.setupOpts
+local format_options = {
+  default_format_opts = {},
+  notify_no_formatters = true,
+  notify_on_error = false,
+}
 require('conform').setup {
   formatters_by_ft = {
     lua = { 'stylua' },
@@ -60,8 +66,8 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = { '*.js', '*.jsx', '*.ts', '*.tsx', '*.json', '*.css' },
   callback = function()
     local bufnr = vim.api.nvim_get_current_buf()
-    local clients = vim.lsp.get_clients({ bufnr = bufnr, name = 'biome' })
-    
+    local clients = vim.lsp.get_clients { bufnr = bufnr, name = 'biome' }
+
     if #clients > 0 then
       -- Request code actions for fixAll and organize imports
       local params = {
@@ -75,9 +81,9 @@ vim.api.nvim_create_autocmd('BufWritePre', {
           diagnostics = {},
         },
       }
-      
+
       local actions = vim.lsp.buf_request_sync(bufnr, 'textDocument/codeAction', params, 1000)
-      
+
       if actions then
         for _, client_actions in pairs(actions) do
           if client_actions.result then
@@ -222,14 +228,14 @@ local vue_ls_config = vim.tbl_deep_extend('force', base_config, {
         elseif r and r.body then
           response = r.body
         end
-        
+
         local response_data = { { id, response } }
-        
+
         local ok_notify = pcall(function()
           ---@diagnostic disable-next-line: param-type-mismatch
           client:notify('tsserver/response', response_data)
         end)
-        
+
         if not ok_notify then
           vim.notify('Failed to send Vue.js LSP response', vim.log.levels.DEBUG)
         end
