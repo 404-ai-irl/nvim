@@ -43,7 +43,6 @@ add {
   -- Typescript
   { src = 'https://github.com/dmmulroy/ts-error-translator.nvim' },
   { src = 'https://github.com/dmmulroy/tsc.nvim' },
-  { src = 'https://github.com/pmizio/typescript-tools.nvim' },
   -- Markdown
   { src = 'https://github.com/obsidian-nvim/obsidian.nvim' },
   { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
