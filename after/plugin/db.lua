@@ -18,11 +18,14 @@ keymap('n', '<leader>dq', ':DBUILastQueryInfo<CR>', opts)
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'sql', 'mysql', 'plsql' },
   callback = function()
-    require('cmp').setup.buffer {
-      sources = {
-        { name = 'vim-dadbod-completion' },
-        { name = 'buffer' },
-      },
+    require('blink.cmp').add_provider('dadbod', {
+      name = 'Dadbod',
+      module = 'vim_dadbod_completion.blink',
+      score_offset = 85,
+    })
+    
+    require('blink.cmp').update_sources {
+      default = { 'lsp', 'dadbod', 'buffer', 'path', 'snippets' },
     }
   end,
 })

@@ -1,12 +1,66 @@
-require('mason').setup {
+vim.pack.add {
+  -- LSP
+  { src = 'https://github.com/neovim/nvim-lspconfig' },
+  { src = 'https://github.com/williamboman/mason.nvim' },
+  { src = 'https://github.com/williamboman/mason-lspconfig.nvim' },
+  { src = 'https://github.com/stevearc/conform.nvim' },
+}
+require('lspkind').init {
+  -- default: symbol
+  -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+  mode = 'symbol_text',
+
+  -- default: 'default'
+  preset = 'codicons',
+
+  -- default: {}
+  symbol_map = {
+    Text = '󰉿',
+    Method = '󰆧',
+    Function = '󰊕',
+    Constructor = '',
+    Field = '󰜢',
+    Variable = '󰀫',
+    Class = '󰠱',
+    Interface = '',
+    Module = '',
+    Property = '󰜢',
+    Unit = '󰑭',
+    Value = '󰎠',
+    Enum = '',
+    Keyword = '󰌋',
+    Snippet = '',
+    Color = '󰏘',
+    File = '󰈙',
+    Reference = '󰈇',
+    Folder = '󰉋',
+    EnumMember = '',
+    Constant = '󰏿',
+    Struct = '󰙅',
+    Event = '',
+    Operator = '󰆕',
+    TypeParameter = '',
+  },
+}
+
+---@type MasonSettings
+local mason_config = {
+  PATH = 'prepend',
+  max_concurrent_installers = 6,
+  check_outdated_packages_on_open = true,
   ui = {
+    backdrop = 36,
+    border = 'rounded',
+    height = 0.6,
+    width = 0.3,
     icons = {
-      package_installed = '✓',
-      package_pending = '➜',
-      package_uninstalled = '✗',
+      package_installed = ' ',
+      package_pending = ' ',
+      package_uninstalled = '󱂥 ',
     },
   },
 }
+require('mason').setup(mason_config)
 
 require('mason-lspconfig').setup {
   -- Automatically install these language servers
@@ -60,8 +114,8 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = { '*.js', '*.jsx', '*.ts', '*.tsx', '*.json', '*.css' },
   callback = function()
     local bufnr = vim.api.nvim_get_current_buf()
-    local clients = vim.lsp.get_clients({ bufnr = bufnr, name = 'biome' })
-    
+    local clients = vim.lsp.get_clients { bufnr = bufnr, name = 'biome' }
+
     if #clients > 0 then
       -- Request code actions for fixAll and organize imports
       local params = {
@@ -75,9 +129,9 @@ vim.api.nvim_create_autocmd('BufWritePre', {
           diagnostics = {},
         },
       }
-      
+
       local actions = vim.lsp.buf_request_sync(bufnr, 'textDocument/codeAction', params, 1000)
-      
+
       if actions then
         for _, client_actions in pairs(actions) do
           if client_actions.result then
@@ -222,14 +276,14 @@ local vue_ls_config = vim.tbl_deep_extend('force', base_config, {
         elseif r and r.body then
           response = r.body
         end
-        
+
         local response_data = { { id, response } }
-        
+
         local ok_notify = pcall(function()
           ---@diagnostic disable-next-line: param-type-mismatch
           client:notify('tsserver/response', response_data)
         end)
-        
+
         if not ok_notify then
           vim.notify('Failed to send Vue.js LSP response', vim.log.levels.DEBUG)
         end

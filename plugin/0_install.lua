@@ -28,21 +28,6 @@ add {
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' },
   { src = 'https://github.com/windwp/nvim-ts-autotag' },
-  -- Blink
-  { src = 'https://github.com/Saghen/blink.cmp', version = vim.version.range '1.*' },
-  { src = 'https://github.com/Saghen/blink.nvim', version = 'main' },
-  { src = 'https://github.com/moyiz/blink-emoji.nvim' },
-  { src = 'https://github.com/alexandre-abrioux/blink-cmp-npm.nvim' },
-  { src = 'https://github.com/L3MON4D3/LuaSnip' },
-  { src = 'https://github.com/rafamadriz/friendly-snippets' },
-  -- LSP
-  { src = 'https://github.com/neovim/nvim-lspconfig' },
-  { src = 'https://github.com/williamboman/mason.nvim' },
-  { src = 'https://github.com/williamboman/mason-lspconfig.nvim' },
-  { src = 'https://github.com/stevearc/conform.nvim' },
-  -- Typescript
-  { src = 'https://github.com/dmmulroy/ts-error-translator.nvim' },
-  { src = 'https://github.com/dmmulroy/tsc.nvim' },
   -- Markdown
   { src = 'https://github.com/obsidian-nvim/obsidian.nvim' },
   { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
