@@ -1,54 +1,3 @@
-vim.pack.add {
-  -- Blink.cmp
-  { src = 'https://github.com/Saghen/blink.cmp', version = vim.version.range '1.*' },
-  -- Blink.nvim
-  { src = 'https://github.com/Saghen/blink.nvim', version = 'main' },
-  -- Blink.cmp extensions
-  { src = 'https://github.com/moyiz/blink-emoji.nvim' },
-  { src = 'https://github.com/alexandre-abrioux/blink-cmp-npm.nvim' },
-  -- Snippets
-  { src = 'https://github.com/L3MON4D3/LuaSnip' },
-  { src = 'https://github.com/rafamadriz/friendly-snippets' },
-  -- LSPKind
-  { src = 'https://github.com/onsails/lspkind.nvim' },
-}
-
-require('lspkind').init {
-  -- default: symbol
-  -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
-  mode = 'symbol_text',
-  -- default: 'default'
-  preset = 'default',
-  -- default: {}
-  symbol_map = {
-    Text = '󰉿',
-    Method = '󰆧',
-    Function = '󰊕',
-    Constructor = '',
-    Field = '󰜢',
-    Variable = '󰀫',
-    Class = '󰠱',
-    Interface = '',
-    Module = '',
-    Property = '󰜢',
-    Unit = '󰑭',
-    Value = '󰎠',
-    Enum = '',
-    Keyword = '󰌋',
-    Snippet = '',
-    Color = '󰏘',
-    File = '󰈙',
-    Reference = '󰈇',
-    Folder = '󰉋',
-    EnumMember = '',
-    Constant = '󰏿',
-    Struct = '󰙅',
-    Event = '',
-    Operator = '󰆕',
-    TypeParameter = '',
-  },
-}
-
 require('blink.cmp').setup {
   fuzzy = {
     implementation = 'prefer_rust_with_warning',
@@ -228,6 +177,7 @@ require('blink.cmp').setup {
 require('blink.chartoggle').setup {
   enabled = true,
 }
+
 local kset = vim.keymap.set
 -- , toggles ,
 kset({ 'n', 'v' }, ',', function()
@@ -237,3 +187,39 @@ end)
 kset({ 'n', 'v' }, '<C-;>', function()
   require('blink.chartoggle').toggle_char_eol ';'
 end)
+
+require('lspkind').init {
+  -- default: symbol
+  -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+  mode = 'symbol_text',
+  -- default: 'default'
+  preset = 'default',
+  -- default: {}
+  symbol_map = {
+    Text = '󰉿',
+    Method = '󰆧',
+    Function = '󰊕',
+    Constructor = '',
+    Field = '󰜢',
+    Variable = '󰀫',
+    Class = '󰠱',
+    Interface = '',
+    Module = '',
+    Property = '󰜢',
+    Unit = '󰑭',
+    Value = '󰎠',
+    Enum = '',
+    Keyword = '󰌋',
+    Snippet = '',
+    Color = '󰏘',
+    File = '󰈙',
+    Reference = '󰈇',
+    Folder = '󰉋',
+    EnumMember = '',
+    Constant = '󰏿',
+    Struct = '󰙅',
+    Event = '',
+    Operator = '󰆕',
+    TypeParameter = '',
+  },
+}

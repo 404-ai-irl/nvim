@@ -42,6 +42,3 @@ require('kanagawa').setup {
     light = 'lotus',
   },
 }
-
-vim.cmd 'colorscheme kanagawa'
-vim.notify = require 'notify'

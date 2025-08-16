@@ -1,48 +1,3 @@
-vim.pack.add {
-  -- LSP
-  { src = 'https://github.com/neovim/nvim-lspconfig' },
-  { src = 'https://github.com/williamboman/mason.nvim' },
-  { src = 'https://github.com/williamboman/mason-lspconfig.nvim' },
-  { src = 'https://github.com/stevearc/conform.nvim' },
-}
-require('lspkind').init {
-  -- default: symbol
-  -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
-  mode = 'symbol_text',
-
-  -- default: 'default'
-  preset = 'codicons',
-
-  -- default: {}
-  symbol_map = {
-    Text = '󰉿',
-    Method = '󰆧',
-    Function = '󰊕',
-    Constructor = '',
-    Field = '󰜢',
-    Variable = '󰀫',
-    Class = '󰠱',
-    Interface = '',
-    Module = '',
-    Property = '󰜢',
-    Unit = '󰑭',
-    Value = '󰎠',
-    Enum = '',
-    Keyword = '󰌋',
-    Snippet = '',
-    Color = '󰏘',
-    File = '󰈙',
-    Reference = '󰈇',
-    Folder = '󰉋',
-    EnumMember = '',
-    Constant = '󰏿',
-    Struct = '󰙅',
-    Event = '',
-    Operator = '󰆕',
-    TypeParameter = '',
-  },
-}
-
 ---@type MasonSettings
 local mason_config = {
   PATH = 'prepend',
@@ -51,8 +6,8 @@ local mason_config = {
   ui = {
     backdrop = 36,
     border = 'rounded',
-    height = 0.6,
-    width = 0.3,
+    height = 0.8,
+    width = 0.7,
     icons = {
       package_installed = ' ',
       package_pending = ' ',
@@ -101,7 +56,7 @@ require('conform').setup {
 }
 
 -- Manual formatting keymap (since conform handles auto-formatting)
-vim.keymap.set({ 'n', 'v' }, '<leader>f', function()
+vim.keymap.set({ 'n', 'v' }, '<leader>F', function()
   require('conform').format {
     lsp_format = 'fallback',
     async = false,
@@ -139,7 +94,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
               if action.edit then
                 vim.lsp.util.apply_workspace_edit(action.edit, 'utf-8')
               elseif action.command then
-                vim.lsp.buf.execute_command(action.command)
+                vim.lsp.buf.code_action(action.command)
               end
             end
           end
@@ -461,5 +416,36 @@ vim.diagnostic.config {
     source = 'if_many', -- | 'if-many'
     header = '',
     prefix = '',
+  },
+}
+require('lspkind').init {
+  mode = 'symbol_text',
+  preset = 'default',
+  symbol_map = {
+    Text = '󰉿',
+    Method = '󰆧',
+    Function = '󰊕',
+    Constructor = '',
+    Field = '󰜢',
+    Variable = '󰀫',
+    Class = '󰠱',
+    Interface = '',
+    Module = '',
+    Property = '󰜢',
+    Unit = '󰑭',
+    Value = '󰎠',
+    Enum = '',
+    Keyword = '󰌋',
+    Snippet = '',
+    Color = '󰏘',
+    File = '󰈙',
+    Reference = '󰈇',
+    Folder = '󰉋',
+    EnumMember = '',
+    Constant = '󰏿',
+    Struct = '󰙅',
+    Event = '',
+    Operator = '󰆕',
+    TypeParameter = '',
   },
 }
