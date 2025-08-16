@@ -181,156 +181,6 @@ local lua_ls_conf = vim.tbl_deep_extend('force', base_config, {
   },
 })
 
---- Vue setup - WIP
-local vue_ls_path = vim.fn.expand '$MASON/packages' .. '/vue-language-server' .. '/node_modules/@vue/language-server'
-local tsserver_filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
-local vue_plugin = {
-  name = '@vue/typescript-plugin',
-  location = vue_ls_path,
-  languages = { 'vue' },
-  configNamespace = 'typescript',
-}
-local vue_ls_config = vim.tbl_deep_extend('force', base_config, {
-  on_init = function(client)
-    client.handlers['tsserver/request'] = function(_, result, context)
-      local ts_clients = vim.lsp.get_clients { bufnr = context.bufnr, name = 'ts_ls' }
-      local clients = {}
-
-      vim.list_extend(clients, ts_clients)
-
-      if #clients == 0 then
-        vim.notify('Could not find `ts_ls` lsp client, `vue_ls` would not work without it.', vim.log.levels.WARN)
-        return
-      end
-      local ts_client = clients[1]
-
-      -- Improved error handling for Vue.js LSP requests
-      local ok, param = pcall(unpack, result)
-      if not ok or not param then
-        vim.notify('Invalid Vue.js LSP request parameters', vim.log.levels.DEBUG)
-        return
-      end
-
-      local id, command, payload = unpack(param)
-      if not id or not command then
-        vim.notify('Missing required Vue.js LSP request data', vim.log.levels.DEBUG)
-        return
-      end
-
-      ts_client:exec_cmd({
-        title = 'vue_request_forward',
-        command = 'typescript.tsserverRequest',
-        arguments = {
-          command,
-          payload,
-        },
-      }, { bufnr = context.bufnr }, function(err, r)
-        local response = nil
-        if err then
-          vim.notify('TypeScript server error: ' .. tostring(err), vim.log.levels.DEBUG)
-        elseif r and r.body then
-          response = r.body
-        end
-
-        local response_data = { { id, response } }
-
-        local ok_notify = pcall(function()
-          ---@diagnostic disable-next-line: param-type-mismatch
-          client:notify('tsserver/response', response_data)
-        end)
-
-        if not ok_notify then
-          vim.notify('Failed to send Vue.js LSP response', vim.log.levels.DEBUG)
-        end
-      end)
-    end
-  end,
-  settings = {
-    vue = {
-      complete = {
-        casing = {
-          tags = 'kebab',
-          props = 'camel',
-        },
-      },
-      autoInsert = {
-        dotValue = true,
-        bracketSpacing = true,
-      },
-    },
-  },
-})
-
---- TypeScript Language Server
-local ts_ls_conf = vim.tbl_deep_extend('force', base_config, {
-  init_options = {
-    plugins = { vue_plugin },
-    preferences = {
-      includePackageJsonAutoImports = 'auto',
-      importModuleSpecifier = 'relative',
-      includeCompletionsForImportStatements = true,
-      includeCompletionsWithSnippetText = true,
-    },
-  },
-  filetypes = tsserver_filetypes,
-  settings = {
-    typescript = {
-      suggest = {
-        autoImports = true,
-        completeJSDocs = true,
-      },
-      inlayHints = {
-        includeInlayParameterNameHints = 'all',
-        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayVariableTypeHints = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayEnumMemberValueHints = true,
-      },
-      preferences = {
-        quoteStyle = 'single',
-        includePackageJsonAutoImports = 'auto',
-      },
-    },
-    javascript = {
-      suggest = {
-        autoImports = true,
-        completeJSDocs = true,
-      },
-      inlayHints = {
-        includeInlayParameterNameHints = 'all',
-        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayVariableTypeHints = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayEnumMemberValueHints = true,
-      },
-    },
-  },
-})
-
--- Tailwind CSS Language Server
----@type vim.lsp.Config
-local tailwindcss_conf = vim.tbl_deep_extend('force', base_config, {
-  settings = {
-    tailwindCSS = {
-      classAttributes = { 'class', 'className', 'classList', 'ngClass' },
-      lint = {
-        cssConflict = 'warning',
-        invalidApply = 'error',
-        invalidConfigPath = 'error',
-        invalidScreen = 'error',
-        invalidTailwindDirective = 'error',
-        invalidVariant = 'error',
-        recommendedVariantOrder = 'warning',
-      },
-      validate = true,
-    },
-  },
-})
-
 -- Biome Language Server with code actions
 local biome_conf = vim.tbl_deep_extend('force', base_config, {
   settings = {
@@ -369,9 +219,6 @@ local yamlls_conf = base_config
 
 -- Register LSP configurations
 vim.lsp.config('lua_ls', lua_ls_conf)
-vim.lsp.config('ts_ls', ts_ls_conf)
-vim.lsp.config('vue_ls', vue_ls_config)
-vim.lsp.config('tailwindcss', tailwindcss_conf)
 vim.lsp.config('html', html_conf)
 vim.lsp.config('cssls', cssls_conf)
 vim.lsp.config('biome', biome_conf)
@@ -413,39 +260,14 @@ vim.diagnostic.config {
     focusable = true,
     style = 'minimal',
     border = 'rounded',
-    source = 'if_many', -- | 'if-many'
+    source = 'if_many',
     header = '',
     prefix = '',
   },
 }
+
 require('lspkind').init {
   mode = 'symbol_text',
   preset = 'default',
-  symbol_map = {
-    Text = '󰉿',
-    Method = '󰆧',
-    Function = '󰊕',
-    Constructor = '',
-    Field = '󰜢',
-    Variable = '󰀫',
-    Class = '󰠱',
-    Interface = '',
-    Module = '',
-    Property = '󰜢',
-    Unit = '󰑭',
-    Value = '󰎠',
-    Enum = '',
-    Keyword = '󰌋',
-    Snippet = '',
-    Color = '󰏘',
-    File = '󰈙',
-    Reference = '󰈇',
-    Folder = '󰉋',
-    EnumMember = '',
-    Constant = '󰏿',
-    Struct = '󰙅',
-    Event = '',
-    Operator = '󰆕',
-    TypeParameter = '',
-  },
+  symbol_map = {},
 }
