@@ -56,10 +56,10 @@ add {
   { src = 'nvim-tree/nvim-web-devicons' },
   { src = 'rebelot/kanagawa.nvim' },
   { src = 'j-hui/fidget.nvim' },
-  -- Keymap UI
   { src = 'folke/which-key.nvim' },
-  -- Mini
   { src = 'echasnovski/mini.nvim' },
+  { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' },
+  { src = 'lewis6991/gitsigns.nvim' },
   --- Development
   { src = 'stevearc/conform.nvim' },
   { src = 'folke/trouble.nvim' },
@@ -67,7 +67,6 @@ add {
   { src = 'gbprod/substitute.nvim' },
   -- Git
   { src = 'tpope/vim-fugitive' },
-  { src = 'lewis6991/gitsigns.nvim' },
   -- Dap
   { src = 'mfussenegger/nvim-dap' },
   { src = 'igorlfs/nvim-dap-view' },
