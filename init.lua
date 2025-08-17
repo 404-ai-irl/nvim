@@ -28,8 +28,10 @@ local add = function(specs)
 end
 
 add {
-  --- Core
+  --- Libraries
   { src = 'nvim-lua/plenary.nvim' },
+  { src = 'echasnovski/mini.nvim' },
+  { src = 'folke/snacks.nvim' },
   -- Treesitter
   { src = 'nvim-treesitter/nvim-treesitter', version = 'master' },
   { src = 'nvim-treesitter/nvim-treesitter-context' },
@@ -57,7 +59,6 @@ add {
   { src = 'rebelot/kanagawa.nvim' },
   { src = 'j-hui/fidget.nvim' },
   { src = 'folke/which-key.nvim' },
-  { src = 'echasnovski/mini.nvim' },
   { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' },
   { src = 'lewis6991/gitsigns.nvim' },
   --- Development
@@ -73,10 +74,10 @@ add {
   -- Oil
   { src = 'stevearc/oil.nvim' },
   { src = 'JezerM/oil-lsp-diagnostics.nvim' },
-  -- Telescope
-  { src = 'nvim-telescope/telescope.nvim' },
-  { src = 'nvim-telescope/telescope-fzy-native.nvim' },
-  { src = '2KAbhishek/nerdy.nvim' },
+  -- Picker
+  -- { src = 'nvim-telescope/telescope.nvim' },
+  -- { src = 'nvim-telescope/telescope-fzy-native.nvim' },
+  -- { src = '2KAbhishek/nerdy.nvim' },
   -- Database Management
   { src = 'tpope/vim-dadbod' },
   { src = 'kristijanhusak/vim-dadbod-ui' },

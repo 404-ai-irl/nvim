@@ -25,7 +25,7 @@ require('obsidian').setup {
   },
 
   picker = {
-    name = 'telescope.nvim',
+    name = 'fzf-lua',
     note_mappings = {
       new = '<C-x>',
       insert_link = '<C-l>',
@@ -45,11 +45,11 @@ require('obsidian').setup {
 
   legacy_commands = false,
   -- UI is handled by render-markdown
-  ui = { enable = false },
+  ui = { enable = true },
 }
 
 --- Keymaps
 local wk = require 'which-key'
 wk.add {
-  {},
+  { '<leader>o', group = 'Obsidian Notes', icon = '' },
 }
