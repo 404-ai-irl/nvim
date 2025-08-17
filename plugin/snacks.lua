@@ -1,10 +1,19 @@
+local input_conf = {
+  enabled = true,
+  icon = ' ',
+  icon_hl = 'SnacksInputIcon',
+  icon_pos = 'left',
+  prompt_pos = 'title',
+  win = { style = 'input' },
+  expand = true,
+}
 ---@type snacks.Config
 local snacks_config = {
   bigfile = { enabled = false },
   dashboard = { enabled = false },
   explorer = { enabled = true },
   indent = { enabled = false },
-  input = { enabled = true },
+  input = input_conf,
   picker = { enabled = true },
   notifier = { enabled = true, timeout = 3000 },
   quickfile = { enabled = false },
