@@ -1,3 +1,8 @@
+require('lazydev').setup {
+  library = {
+    { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+  },
+}
 --- Mason Config
 ---@type MasonSettings
 local mason_config = {
@@ -26,7 +31,6 @@ require('mason-lspconfig').setup {
     'lua_ls',
     'ts_ls',
     'biome',
-    'vue_ls',
     'tailwindcss',
     'html',
     'cssls',
@@ -44,9 +48,7 @@ require('conform').setup {
     typescript = { 'biome', 'prettier', stop_after_first = true },
     javascriptreact = { 'biome', 'prettier', stop_after_first = true },
     typescriptreact = { 'biome', 'prettier', stop_after_first = true },
-    vue = { 'prettier' },
     svelte = { 'prettier' },
-    python = { 'black', 'isort' },
     html = { 'prettier' },
     css = { 'biome' },
     json = { 'biome' },
@@ -65,7 +67,6 @@ local wk = require 'which-key'
 -- Function to set up LSP keymaps and capabilities
 local function setup_lsp_keymaps(client, bufnr)
   local opts = { buffer = bufnr, silent = true }
-
   -- LSP navigation keymaps
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
@@ -166,37 +167,10 @@ local biome_conf = vim.tbl_deep_extend('force', base_config, {
   }),
 })
 
--- HTML, CSS, JSON Language Servers (minimal config)
-local html_conf = base_config
-local cssls_conf = base_config
-local jsonls_conf = base_config
-local yamlls_conf = base_config
-
--- Register LSP configurations
-vim.lsp.config('lua_ls', lua_ls_conf)
-vim.lsp.config('html', html_conf)
-vim.lsp.config('cssls', cssls_conf)
-vim.lsp.config('biome', biome_conf)
-vim.lsp.config('jsonls', jsonls_conf)
-vim.lsp.config('yamlls', yamlls_conf)
-
--- Enable LSP servers
-vim.lsp.enable {
-  'lua_ls',
-  'ts_ls',
-  'vue_ls',
-  'tailwindcss',
-  'html',
-  'cssls',
-  'biome',
-  'jsonls',
-  'yamlls',
-}
-
 --- Diagnostic Configuration ---
 vim.diagnostic.config {
   virtual_text = {
-    spacing = 4,
+    spacing = 2,
     source = 'if_many',
     prefix = '●',
   },

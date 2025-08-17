@@ -7,20 +7,15 @@ end
 -- Global Treesitter Settings
 vim.g._ts_force_sync_parsing = true
 
--- Activate Nvim Experimental UI
-require('vim._extui').enable {}
-
 --- A wrapper around the vim.pack.add command
 local add = function(specs)
   specs = vim
     .iter(specs)
     :map(function(s)
       local spec = type(s) == 'string' and { src = s } or s
-
       if not spec.src:match '^https?' and not spec.src:match '^/' then
         spec.src = 'https://github.com/' .. spec.src
       end
-
       return spec
     end)
     :totable()
@@ -31,7 +26,9 @@ add {
   --- Libraries
   { src = 'nvim-lua/plenary.nvim' },
   { src = 'echasnovski/mini.nvim' },
+  --- Folke
   { src = 'folke/snacks.nvim' },
+  { src = 'folke/lazydev.nvim' },
   -- Treesitter
   { src = 'nvim-treesitter/nvim-treesitter', version = 'master' },
   { src = 'nvim-treesitter/nvim-treesitter-context' },
@@ -74,17 +71,12 @@ add {
   -- Oil
   { src = 'stevearc/oil.nvim' },
   { src = 'JezerM/oil-lsp-diagnostics.nvim' },
-  -- Picker
-  -- { src = 'nvim-telescope/telescope.nvim' },
-  -- { src = 'nvim-telescope/telescope-fzy-native.nvim' },
-  -- { src = '2KAbhishek/nerdy.nvim' },
   -- Database Management
   { src = 'tpope/vim-dadbod' },
   { src = 'kristijanhusak/vim-dadbod-ui' },
   { src = 'kristijanhusak/vim-dadbod-completion' },
   -- Markdown
   { src = 'obsidian-nvim/obsidian.nvim' },
-  { src = 'MeanderingProgrammer/render-markdown.nvim' },
 }
 
 vim.schedule(function()

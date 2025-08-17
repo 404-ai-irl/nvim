@@ -13,6 +13,12 @@ require('nvim-treesitter.configs').setup {
     'vim',
     'vimdoc',
     'markdown',
+    'javascript',
+    'markdown_inline',
+    'markdown',
+    'vue',
+    'latex',
+    'regex',
   },
   auto_install = true,
   highlight = {
