@@ -25,7 +25,7 @@ require('obsidian').setup {
   },
 
   picker = {
-    name = 'fzf-lua',
+    name = 'snacks.pick',
     note_mappings = {
       new = '<C-x>',
       insert_link = '<C-l>',

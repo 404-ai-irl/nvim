@@ -5,7 +5,7 @@ local snacks_config = {
   explorer = { enabled = false },
   indent = { enabled = false },
   input = { enabled = true, prompt_pos = 'title' },
-  picker = { enabled = false },
+  picker = { enabled = true },
   notifier = { enabled = true, timeout = 3000 },
   quickfile = { enabled = false },
   scope = { enabled = true },
@@ -17,14 +17,6 @@ Snacks.setup(snacks_config)
 
 vim.api.nvim_create_autocmd('User', {
   callback = function()
-    _G.dd = function(...)
-      Snacks.debug.inspect(...)
-    end
-    _G.bt = function()
-      Snacks.debug.backtrace()
-    end
-    vim.print = _G.dd -- Override print to use snacks for `:=` command
-
     -- Create some toggle mappings
     Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>us'
     Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>uw'
@@ -37,5 +29,7 @@ vim.api.nvim_create_autocmd('User', {
     Snacks.toggle.inlay_hints():map '<leader>uh'
     Snacks.toggle.indent():map '<leader>ug'
     Snacks.toggle.dim():map '<leader>uD'
+    Snacks.toggle.zen():map '<leader>uz'
+    Snacks.toggle.option('hlsearch', { name = 'Search Highlights' }):map '<leader>us'
   end,
 })
