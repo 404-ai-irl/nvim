@@ -13,11 +13,6 @@ vim.keymap.set('n', '<leader>bx', function()
   vim.cmd 'bdelete'
 end, { desc = 'Delete buffer' })
 
----@class wk.Opts
-local wk_options = {
-  preset = 'modern',
-}
-
 --- Window / Panes
 -- Navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -30,20 +25,5 @@ vim.keymap.set('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
 vim.keymap.set('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
 vim.keymap.set('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
 
---- Obsidian
-vim.keymap.set('n', '<leader>on', ':Obsidian new<CR>', { desc = 'New note' })
-vim.keymap.set('n', '<leader>oo', ':Obsidian open<CR>', { desc = 'Open note' })
-vim.keymap.set('n', '<leader>os', ':Obsidian search<CR>', { desc = 'Search notes' })
-vim.keymap.set('n', '<leader>oq', ':Obsidian quick_switch<CR>', { desc = 'Quick switch' })
-vim.keymap.set('n', '<leader>od', ':Obsidian today<CR>', { desc = "Today's note" })
-vim.keymap.set('n', '<leader>oy', ':Obsidian yesterday<CR>', { desc = "Yesterday's note" })
-vim.keymap.set('n', '<leader>ot', ':Obsidian tags<CR>', { desc = 'List tags' })
-vim.keymap.set('n', '<leader>ob', ':Obsidian backlinks<CR>', { desc = 'Show backlinks' })
-vim.keymap.set('n', '<leader>ol', ':Obsidian links<CR>', { desc = 'Show links' })
-vim.keymap.set('n', '<leader>of', ':Obsidian follow_link<CR>', { desc = 'Follow link under cursor' })
-vim.keymap.set('n', '<leader>or', ':Obsidian rename<CR>', { desc = 'Rename note' })
-vim.keymap.set('n', '<leader>oi', ':Obsidian template<CR>', { desc = 'Insert template' })
-vim.keymap.set('v', '<leader>ol', ':Obsidian link<CR>', { desc = 'Link selection' })
-vim.keymap.set('v', '<leader>on', ':Obsidian link_new<CR>', { desc = 'Create note from selection' })
 -- Markdown preview
 vim.keymap.set('n', '<leader>mp', ':MarkdownPreviewToggle<CR>', { desc = 'Toggle markdown preview' })

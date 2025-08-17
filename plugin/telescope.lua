@@ -26,6 +26,11 @@ require('nerdy').setup {
 require('telescope').load_extension 'fzy_native'
 require('telescope').load_extension 'nerdy'
 
+local wk = require 'which-key'
+wk.add {
+  { '<leader>f', group = 'Find', icon = '󰍉' },
+}
+
 vim.keymap.set('n', '<leader>fn', '<cmd>Telescope nerdy<cr>', { desc = 'Telescope find nerd font glyphs' })
 local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })

@@ -47,3 +47,9 @@ require('obsidian').setup {
   -- UI is handled by render-markdown
   ui = { enable = false },
 }
+
+--- Keymaps
+local wk = require 'which-key'
+wk.add {
+  {},
+}
