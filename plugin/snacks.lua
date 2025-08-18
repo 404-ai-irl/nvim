@@ -1,19 +1,30 @@
+---@type snacks.input.Config
 local input_conf = {
   enabled = true,
   icon = ' ',
   icon_hl = 'SnacksInputIcon',
   icon_pos = 'left',
   prompt_pos = 'title',
-  win = { style = 'input' },
   expand = true,
 }
+
+---@type snacks.image.Config
+local image_conf = {
+  resolve = function(path, src)
+    if require('obsidian.api').path_is_note(path) then
+      require('obsidian.api').resolve_image_path(src)
+    end
+  end,
+}
+
 ---@type snacks.Config
-local snacks_config = {
+local snacks_conf = {
   bigfile = { enabled = false },
   dashboard = { enabled = false },
   explorer = { enabled = true },
   indent = { enabled = false },
   input = input_conf,
+  image = image_conf,
   picker = { enabled = true },
   notifier = { enabled = true, timeout = 3000 },
   quickfile = { enabled = false },
@@ -22,7 +33,8 @@ local snacks_config = {
   statuscolumn = { enabled = true },
   words = { enabled = false },
 }
-require('snacks').setup(snacks_config)
+
+require('snacks').setup(snacks_conf)
 
 local wk = require 'which-key'
 wk.add {

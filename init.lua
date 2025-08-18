@@ -4,9 +4,6 @@ if vim.fn.has 'nvim-0.11' == 0 then
   return
 end
 
--- Global Treesitter Settings
-vim.g._ts_force_sync_parsing = true
-
 --- A wrapper around the vim.pack.add command
 local add = function(specs)
   specs = vim
@@ -58,6 +55,7 @@ add {
   { src = 'folke/which-key.nvim' },
   { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' },
   { src = 'lewis6991/gitsigns.nvim' },
+  { src = 'MeanderingProgrammer/render-markdown.nvim' },
   --- Development
   { src = 'stevearc/conform.nvim' },
   { src = 'folke/trouble.nvim' },

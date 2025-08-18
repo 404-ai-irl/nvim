@@ -22,6 +22,8 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
   end,
 })
 
+require('fidget').setup {}
+
 require('kanagawa').setup {
   compile = true,
   undercurl = false,
