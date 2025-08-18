@@ -1,4 +1,4 @@
----@type lazydev.Config
+--@type lazydev.Config
 local lazydev_conf = {
   library = {
     { path = '${3rd}/luv/library', words = { 'vim%.uv' } },

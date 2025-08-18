@@ -1,11 +1,13 @@
 ---@type snacks.input.Config
 local input_conf = {
   enabled = true,
-  icon = ' ',
+  icon = '',
   icon_hl = 'SnacksInputIcon',
   icon_pos = 'left',
-  prompt_pos = 'title',
   expand = true,
+  win = {
+    style = 'input',
+  },
 }
 
 ---@type snacks.image.Config
@@ -19,6 +21,7 @@ local image_conf = {
 
 ---@type snacks.Config
 local snacks_conf = {
+  terminal = { enabled = true },
   bigfile = { enabled = false },
   dashboard = { enabled = false },
   input = input_conf,
