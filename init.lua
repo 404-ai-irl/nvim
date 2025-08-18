@@ -20,47 +20,55 @@ local add = function(specs)
 end
 
 add {
-  --- Libraries
+  -- Dependencies
   { src = 'nvim-lua/plenary.nvim' },
+  { src = 'MunifTanjim/nui.nvim' },
+  -- Libraries
   { src = 'echasnovski/mini.nvim' },
-  --- Folke
   { src = 'folke/snacks.nvim' },
-  { src = 'folke/lazydev.nvim' },
+  -- Core UI
+  { src = 'j-hui/fidget.nvim' },
+  { src = 'nvim-tree/nvim-web-devicons' },
+  { src = 'folke/which-key.nvim' },
+  { src = 'folke/trouble.nvim' },
+  { src = 'rebelot/kanagawa.nvim' },
+  { src = 'shellRaining/hlchunk.nvim' },
+  { src = 'NMAC427/guess-indent.nvim' },
+  { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' },
+}
+
+vim.schedule(function()
+  vim.cmd.colorscheme 'kanagawa-dragon'
+end)
+
+add {
+  -- Mason + LspConfig
+  { src = 'neovim/nvim-lspconfig' },
+  { src = 'williamboman/mason.nvim' },
+  { src = 'williamboman/mason-lspconfig.nvim' },
   -- Treesitter
   { src = 'nvim-treesitter/nvim-treesitter', version = 'master' },
   { src = 'nvim-treesitter/nvim-treesitter-context' },
   { src = 'nvim-treesitter/nvim-treesitter-textobjects' },
   { src = 'windwp/nvim-ts-autotag' },
-  -- Mason + LspConfig
-  { src = 'neovim/nvim-lspconfig' },
-  { src = 'williamboman/mason.nvim' },
-  { src = 'williamboman/mason-lspconfig.nvim' },
+}
+
+add {
   -- Formatting + Cmp
-  { src = 'stevearc/conform.nvim' },
   { src = 'Saghen/blink.cmp', version = vim.version.range '1.*' },
   { src = 'Saghen/blink.nvim', version = 'main' },
   { src = 'moyiz/blink-emoji.nvim' },
   { src = 'alexandre-abrioux/blink-cmp-npm.nvim' },
   { src = 'onsails/lspkind.nvim' },
+  { src = 'stevearc/conform.nvim' },
   -- Snippets
   { src = 'L3MON4D3/LuaSnip' },
   { src = 'rafamadriz/friendly-snippets' },
   --- UI
-  { src = 'MunifTanjim/nui.nvim' },
-  { src = 'shellRaining/hlchunk.nvim' },
-  { src = 'NMAC427/guess-indent.nvim' },
-  { src = 'nvim-tree/nvim-web-devicons' },
-  { src = 'rebelot/kanagawa.nvim' },
-  { src = 'j-hui/fidget.nvim' },
-  { src = 'folke/which-key.nvim' },
-  { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' },
-  { src = 'lewis6991/gitsigns.nvim' },
-  { src = 'MeanderingProgrammer/render-markdown.nvim' },
   --- Development
-  { src = 'stevearc/conform.nvim' },
-  { src = 'folke/trouble.nvim' },
+  { src = 'folke/lazydev.nvim' },
   { src = 'mfussenegger/nvim-lint' },
-  { src = 'gbprod/substitute.nvim' },
+  -- { src = 'gbprod/substitute.nvim' },
   -- Git
   { src = 'tpope/vim-fugitive' },
   -- Dap
@@ -75,10 +83,6 @@ add {
   { src = 'kristijanhusak/vim-dadbod-completion' },
   -- Markdown
   { src = 'obsidian-nvim/obsidian.nvim' },
+  { src = 'MeanderingProgrammer/render-markdown.nvim' },
 }
-
-vim.schedule(function()
-  vim.cmd.colorscheme 'kanagawa-dragon'
-end)
-
 require '404-ai-irl'

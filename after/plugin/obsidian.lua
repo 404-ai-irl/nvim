@@ -8,6 +8,7 @@ require('obsidian').setup {
   },
   log_level = vim.log.levels.INFO,
 
+  ---@class obsidian.config.DailyNotesOpts
   daily_notes = {
     folder = '/daily',
     date_format = '%Y-%m-%d',
@@ -46,6 +47,47 @@ require('obsidian').setup {
   legacy_commands = false,
   -- UI is handled by render-markdown
   ui = { enable = false },
+}
+
+--- Keymaps
+-- Global Keymaps
+local wk = require 'which-key'
+wk.add {
+  { '<leader>o', group = 'Obsidian', icon = '🪬' },
+  
+  -- Note Creation
+  { '<leader>on', group = 'New', icon = '📝' },
+  { '<leader>onn', '<CMD>Obsidian new<CR>', desc = 'New Note' },
+  { '<leader>ont', '<CMD>Obsidian new_from_template<CR>', desc = 'New from Template' },
+  { '<leader>onl', '<CMD>Obsidian link_new<CR>', desc = 'Link New Note' },
+  { '<leader>one', '<CMD>Obsidian extract_note<CR>', desc = 'Extract to New Note' },
+  
+  -- Navigation
+  { '<leader>og', group = 'Go/Navigate', icon = '🧭' },
+  { '<leader>ogs', '<CMD>Obsidian quick_switch<CR>', desc = 'Quick Switch' },
+  { '<leader>ogf', '<CMD>Obsidian follow_link<CR>', desc = 'Follow Link' },
+  { '<leader>ogb', '<CMD>Obsidian backlinks<CR>', desc = 'Backlinks' },
+  { '<leader>ogl', '<CMD>Obsidian links<CR>', desc = 'Links in Buffer' },
+  { '<leader>ogo', '<CMD>Obsidian open<CR>', desc = 'Open in Obsidian App' },
+  
+  -- Daily Notes
+  { '<leader>od', group = 'Daily', icon = '📅' },
+  { '<leader>odd', '<CMD>Obsidian today<CR>', desc = 'Today' },
+  { '<leader>ody', '<CMD>Obsidian yesterday<CR>', desc = 'Yesterday' },
+  { '<leader>odt', '<CMD>Obsidian tomorrow<CR>', desc = 'Tomorrow' },
+  { '<leader>odl', '<CMD>Obsidian dailies<CR>', desc = 'List Dailies' },
+  
+  -- Search & Tags
+  { '<leader>os', group = 'Search', icon = '🔍' },
+  { '<leader>oss', '<CMD>Obsidian search<CR>', desc = 'Search Notes' },
+  { '<leader>ost', '<CMD>Obsidian tags<CR>', desc = 'Search by Tags' },
+  
+  -- Utilities
+  { '<leader>ou', group = 'Utilities', icon = '🔧' },
+  { '<leader>our', '<CMD>Obsidian rename<CR>', desc = 'Rename Note' },
+  { '<leader>out', '<CMD>Obsidian template<CR>', desc = 'Insert Template' },
+  { '<leader>oui', '<CMD>Obsidian paste_img<CR>', desc = 'Paste Image' },
+  { '<leader>ouw', '<CMD>Obsidian workspace<CR>', desc = 'Switch Workspace' },
 }
 
 require('render-markdown').setup {
@@ -208,9 +250,4 @@ require('render-markdown').setup {
     enabled = true,
     highlight = 'RenderMarkdownSign',
   },
-}
---- Keymaps
-local wk = require 'which-key'
-wk.add {
-  { '<leader>o', group = 'Obsidian Notes', icon = '' },
 }
