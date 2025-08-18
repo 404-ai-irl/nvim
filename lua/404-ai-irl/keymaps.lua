@@ -4,14 +4,6 @@ vim.keymap.set('i', 'jj', '<Esc>', { desc = 'JJ Esc' })
 vim.keymap.set('i', 'jk', '<Esc>', { desc = 'JK Esc' })
 -- Toggle Highlights
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Escape to clear search highlight' })
--- Diagnostics
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-
---- Buffers
--- Close Buffer
-vim.keymap.set('n', '<leader>bx', function()
-  vim.cmd 'bdelete'
-end, { desc = 'Delete buffer' })
 
 --- Window / Panes
 -- Navigation
@@ -25,5 +17,28 @@ vim.keymap.set('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
 vim.keymap.set('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
 vim.keymap.set('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
 
--- Markdown preview
-vim.keymap.set('n', '<leader>mp', ':MarkdownPreviewToggle<CR>', { desc = 'Toggle markdown preview' })
+--- Dial
+vim.keymap.set('n', '<C-a>', function()
+  require('dial.map').manipulate('increment', 'normal')
+end)
+vim.keymap.set('n', '<C-x>', function()
+  require('dial.map').manipulate('decrement', 'normal')
+end)
+vim.keymap.set('n', 'g<C-a>', function()
+  require('dial.map').manipulate('increment', 'gnormal')
+end)
+vim.keymap.set('n', 'g<C-x>', function()
+  require('dial.map').manipulate('decrement', 'gnormal')
+end)
+vim.keymap.set('v', '<C-a>', function()
+  require('dial.map').manipulate('increment', 'visual')
+end)
+vim.keymap.set('v', '<C-x>', function()
+  require('dial.map').manipulate('decrement', 'visual')
+end)
+vim.keymap.set('v', 'g<C-a>', function()
+  require('dial.map').manipulate('increment', 'gvisual')
+end)
+vim.keymap.set('v', 'g<C-x>', function()
+  require('dial.map').manipulate('decrement', 'gvisual')
+end)

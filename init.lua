@@ -74,7 +74,8 @@ add {
   -- Dap
   { src = 'mfussenegger/nvim-dap' },
   { src = 'igorlfs/nvim-dap-view' },
-  -- Oil
+  -- Oil + Dial
+  { src = 'monaqa/dial.nvim' },
   { src = 'stevearc/oil.nvim' },
   { src = 'JezerM/oil-lsp-diagnostics.nvim' },
   -- Database Management

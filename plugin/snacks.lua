@@ -21,8 +21,6 @@ local image_conf = {
 local snacks_conf = {
   bigfile = { enabled = false },
   dashboard = { enabled = false },
-  explorer = { enabled = true },
-  indent = { enabled = false },
   input = input_conf,
   image = image_conf,
   picker = { enabled = true },
