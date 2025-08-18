@@ -37,7 +37,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- enable gutter
-vim.o.signcolumn = 'auto:3'
+vim.o.signcolumn = 'auto:1'
 
 -- rendering
 -- vim.o.updatetime = 250
@@ -59,5 +59,5 @@ vim.o.expandtab = true
 vim.o.breakindent = true
 
 -- hide default statusline
-vim.o.showtabline = 2
+vim.o.showtabline = 0
 vim.opt.cmdheight = 0
