@@ -24,6 +24,7 @@ local options = {
     -- Core groups
     { '<leader>g', group = 'Git', icon = '󰊢' },
     { '<leader>t', group = 'Trouble', icon = '󱖫' },
+    { '<leader>l', group = 'Diagnostics', icon = '󰒡' },
   },
 }
 
@@ -36,35 +37,65 @@ wk.add {
     end,
     desc = '󰅖 Delete buffer',
   },
-  -- Trouble keybindings
+  -- Diagnostics mappings
   {
-    '<leader>tt',
-    '<cmd>Trouble diagnostics toggle<cr>',
-    desc = '󱖫 Toggle diagnostics',
+    '<leader>ln',
+    function()
+      vim.diagnostic.get_next()
+    end,
+    desc = '󰒭 Next diagnostic',
   },
   {
-    '<leader>tb',
-    '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
-    desc = '󱖫 Buffer diagnostics',
+    '<leader>lp',
+    function()
+      vim.diagnostic.get_prev()
+    end,
+    desc = '󰒮 Previous diagnostic',
   },
   {
-    '<leader>ts',
-    '<cmd>Trouble symbols toggle focus=false<cr>',
-    desc = '󱖫 Symbols',
+    '<leader>e',
+    function()
+      vim.diagnostic.open_float()
+    end,
+    desc = '󰙵 Open diagnostic float',
   },
   {
-    '<leader>tl',
-    '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
-    desc = '󱖫 LSP definitions/references',
+    '<leader>lo',
+    function()
+      vim.diagnostic.open_float()
+    end,
+    desc = '󰙵 Open diagnostic float',
   },
   {
-    '<leader>tL',
-    '<cmd>Trouble loclist toggle<cr>',
-    desc = '󱖫 Location list',
+    '<leader>ll',
+    function()
+      vim.diagnostic.setloclist()
+    end,
+    desc = '󰙵 Diagnostics to loclist',
   },
   {
-    '<leader>tq',
-    '<cmd>Trouble qflist toggle<cr>',
-    desc = '󱖫 Quickfix list',
+    '<leader>lq',
+    function()
+      vim.diagnostic.setqflist()
+    end,
+    desc = '󰙵 Diagnostics to quickfix',
+  },
+  {
+    '<leader>lt',
+    function()
+      vim.diagnostic.config {
+        virtual_text = not vim.diagnostic.config().virtual_text,
+      }
+    end,
+    desc = '󰙵 Toggle virtual text',
+  },
+  {
+    '<leader>ls',
+    function()
+      vim.diagnostic.config {
+        signs = not vim.diagnostic.config().signs,
+      }
+    end,
+    desc = '󰙵 Toggle signs',
   },
 }

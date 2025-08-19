@@ -32,8 +32,6 @@ add {
   { src = 'j-hui/fidget.nvim' },
   { src = 'nvim-tree/nvim-web-devicons' },
   { src = 'folke/which-key.nvim' },
-  { src = 'folke/noice.nvim' },
-  { src = 'folke/trouble.nvim' },
   { src = 'rebelot/kanagawa.nvim' },
   { src = 'shellRaining/hlchunk.nvim' },
   { src = 'NMAC427/guess-indent.nvim' },

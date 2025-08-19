@@ -19,14 +19,10 @@ wk.add {
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'sql', 'mysql', 'plsql' },
   callback = function()
-    require('blink.cmp').add_provider('dadbod', {
+    vim.cmp.add_provider('dadbod', {
       name = 'Dadbod',
       module = 'vim_dadbod_completion.blink',
       score_offset = 85,
     })
-
-    require('blink.cmp').update_sources {
-      default = { 'lsp', 'dadbod', 'buffer', 'path', 'snippets' },
-    }
   end,
 })

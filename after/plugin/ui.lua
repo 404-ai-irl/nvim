@@ -51,14 +51,7 @@ local slimline_styles = {
   },
 }
 require('slimline').setup(slimline_styles.pure)
-require('noice').setup {
-  cmdline = {
-    enabled = true,
-  },
-  notify = {
-    enabled = true,
-  },
-}
+
 require('fidget').setup {}
 --- Auto Commands
 -- Setup hlchunk on BufReadPre and BufNewFile events
