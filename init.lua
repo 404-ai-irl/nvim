@@ -27,6 +27,7 @@ add {
   { src = 'echasnovski/mini.nvim' },
   { src = 'folke/snacks.nvim' },
   -- Core UI
+  { src = 'sschleemilch/slimline.nvim' },
   { src = 'j-hui/fidget.nvim' },
   { src = 'nvim-tree/nvim-web-devicons' },
   { src = 'folke/which-key.nvim' },

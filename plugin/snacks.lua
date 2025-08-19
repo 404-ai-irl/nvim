@@ -4,7 +4,7 @@ local input_conf = {
   icon = '',
   icon_hl = 'SnacksInputIcon',
   icon_pos = 'left',
-  expand = true,
+  expand = false,
   win = {
     style = 'input',
   },
@@ -19,20 +19,18 @@ local image_conf = {
   end,
 }
 
----@type snacks.Config
+---@class snacks.Config
 local snacks_conf = {
   terminal = { enabled = true },
-  bigfile = { enabled = false },
-  dashboard = { enabled = false },
   input = input_conf,
   image = image_conf,
   picker = { enabled = true },
   notifier = { enabled = true, timeout = 3000 },
   quickfile = { enabled = false },
   scope = { enabled = true },
-  scroll = { enabled = true },
+  scroll = { enabled = false },
   statuscolumn = { enabled = true },
-  words = { enabled = false },
+  words = { enabled = true },
 }
 
 require('snacks').setup(snacks_conf)
