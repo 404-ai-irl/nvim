@@ -3,18 +3,19 @@ vim.g.db_ui_save_location = vim.fn.stdpath 'data' .. '/dadbod_ui'
 vim.g.db_ui_show_database_icon = 1
 vim.g.db_ui_tmp_query_location = vim.fn.stdpath 'data' .. '/dadbod_ui/tmp'
 vim.g.db_ui_use_nerd_fonts = 1
-vim.g.db_ui_execute_on_save = 0
+vim.g.db_ui_execute_on_save = 1
 vim.g.db_ui_winwidth = 30
-vim.g.db_ui_notification_width = 50
 
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
+local wk = require 'which-key'
 
-keymap('n', '<leader>du', ':DBUIToggle<CR>', opts)
-keymap('n', '<leader>df', ':DBUIFindBuffer<CR>', opts)
-keymap('n', '<leader>dr', ':DBUIRenameBuffer<CR>', opts)
-keymap('n', '<leader>dq', ':DBUILastQueryInfo<CR>', opts)
-
+local opts = { noremap = true, silent = true, mode = 'n' }
+wk.add {
+  { '<leader>d', group = 'Database', icon = '󰆼' },
+  { '<leader>do', ':DBUIToggle<CR>', desc = '󰆼 Toggle DBUI', opts },
+  { '<leader>df', ' :DBUIFindBuffer<CR>', desc = '󰍉 Find DB buffer', opts },
+  { '<leader>dr', ':DBUIRenameBuffer<CR>', desc = '󰑕 Rename DB buffer', opts },
+  { '<leader>dq', ':DBUILastQueryInfo<CR>', desc = '󰋖 Last query info', opts },
+}
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'sql', 'mysql', 'plsql' },
   callback = function()
@@ -23,7 +24,7 @@ vim.api.nvim_create_autocmd('FileType', {
       module = 'vim_dadbod_completion.blink',
       score_offset = 85,
     })
-    
+
     require('blink.cmp').update_sources {
       default = { 'lsp', 'dadbod', 'buffer', 'path', 'snippets' },
     }

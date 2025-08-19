@@ -18,33 +18,53 @@ local options = {
   icons = {
     breadcrumb = '»', -- symbol used in the command line area that shows your active key combo
     separator = '-', -- symbol used between a key and it's label
-    group = '+', -- symbol prepended to a group
+    goup = '+', -- symbol prepended to a group
   },
   spec = {
     -- Core groups
-    { '<leader>b', group = 'Buffer', icon = '󰓩' },
     { '<leader>g', group = 'Git', icon = '󰊢' },
-    { '<leader>l', group = 'LSP', icon = '󰒲' },
-    { '<leader>o', group = 'Obsidian', icon = '󰇈' },
-    { '<leader>m', group = 'Markdown', icon = '󰽛' },
-    { '<leader>w', group = 'Window', icon = '󰖲' },
+    { '<leader>t', group = 'Trouble', icon = '󱖫' },
   },
 }
 
 wk.setup { options }
-
 wk.add {
   {
-    '<leader>x',
+    '<leader>q',
     function()
       vim.cmd 'bdelete'
     end,
     desc = '󰅖 Delete buffer',
   },
-  -- Database
-  { '<leader>d', group = 'Database', icon = '󰆼' },
-  { '<leader>do', desc = '󰆼 Toggle DBUI' },
-  { '<leader>df', desc = '󰍉 Find DB buffer' },
-  { '<leader>dr', desc = '󰑕 Rename DB buffer' },
-  { '<leader>dq', desc = '󰋖 Last query info' },
+  -- Trouble keybindings
+  {
+    '<leader>tt',
+    '<cmd>Trouble diagnostics toggle<cr>',
+    desc = '󱖫 Toggle diagnostics',
+  },
+  {
+    '<leader>tb',
+    '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+    desc = '󱖫 Buffer diagnostics',
+  },
+  {
+    '<leader>ts',
+    '<cmd>Trouble symbols toggle focus=false<cr>',
+    desc = '󱖫 Symbols',
+  },
+  {
+    '<leader>tl',
+    '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
+    desc = '󱖫 LSP definitions/references',
+  },
+  {
+    '<leader>tL',
+    '<cmd>Trouble loclist toggle<cr>',
+    desc = '󱖫 Location list',
+  },
+  {
+    '<leader>tq',
+    '<cmd>Trouble qflist toggle<cr>',
+    desc = '󱖫 Quickfix list',
+  },
 }

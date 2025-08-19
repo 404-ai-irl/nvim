@@ -39,6 +39,7 @@ local lsp_config = {
   automatic_installation = true,
 }
 
+
 require('lazydev').setup(lazydev_conf)
 require('mason').setup(mason_config)
 require('mason-lspconfig').setup(lsp_config)

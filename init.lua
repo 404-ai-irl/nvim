@@ -40,6 +40,7 @@ add {
   { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' },
 }
 
+require('notify').setup()
 vim.schedule(function()
   vim.cmd.colorscheme 'kanagawa-dragon'
 end)
@@ -49,6 +50,7 @@ add {
   { src = 'neovim/nvim-lspconfig' },
   { src = 'williamboman/mason.nvim' },
   { src = 'williamboman/mason-lspconfig.nvim' },
+  { src = 'folke/lazydev.nvim' },
   -- Treesitter
   { src = 'nvim-treesitter/nvim-treesitter', version = 'master' },
   { src = 'nvim-treesitter/nvim-treesitter-context' },
@@ -67,11 +69,10 @@ add {
   -- Snippets
   { src = 'L3MON4D3/LuaSnip' },
   { src = 'rafamadriz/friendly-snippets' },
-  --- UI
+  --- AI
+  { src = 'coder/claudecode.nvim' },
   --- Development
-  { src = 'folke/lazydev.nvim' },
   { src = 'mfussenegger/nvim-lint' },
-  -- { src = 'gbprod/substitute.nvim' },
   -- Git
   { src = 'tpope/vim-fugitive' },
   -- Dap
@@ -89,4 +90,5 @@ add {
   { src = 'obsidian-nvim/obsidian.nvim' },
   { src = 'MeanderingProgrammer/render-markdown.nvim' },
 }
+
 require '404-ai-irl'

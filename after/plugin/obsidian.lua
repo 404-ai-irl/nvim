@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd('User', {
 -- Global Keymaps
 local wk = require 'which-key'
 wk.add {
-  { '<leader>o', group = 'Obsidian', icon = '🪬' },
+  { '<leader>o', group = 'Obsidian', icon = '󱘒' },
 
   -- Note Creation
   { '<leader>on', group = 'New', icon = '📝' },
