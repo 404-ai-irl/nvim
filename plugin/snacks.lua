@@ -1,15 +1,3 @@
----@type snacks.input.Config
-local input_conf = {
-  enabled = true,
-  icon = '',
-  icon_hl = 'SnacksInputIcon',
-  icon_pos = 'left',
-  expand = false,
-  win = {
-    style = 'input',
-  },
-}
-
 ---@type snacks.image.Config
 local image_conf = {
   resolve = function(path, src)
@@ -22,7 +10,7 @@ local image_conf = {
 ---@class snacks.Config
 local snacks_conf = {
   terminal = { enabled = true },
-  input = input_conf,
+  input = { enabled = true },
   image = image_conf,
   picker = { enabled = true },
   notifier = { enabled = true, timeout = 3000 },

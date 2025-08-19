@@ -22,6 +22,7 @@ end
 add {
   -- Dependencies
   { src = 'nvim-lua/plenary.nvim' },
+  { src = 'rcarriga/nvim-notify' },
   { src = 'MunifTanjim/nui.nvim' },
   -- Libraries
   { src = 'echasnovski/mini.nvim' },
@@ -31,6 +32,7 @@ add {
   { src = 'j-hui/fidget.nvim' },
   { src = 'nvim-tree/nvim-web-devicons' },
   { src = 'folke/which-key.nvim' },
+  { src = 'folke/noice.nvim' },
   { src = 'folke/trouble.nvim' },
   { src = 'rebelot/kanagawa.nvim' },
   { src = 'shellRaining/hlchunk.nvim' },

@@ -1,3 +1,24 @@
+require('kanagawa').setup {
+  compile = true,
+  undercurl = false,
+  commentStyle = { italic = true },
+  functionStyle = {},
+  keywordStyle = { italic = true },
+  statementStyle = { bold = true },
+  typeStyle = { italic = true },
+  transparent = true, -- do not set background color
+  dimInactive = true, -- dim inactive window `:h hl-NormalNC`
+  terminalColors = true, -- define vim.g.terminal_color_{0,17}
+  colors = { -- add/modify theme and palette colors
+    palette = {},
+    theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+  },
+  background = { -- map the value of 'background' option to a theme
+    dark = 'dragon', -- try "dragon" !
+    light = 'lotus',
+  },
+}
+
 local slimline_styles = {
   pure = {
     style = 'fg',
@@ -29,30 +50,16 @@ local slimline_styles = {
     },
   },
 }
-
 require('slimline').setup(slimline_styles.pure)
-require('fidget').setup {}
-require('kanagawa').setup {
-  compile = true,
-  undercurl = false,
-  commentStyle = { italic = true },
-  functionStyle = {},
-  keywordStyle = { italic = true },
-  statementStyle = { bold = true },
-  typeStyle = { italic = true },
-  transparent = true, -- do not set background color
-  dimInactive = true, -- dim inactive window `:h hl-NormalNC`
-  terminalColors = true, -- define vim.g.terminal_color_{0,17}
-  colors = { -- add/modify theme and palette colors
-    palette = {},
-    theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+require('noice').setup {
+  cmdline = {
+    enabled = true,
   },
-  background = { -- map the value of 'background' option to a theme
-    dark = 'dragon', -- try "dragon" !
-    light = 'lotus',
+  notify = {
+    enabled = true,
   },
 }
-
+require('fidget').setup {}
 --- Auto Commands
 -- Setup hlchunk on BufReadPre and BufNewFile events
 local group = vim.api.nvim_create_augroup('IndentSetup', { clear = true })
