@@ -7,6 +7,18 @@ local image_conf = {
   end,
 }
 
+---@see https://github.com/folke/snacks.nvim/blob/main/docs/styles.md
+local snacks_styles = {
+  snacks_image = {
+    relative = 'cursor',
+    border = 'rounded',
+    focusable = false,
+    backdrop = false,
+    width = 66,
+    height = 66,
+  },
+}
+
 ---@class snacks.Config
 local snacks_conf = {
   terminal = { enabled = true },
@@ -15,10 +27,11 @@ local snacks_conf = {
   picker = { enabled = true },
   notifier = { enabled = true, timeout = 3000 },
   quickfile = { enabled = false },
-  scope = { enabled = true },
+  scope = { enabled = false },
   scroll = { enabled = false },
   statuscolumn = { enabled = true },
-  words = { enabled = true },
+  words = { enabled = false },
+  styles = snacks_styles,
 }
 
 require('snacks').setup(snacks_conf)

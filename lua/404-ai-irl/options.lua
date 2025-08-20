@@ -6,25 +6,25 @@ vim.g.have_nerd_font = true
 -- basic options
 vim.o.termguicolors = true
 vim.o.mouse = 'a'
-vim.o.showmode = false
-vim.o.conceallevel = 1
+vim.o.showmode = true
+vim.o.conceallevel = 0
 
 -- line numbers
-vim.o.number = true
-vim.o.relativenumber = true
+vim.o.number = false
+vim.o.relativenumber = false
 
 -- list chars
 vim.o.list = true
-vim.opt.listchars = { tab = '-->', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '->', trail = '·', nbsp = '␣' }
 
 -- safety QoL
 vim.o.undofile = false
 vim.o.swapfile = false
 
 -- display settings
-vim.o.wrap = false
-vim.o.cursorline = true
-vim.o.scrolloff = 10
+vim.o.wrap = true
+vim.o.cursorline = false
+vim.o.scrolloff = 6
 vim.o.confirm = true
 
 -- system clipboard
@@ -37,7 +37,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- enable gutter
-vim.o.signcolumn = 'auto:1'
+vim.o.signcolumn = 'auto'
 
 -- rendering
 -- vim.o.updatetime = 250

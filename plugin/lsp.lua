@@ -1,9 +1,3 @@
----@class lazydev.Config
-local lazydev_conf = {
-  library = {
-    { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-  },
-}
 --- Mason Config
 ---@class MasonSettings
 local mason_config = {
@@ -16,9 +10,9 @@ local mason_config = {
     height = 0.8,
     width = 0.7,
     icons = {
-      package_installed = ' ',
+      package_installed = '',
       package_pending = ' ',
-      package_uninstalled = '󱂥 ',
+      package_uninstalled = '',
     },
   },
 }
@@ -39,10 +33,42 @@ local lsp_config = {
   automatic_installation = true,
 }
 
-
-require('lazydev').setup(lazydev_conf)
+--- LazyDev for Lazy Loading Lua
+---@class lazydev.Config
+local lazydev_conf = {
+  library = {
+    { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+  },
+}
 require('mason').setup(mason_config)
 require('mason-lspconfig').setup(lsp_config)
+require('lazydev').setup(lazydev_conf)
+
+--- LSP Diagnostics Configuration ---
+vim.diagnostic.config {
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '󰅚',
+      [vim.diagnostic.severity.WARN] = '󰀪',
+      [vim.diagnostic.severity.INFO] = '󰋽',
+      [vim.diagnostic.severity.HINT] = '󰌶',
+    },
+  },
+  virtual_text = {
+    prefix = '●',
+    spacing = 4,
+  },
+  float = {
+    focusable = false,
+    style = 'minimal',
+    border = 'rounded',
+    source = true,
+    header = '',
+    prefix = '',
+  },
+  severity_sort = true,
+  update_in_insert = false,
+}
 
 --- Auto Formatting with Conform ---
 require('conform').setup {

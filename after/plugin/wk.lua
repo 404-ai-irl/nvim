@@ -98,4 +98,39 @@ wk.add {
     end,
     desc = '󰙵 Toggle signs',
   },
+  {
+    '<leader>la',
+    function()
+      local actions = vim.lsp.buf.code_action()
+      if not actions or #actions == 0 then
+        vim.notify('No code actions available', vim.log.levels.INFO)
+        return
+      end
+      
+      -- Filter out disabled actions
+      local available_actions = {}
+      for _, action in ipairs(actions) do
+        if not action.disabled then
+          table.insert(available_actions, action)
+        end
+      end
+      
+      if #available_actions == 0 then
+        vim.notify('No enabled code actions available', vim.log.levels.INFO)
+        return
+      end
+      
+      vim.ui.select(available_actions, {
+        prompt = 'Code Actions:',
+        format_item = function(action)
+          return action.title
+        end,
+      }, function(selected_action)
+        if selected_action then
+          vim.lsp.buf.execute_command(selected_action.command)
+        end
+      end)
+    end,
+    desc = '󰌶 Code actions',
+  },
 }
