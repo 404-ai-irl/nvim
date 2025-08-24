@@ -38,11 +38,6 @@ add {
   { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' },
 }
 
-require('notify').setup()
-vim.schedule(function()
-  vim.cmd.colorscheme 'kanagawa-dragon'
-end)
-
 add {
   -- Mason + LspConfig
   { src = 'neovim/nvim-lspconfig' },
@@ -89,4 +84,8 @@ add {
   { src = 'MeanderingProgrammer/render-markdown.nvim' },
 }
 
-require '404-ai-irl'
+vim.schedule(function()
+  vim.cmd.colorscheme 'kanagawa-dragon'
+  require('notify').setup()
+  require '404-ai-irl'
+end)
