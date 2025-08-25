@@ -1,12 +1,3 @@
----@type snacks.image.Config
-local image_conf = {
-  resolve = function(path, src)
-    if require('obsidian.api').path_is_note(path) then
-      require('obsidian.api').resolve_image_path(src)
-    end
-  end,
-}
-
 ---@see https://github.com/folke/snacks.nvim/blob/main/docs/styles.md
 local snacks_styles = {
   snacks_image = {
@@ -23,7 +14,6 @@ local snacks_styles = {
 local snacks_conf = {
   terminal = { enabled = true },
   input = { enabled = true },
-  image = image_conf,
   picker = { enabled = true },
   notifier = { enabled = true, timeout = 3000 },
   quickfile = { enabled = false },

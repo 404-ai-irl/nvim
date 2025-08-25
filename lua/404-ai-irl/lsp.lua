@@ -36,6 +36,11 @@ local lsp_config = {
 --- LazyDev for Lazy Loading Lua
 ---@class lazydev.Config
 local lazydev_conf = {
+  integrations = {
+    coq = false,
+    lspconfig = true,
+    cmp = true,
+  },
   library = {
     { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
   },
@@ -60,7 +65,6 @@ vim.diagnostic.config {
   },
   float = {
     focusable = false,
-    style = 'minimal',
     border = 'rounded',
     source = true,
     header = '',

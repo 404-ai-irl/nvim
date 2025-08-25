@@ -14,7 +14,7 @@ require('kanagawa').setup {
     theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
   },
   background = { -- map the value of 'background' option to a theme
-    dark = 'dragon', -- try "dragon" !
+    dark = 'dragon', -- NOTE try "dragon"
     light = 'lotus',
   },
 }
@@ -51,8 +51,47 @@ local slimline_styles = {
   },
 }
 require('slimline').setup(slimline_styles.pure)
-
 require('fidget').setup {}
+require('better-comment').Setup {
+  tags = {
+    { -- TODO This is a todo
+      fg = 'white',
+      bg = '#333369',
+      bold = true,
+      virtual_text = ' ',
+    },
+    { --NOTE This is a note
+      name = 'NOTE',
+      fg = 'black',
+      bg = 'white',
+      virtual_text = ' ',
+    },
+    { --FIX This is a fix me
+      name = 'FIX',
+      fg = 'white',
+      bg = '#f44747',
+      bold = true,
+      virtual_text = '󰖷 ',
+    },
+    { -- WARNING: This is a warning
+      name = 'WARNING',
+      fg = 'black',
+      bg = '#FFA500',
+      bold = false,
+      virtual_text = '⚠️',
+    },
+    {
+      -- ? Is this important?
+      name = '?',
+      fg = 'blue',
+      bg = 'teal',
+      bold = true,
+      virtual_text = '󰝧',
+      -- !
+    },
+  },
+}
+
 --- Auto Commands
 -- Setup hlchunk on BufReadPre and BufNewFile events
 local group = vim.api.nvim_create_augroup('IndentSetup', { clear = true })

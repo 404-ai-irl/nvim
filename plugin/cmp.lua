@@ -3,7 +3,7 @@ require('blink.cmp').setup {
     implementation = 'prefer_rust_with_warning',
   },
   sources = {
-    default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'npm', 'emoji' },
+    default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'npm' },
     providers = {
       buffer = {
         name = 'Buffer',
@@ -29,13 +29,6 @@ require('blink.cmp').setup {
         name = 'LazyDev',
         module = 'lazydev.integrations.blink',
         score_offset = 100,
-      },
-      emoji = {
-        module = 'blink-emoji',
-        name = 'Emoji',
-        score_offset = 93,
-        min_keyword_length = 2,
-        opts = { insert = true },
       },
       npm = {
         name = 'npm',

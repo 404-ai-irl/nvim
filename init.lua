@@ -28,6 +28,7 @@ add {
   { src = 'echasnovski/mini.nvim' },
   { src = 'folke/snacks.nvim' },
   -- Core UI
+  { src = 'Djancyp/better-comments.nvim' },
   { src = 'sschleemilch/slimline.nvim' },
   { src = 'j-hui/fidget.nvim' },
   { src = 'nvim-tree/nvim-web-devicons' },
@@ -55,7 +56,6 @@ add {
   -- Formatting + Cmp
   { src = 'Saghen/blink.cmp', version = vim.version.range '1.*' },
   { src = 'Saghen/blink.nvim', version = 'main' },
-  { src = 'moyiz/blink-emoji.nvim' },
   { src = 'alexandre-abrioux/blink-cmp-npm.nvim' },
   { src = 'onsails/lspkind.nvim' },
   { src = 'stevearc/conform.nvim' },
@@ -68,19 +68,16 @@ add {
   { src = 'mfussenegger/nvim-lint' },
   -- Git
   { src = 'tpope/vim-fugitive' },
-  -- Dap
-  { src = 'mfussenegger/nvim-dap' },
-  { src = 'igorlfs/nvim-dap-view' },
-  -- Oil + Dial
-  { src = 'monaqa/dial.nvim' },
+  -- Oil
   { src = 'stevearc/oil.nvim' },
   { src = 'JezerM/oil-lsp-diagnostics.nvim' },
+  -- Dial
+  { src = 'monaqa/dial.nvim' },
   -- Database Management
   { src = 'tpope/vim-dadbod' },
   { src = 'kristijanhusak/vim-dadbod-ui' },
   { src = 'kristijanhusak/vim-dadbod-completion' },
-  -- Markdown
-  { src = 'obsidian-nvim/obsidian.nvim' },
+  -- Markdown / Notes
   { src = 'MeanderingProgrammer/render-markdown.nvim' },
 }
 
