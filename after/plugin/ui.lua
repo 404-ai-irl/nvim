@@ -19,38 +19,6 @@ require('kanagawa').setup {
   },
 }
 
-local slimline_styles = {
-  pure = {
-    style = 'fg',
-    bold = true,
-    configs = {
-      path = {
-        hl = {
-          primary = 'Label',
-        },
-      },
-      git = {
-        hl = {
-          primary = 'Function',
-        },
-      },
-      filetype_lsp = {
-        hl = {
-          primary = 'String',
-        },
-      },
-    },
-  },
-  minimal = {
-    style = 'fg',
-    spaces = {
-      components = '',
-      left = '',
-      right = '',
-    },
-  },
-}
-require('slimline').setup(slimline_styles.pure)
 require('fidget').setup {}
 require('better-comment').Setup {
   tags = {
