@@ -14,15 +14,21 @@
 --     Position: %l (line), %c (col), %L (total), %p%% (percent)
 
 vim.o.laststatus = 2
+
+-- Set up transparent highlight groups for statusline
+-- This ensures the statusline background matches your transparent nvim window
+vim.api.nvim_set_hl(0, 'StatusLineTransparent', { bg = 'NONE', fg = 'fg' })
+vim.api.nvim_set_hl(0, 'StatusLineNCTransparent', { bg = 'NONE', fg = 'bg' })
+
 Line = {}
 
 -- Active Line
 function Line.active()
-  return '  %f%= %y %=[%P %l:%v]'
+  return '%#StatusLineTransparent#  %f%= %y %=[%P %l:%v]'
 end
 -- Inactive Line
 function Line.inactive()
-  return ' &t'
+  return '%#StatusLineNCTransparent# %t'
 end
 
 --- Autocmds

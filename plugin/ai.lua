@@ -1,6 +1,12 @@
-require('claudecode').setup { auto_start = false }
-local wk = require 'which-key'
+---@diagnostic disable-next-line
+require('claudecode').setup {
+  auto_start = false,
+  connection_timeout = 99,
+  connection_wait_delay = 200,
+  log_level = 'info',
+}
 
+local wk = require 'which-key'
 wk.add {
   { '<leader>a', group = 'Claude', desc = 'AI' },
   { '<leader>ac', '<cmd>ClaudeCode<cr>', desc = 'Toggle Claude' },

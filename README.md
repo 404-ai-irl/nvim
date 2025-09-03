@@ -1,5 +1,14 @@
-# Neovim Configuration
+# Tbone's Neovim Configuration
 
+> [!IMPORTANT] Requires Neovim version 0.12+
+> `vim.pack.add` requrired for plugin management.
+
+## Requirements
+
+- Neovim 0.12+ (uses native package management)
+- Git (for plugin installation)
+- Node.js (for LSP servers)
+- Build tools for some plugins (cmake, base-devel on Arch)
 A modern Neovim setup using native package management instead of external plugin managers.
 
 ## Features
@@ -27,26 +36,7 @@ git clone <this-repo> ~/.config/nvim
 nvim  # Plugins install automatically
 ```
 
-## Key Commands
-
-### Plugin Management
-- `:PackStatus` - Check plugin status
-- `:PackUpdate` - Update all plugins  
-- `:PackClean` - Remove unused plugins
-
-### LSP & Development
-- `:Mason` - Manage language servers
-- `:LspInfo` - View active LSP servers
-- `:LspRestart` - Restart LSP servers
-- `:TSC` - TypeScript type checking
-
-### File Navigation
-- `-` - Open oil.nvim file explorer
-- `<leader>ff` - Find files (Telescope)
-- `<leader>fg` - Live grep search
-- `<leader>fb` - Browse buffers
-
-### Database
+## Database UI Keymaps
 - `<leader>du` - Toggle database UI
 - `<leader>df` - Find database buffers
 
@@ -57,9 +47,3 @@ If things break (they might):
 ./scripts/reset-nvim.sh  # Nuclear option - removes all cache/state
 ```
 
-## Requirements
-
-- Neovim 0.11+ (uses native package management)
-- Git (for plugin installation)
-- Node.js (for LSP servers)
-- Build tools for some plugins (cmake, base-devel on Arch)
