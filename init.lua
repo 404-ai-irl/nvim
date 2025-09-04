@@ -1,10 +1,9 @@
---- Note: this config only works with nvim 0.12+
+--- WARNING: this config only works with nvim 0.12+
 if vim.fn.has 'nvim-0.11' == 0 then
   vim.notify('Neovim 0.12+ required', vim.log.levels.ERROR)
   return
 end
 
---- A wrapper around the vim.pack.add command
 local add = function(specs)
   specs = vim
     .iter(specs)
@@ -19,6 +18,34 @@ local add = function(specs)
   vim.pack.add(specs)
 end
 
+--- Note Completed
+
+--- TODO Complete plugin updates
+add {
+  --- NOTE New Plugins being tested
+  { src = 'nvimtools/hydra.nvim' },
+  { src = 'lewis6991/hover.nvim' },
+  --- NOTE Need setup
+  { src = 'L3MON4D3/LuaSnip' },
+  { src = 'rafamadriz/friendly-snippets' },
+  --- NOTE Need configuration review
+  --- AI
+  { src = 'coder/claudecode.nvim' },
+  --- UI
+  { src = 'Djancyp/better-comments.nvim' },
+  --- LSP
+  { src = 'onsails/lspkind.nvim' },
+  { src = 'alexandre-abrioux/blink-cmp-npm.nvim' },
+}
+
+--- depricated? Old plugins up for deprication
+add {
+  { src = 'folke/snacks.nvim' }, -- NOTE replace with telescope or fff or fzf
+  { src = 'folke/which-key.nvim' }, -- hydra?
+  { src = 'sschleemilch/slimline.nvim' }, -- lualine or custom?
+  { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' }, --bloat?
+}
+
 add {
   -- Dependencies
   { src = 'nvim-lua/plenary.nvim' },
@@ -26,21 +53,20 @@ add {
   { src = 'MunifTanjim/nui.nvim' },
   -- Libraries
   { src = 'echasnovski/mini.nvim' },
-  { src = 'folke/snacks.nvim' },
-  -- Core UI
-  { src = 'Djancyp/better-comments.nvim' },
-  { src = 'sschleemilch/slimline.nvim' },
-  { src = 'j-hui/fidget.nvim' },
-  { src = 'nvim-tree/nvim-web-devicons' },
-  { src = 'folke/which-key.nvim' },
-  { src = 'rebelot/kanagawa.nvim' },
-  { src = 'shellRaining/hlchunk.nvim' },
-  { src = 'NMAC427/guess-indent.nvim' },
-  { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' },
 }
 
 add {
-  -- Mason + LspConfig
+  -- Core UI
+  { src = 'nvim-tree/nvim-web-devicons' },
+  { src = 'j-hui/fidget.nvim' },
+  { src = 'rebelot/kanagawa.nvim' },
+  { src = 'shellRaining/hlchunk.nvim' },
+  { src = 'NMAC427/guess-indent.nvim' },
+}
+
+--- LSP
+add {
+  -- Core Dev Plugins
   { src = 'neovim/nvim-lspconfig' },
   { src = 'williamboman/mason.nvim' },
   { src = 'williamboman/mason-lspconfig.nvim' },
@@ -50,22 +76,17 @@ add {
   { src = 'nvim-treesitter/nvim-treesitter-context' },
   { src = 'nvim-treesitter/nvim-treesitter-textobjects' },
   { src = 'windwp/nvim-ts-autotag' },
-}
-
-add {
-  -- Formatting + Cmp
+  -- Formatting
+  { src = 'stevearc/conform.nvim' },
+  -- Linting
+  { src = 'mfussenegger/nvim-lint' },
+  -- Completions
   { src = 'Saghen/blink.cmp', version = vim.version.range '1.*' },
   { src = 'Saghen/blink.nvim', version = 'main' },
-  { src = 'alexandre-abrioux/blink-cmp-npm.nvim' },
-  { src = 'onsails/lspkind.nvim' },
-  { src = 'stevearc/conform.nvim' },
-  -- Snippets
-  { src = 'L3MON4D3/LuaSnip' },
-  { src = 'rafamadriz/friendly-snippets' },
-  --- AI
-  { src = 'coder/claudecode.nvim' },
-  --- Development
-  { src = 'mfussenegger/nvim-lint' },
+}
+
+--- Extras
+add {
   -- Git
   { src = 'tpope/vim-fugitive' },
   -- Oil
@@ -81,6 +102,7 @@ add {
   { src = 'MeanderingProgrammer/render-markdown.nvim' },
 }
 
+--- NOTE deferred final setup
 vim.schedule(function()
   vim.cmd.colorscheme 'kanagawa-dragon'
   require('notify').setup()
