@@ -1,9 +1,3 @@
---- WARNING: this config only works with nvim 0.12+
-if vim.fn.has 'nvim-0.11' == 0 then
-  vim.notify('Neovim 0.12+ required', vim.log.levels.ERROR)
-  return
-end
-
 local add = function(specs)
   specs = vim
     .iter(specs)
@@ -18,27 +12,31 @@ local add = function(specs)
   vim.pack.add(specs)
 end
 
---- Note Completed
-
+--- NOTE Completed
+add {
+  { src = 'Djancyp/better-comments.nvim' },
+}
 --- TODO Complete plugin updates
 add {
-  --- NOTE New Plugins being tested
+  ---TODO Testing
   { src = 'nvimtools/hydra.nvim' },
   { src = 'lewis6991/hover.nvim' },
+  { src = 'jbyuki/venn.nvim' },
+  -- Vim Pack Mods, pick one?
+  { src = 'adriankarlen/plugin-view.nvim' },
   --- NOTE Need setup
   { src = 'L3MON4D3/LuaSnip' },
   { src = 'rafamadriz/friendly-snippets' },
   --- NOTE Need configuration review
-  --- AI
   { src = 'coder/claudecode.nvim' },
-  --- UI
-  { src = 'Djancyp/better-comments.nvim' },
-  --- LSP
   { src = 'onsails/lspkind.nvim' },
   { src = 'alexandre-abrioux/blink-cmp-npm.nvim' },
 }
+require('plugin-view').setup()
+require('plugin-view').open()
 
 --- depricated? Old plugins up for deprication
+
 add {
   { src = 'folke/snacks.nvim' }, -- NOTE replace with telescope or fff or fzf
   { src = 'folke/which-key.nvim' }, -- hydra?

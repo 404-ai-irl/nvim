@@ -6,7 +6,7 @@ local mason_config = {
   check_outdated_packages_on_open = true,
   ui = {
     backdrop = 36,
-    border = 'round',
+    border = nil,
     height = 0.8,
     width = 0.7,
     icons = {
@@ -33,5 +33,5 @@ local lsp_config = {
   automatic_installation = true,
 }
 
-require('plugin.mason').setup(mason_config)
+require('mason').setup(mason_config)
 require('mason-lspconfig').setup(lsp_config)

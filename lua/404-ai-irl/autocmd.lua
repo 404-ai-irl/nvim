@@ -1,6 +1,6 @@
---- See `:help lua-guide-autocommands`
+--- :help lua-guide-autocommands
 
---- [[ Basic Autocommands ]]
+--- UI ---
 -- Highlight yanks
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -9,24 +9,27 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
--- Terminal Settings
-local function set_terminal_keymaps()
-  local opts = { buffer = 0 }
-  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
-end
-vim.api.nvim_create_autocmd({ 'TermOpen' }, {
-  pattern = { '*' },
-  callback = function(_)
-    vim.cmd.setlocal 'nonumber'
-    set_terminal_keymaps()
-  end,
-})
 
-vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter' }, {
-  pattern = { '*' },
-  command = 'checktime',
+-- Indent Guides
+local group = vim.api.nvim_create_augroup('IndentSetup', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
+  group = group,
+  once = true, -- Only run once to avoid multiple setups
+  callback = function()
+    require('hlchunk').setup {
+      chunk = {
+        enable = true,
+        use_treesitter = true,
+      },
+      line_num = {
+        enable = true,
+        style = { fg = 'Background' },
+      },
+      blank = {
+        enable = false,
+        chars = { '󱕆' },
+        style = { fg = 'Background' },
+      },
+    }
+  end,
 })
