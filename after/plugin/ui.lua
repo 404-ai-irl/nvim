@@ -19,45 +19,8 @@ require('kanagawa').setup {
   },
 }
 
-require('fidget').setup {}
-require('better-comment').Setup {
-  tags = {
-    { -- TODO This is a todo
-      fg = 'white',
-      bg = '#333369',
-      bold = true,
-      virtual_text = ' ',
-    },
-    { --NOTE This is a note
-      name = 'NOTE',
-      fg = 'black',
-      bg = 'white',
-      virtual_text = ' ',
-    },
-    { --FIX This is a fix me
-      name = 'FIX',
-      fg = 'white',
-      bg = '#f44747',
-      bold = true,
-      virtual_text = '󰖷 ',
-    },
-    { -- WARNING: This is a warning
-      name = 'WARNING',
-      fg = 'black',
-      bg = '#FFA500',
-      bold = false,
-      virtual_text = '⚠️',
-    },
-    {
-      -- ? Is this important?
-      name = '?',
-      fg = 'blue',
-      bg = 'teal',
-      bold = true,
-      virtual_text = '󰝧',
-      -- !
-    },
-  },
+require('Comment').setup {
+  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
 }
 
 --- Auto Commands

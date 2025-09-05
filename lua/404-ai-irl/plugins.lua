@@ -12,8 +12,6 @@ local add = function(specs)
   vim.pack.add(specs)
 end
 
---- NOTE Completed
-
 --- TODO Complete plugin updates
 add {
   ---TODO Testing
@@ -22,7 +20,6 @@ add {
   { src = 'jbyuki/venn.nvim' },
   -- Vim Pack Mods, pick one?
   { src = 'adriankarlen/plugin-view.nvim' },
-  { src = 'mezdelex/unpack' },
   --- NOTE Need setup
   { src = 'L3MON4D3/LuaSnip' },
   { src = 'rafamadriz/friendly-snippets' },
@@ -35,12 +32,10 @@ add {
 --- depricated? Old plugins up for deprication
 add {
   { src = 'folke/snacks.nvim' }, -- NOTE replace with telescope or fff or fzf
-  { src = 'folke/which-key.nvim' }, -- hydra?
   { src = 'sschleemilch/slimline.nvim' }, -- lualine or custom?
   { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' }, --bloat?
 }
 
---- Core
 add {
   -- Dependencies
   { src = 'nvim-lua/plenary.nvim' },
@@ -48,6 +43,16 @@ add {
   { src = 'MunifTanjim/nui.nvim' },
   -- Libraries
   { src = 'echasnovski/mini.nvim' },
+  { src = 'folke/which-key.nvim' },
+}
+
+add {
+  -- Core UI
+  { src = 'rebelot/kanagawa.nvim' },
+  { src = 'nvim-tree/nvim-web-devicons' },
+  { src = 'j-hui/fidget.nvim' },
+  { src = 'shellRaining/hlchunk.nvim' },
+  { src = 'NMAC427/guess-indent.nvim' },
 }
 
 --- LSP
@@ -57,6 +62,11 @@ add {
   { src = 'williamboman/mason.nvim' },
   { src = 'williamboman/mason-lspconfig.nvim' },
   { src = 'folke/lazydev.nvim' },
+  -- Treesitter
+  { src = 'nvim-treesitter/nvim-treesitter', version = 'master' },
+  { src = 'nvim-treesitter/nvim-treesitter-context' },
+  { src = 'nvim-treesitter/nvim-treesitter-textobjects' },
+  { src = 'windwp/nvim-ts-autotag' },
   -- Formatting
   { src = 'stevearc/conform.nvim' },
   -- Linting
@@ -66,42 +76,19 @@ add {
   { src = 'Saghen/blink.nvim', version = 'main' },
 }
 
--- Treesitter
-add {
-  -- Official TS
-  { src = 'nvim-treesitter/nvim-treesitter', version = 'master' },
-  { src = 'nvim-treesitter/nvim-treesitter-context' },
-  { src = 'nvim-treesitter/nvim-treesitter-textobjects' },
-  -- Unofficial TS
-  { src = 'JoosepAlviste/nvim-ts-context-commentstring' },
-  { src = 'windwp/nvim-ts-autotag' },
-}
-
---- UI
-add {
-  { src = 'nvim-tree/nvim-web-devicons' },
-  { src = 'j-hui/fidget.nvim' },
-  { src = 'rebelot/kanagawa.nvim' },
-  { src = 'shellRaining/hlchunk.nvim' },
-  { src = 'NMAC427/guess-indent.nvim' },
-  { src = 'numToStr/Comment.nvim' },
-}
-
 --- Extras
 add {
+  -- Git
   { src = 'tpope/vim-fugitive' },
+  -- Oil
   { src = 'stevearc/oil.nvim' },
   { src = 'JezerM/oil-lsp-diagnostics.nvim' },
+  -- Dial
   { src = 'monaqa/dial.nvim' },
+  -- Database Management
   { src = 'tpope/vim-dadbod' },
   { src = 'kristijanhusak/vim-dadbod-ui' },
   { src = 'kristijanhusak/vim-dadbod-completion' },
+  -- Markdown / Notes
   { src = 'MeanderingProgrammer/render-markdown.nvim' },
 }
-
-vim.schedule(function()
-  vim.cmd.colorscheme 'kanagawa-dragon'
-  require('notify').setup()
-  require('fidget').setup {}
-  require '404-ai-irl'
-end)

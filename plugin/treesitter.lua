@@ -1,5 +1,4 @@
---- Treesitter Configs
---- Core
+--- TS Core
 require('nvim-treesitter.configs').setup {
   sync_install = false,
   ensure_installed = {
@@ -32,7 +31,7 @@ require('nvim-treesitter.configs').setup {
   modules = {},
 }
 
---- Context
+--- TS Context
 require('treesitter-context').setup {
   enable = true,
   multiwindow = false,
@@ -46,7 +45,7 @@ require('treesitter-context').setup {
   on_attach = nil, -- (fun(buf: integer): boolean) false = disabled
 }
 
---- Autotag
+--- TS Autotag
 require('nvim-ts-autotag').setup {
   opts = {
     enable_close = true,
@@ -55,10 +54,14 @@ require('nvim-ts-autotag').setup {
   },
   per_filetype = {
     ['html'] = {
-      enable_close = false,
+      enable_close = true,
     },
   },
 }
+
+--- TS Context_CommentString
+require('ts_context_commentstring').setup()
+
 --- Auto Updates (TSUpdate)
 vim.api.nvim_create_autocmd('PackChanged', {
   desc = 'Handle nvim-treesitter updates',
