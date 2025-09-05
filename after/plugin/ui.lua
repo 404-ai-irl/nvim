@@ -19,8 +19,11 @@ require('kanagawa').setup {
   },
 }
 
+---@diagnostic disable: missing-fields
 require('Comment').setup {
   pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+  sticky = true,
+  padding = true,
 }
 
 --- Auto Commands
