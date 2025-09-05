@@ -16,6 +16,7 @@ end
 add {
   { src = 'Djancyp/better-comments.nvim' },
 }
+
 --- TODO Complete plugin updates
 add {
   ---TODO Testing
@@ -24,6 +25,7 @@ add {
   { src = 'jbyuki/venn.nvim' },
   -- Vim Pack Mods, pick one?
   { src = 'adriankarlen/plugin-view.nvim' },
+  { src = 'mezdelex/unpack' },
   --- NOTE Need setup
   { src = 'L3MON4D3/LuaSnip' },
   { src = 'rafamadriz/friendly-snippets' },
@@ -32,8 +34,6 @@ add {
   { src = 'onsails/lspkind.nvim' },
   { src = 'alexandre-abrioux/blink-cmp-npm.nvim' },
 }
-require('plugin-view').setup()
-require('plugin-view').open()
 
 --- depricated? Old plugins up for deprication
 
