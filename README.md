@@ -1,5 +1,7 @@
 # Tbone's Neovim Configuration
 
+A modern Neovim setup using native package management instead of external plugin managers.
+
 > [!IMPORTANT] Requires Neovim version 0.12+
 > `vim.pack.add` requrired for plugin management.
 
@@ -9,7 +11,6 @@
 - Git (for plugin installation)
 - Node.js (for LSP servers)
 - Build tools for some plugins (cmake, base-devel on Arch)
-A modern Neovim setup using native package management instead of external plugin managers.
 
 ## Features
 
@@ -18,10 +19,9 @@ A modern Neovim setup using native package management instead of external plugin
 - Blink.cmp completion with multiple sources
 - Oil.nvim for directory editing
 - Telescope for fuzzy finding
-- Vue.js + TypeScript support
+- Obsidian integration (WIP)
 - Database tools (vim-dadbod)
-- Obsidian integration
-- Auto-formatting on save
+- Auto-formatting on save (conform)
 
 ## Installation
 
@@ -35,10 +35,6 @@ Then clone and start:
 git clone <this-repo> ~/.config/nvim
 nvim  # Plugins install automatically
 ```
-
-## Database UI Keymaps
-- `<leader>du` - Toggle database UI
-- `<leader>df` - Find database buffers
 
 ## Reset Script
 

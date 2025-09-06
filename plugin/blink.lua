@@ -1,37 +1,32 @@
 require('blink.cmp').setup {
-  fuzzy = {
-    implementation = 'prefer_rust_with_warning',
-  },
+  fuzzy = { implementation = 'prefer_rust_with_warning' },
+  --- Sources
   sources = {
     default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'npm' },
+    per_filetype = {
+      sql = { 'snippets', 'dadbod', 'buffer' },
+      lua = { inherit_defaults = true, 'lazydev' },
+    },
+
+    --- Providers
     providers = {
-      buffer = {
-        name = 'Buffer',
-        module = 'blink.cmp.sources.buffer',
-        score_offset = -3,
-        max_items = 20,
-        opts = {
-          get_bufnrs = function()
-            -- Only use visible buffers for completion
-            return vim
-              .iter(vim.api.nvim_list_wins())
-              :map(function(win)
-                return vim.api.nvim_win_get_buf(win)
-              end)
-              :filter(function(buf)
-                return vim.bo[buf].buftype ~= 'nofile'
-              end)
-              :totable()
-          end,
-        },
-      },
       lazydev = {
         name = 'LazyDev',
         module = 'lazydev.integrations.blink',
         score_offset = 100,
       },
+      nerdfont = {
+        module = 'blink-nerdfont',
+        name = 'Nerd Fonts',
+        score_offset = 15,
+        opts = { insert = true },
+      },
+      dadbod = {
+        name = 'DadBod',
+        module = 'vim_dadbod_completion.blink',
+      },
       npm = {
-        name = 'npm',
+        name = 'NPM',
         module = 'blink-cmp-npm',
         async = true,
         score_offset = 100,
@@ -39,28 +34,30 @@ require('blink.cmp').setup {
     },
   },
 
+  --- Completions
   completion = {
     accept = {
       auto_brackets = {
         enabled = true,
       },
     },
-
     ghost_text = {
       enabled = false,
     },
 
+    --- Documentation
     documentation = {
       auto_show = true,
       auto_show_delay_ms = 200,
       window = {
-        border = 'rounded',
+        border = 'bold',
         winblend = 30,
         max_width = 80,
         max_height = 20,
       },
     },
 
+    --- Menu
     menu = {
       winblend = 30,
       min_width = 15,
@@ -109,6 +106,7 @@ require('blink.cmp').setup {
       },
     },
 
+    --- List
     list = {
       cycle = {
         from_bottom = true,
@@ -116,8 +114,14 @@ require('blink.cmp').setup {
       },
     },
   },
+
+  --- Cmdline
   cmdline = { enabled = true },
+
+  --- Terminal
   term = { enabled = true },
+
+  --- Signature
   signature = {
     enabled = true,
     window = {
@@ -126,6 +130,8 @@ require('blink.cmp').setup {
       winblend = 30,
     },
   },
+
+  --- Snippets
   snippets = {
     expand = function(snippet)
       require('luasnip').lsp_expand(snippet)
@@ -140,8 +146,10 @@ require('blink.cmp').setup {
       require('luasnip').jump(direction)
     end,
   },
+
+  --- Appearence
   appearance = {
-    nerd_font_variant = 'mono',
+    nerd_font_variant = 'normal',
     kind_icons = {
       Text = '󰉿',
       Method = '󰆧',
@@ -175,16 +183,6 @@ require('blink.cmp').setup {
 require('blink.chartoggle').setup {
   enabled = true,
 }
-
-local kset = vim.keymap.set
--- , toggles ,
-kset({ 'n', 'v' }, ',', function()
-  require('blink.chartoggle').toggle_char_eol ','
-end)
--- Control + ; = toggle ;
-kset({ 'n', 'v' }, '<C-;>', function()
-  require('blink.chartoggle').toggle_char_eol ';'
-end)
 
 require('lspkind').init {
   -- default: symbol
