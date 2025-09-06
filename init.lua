@@ -21,75 +21,53 @@ add {
   { src = 'lewis6991/hover.nvim' },
   { src = 'jbyuki/venn.nvim' },
   -- Vim Pack Mods, pick one?
-  { src = 'adriankarlen/plugin-view.nvim' },
-  { src = 'mezdelex/unpack' },
-  --- NOTE Need setup
+  --- NOTE need setup
   { src = 'L3MON4D3/LuaSnip' },
   { src = 'rafamadriz/friendly-snippets' },
-  --- NOTE Need configuration review
+  --- NOTE configuration review
   { src = 'coder/claudecode.nvim' },
   { src = 'onsails/lspkind.nvim' },
   { src = 'alexandre-abrioux/blink-cmp-npm.nvim' },
-}
-
---- depricated? Old plugins up for deprication
-add {
-  { src = 'folke/snacks.nvim' }, -- NOTE replace with telescope or fff or fzf
-  { src = 'folke/which-key.nvim' }, -- hydra?
+  --- depricating
+  { src = 'folke/snacks.nvim' }, -- TODO depricated
+  { src = 'folke/which-key.nvim' }, -- mini.hint?
   { src = 'sschleemilch/slimline.nvim' }, -- lualine or custom?
   { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' }, --bloat?
 }
 
---- Core
 add {
-  -- Dependencies
-  { src = 'nvim-lua/plenary.nvim' },
-  { src = 'rcarriga/nvim-notify' },
-  { src = 'MunifTanjim/nui.nvim' },
-  -- Libraries
-  { src = 'echasnovski/mini.nvim' },
-}
-
---- LSP
-add {
-  -- Core Dev Plugins
+  { src = 'adriankarlen/plugin-view.nvim' }, -- Plugin updates
+  { src = 'folke/lazydev.nvim' }, -- Lua development
+  { src = 'stevearc/conform.nvim' }, -- Formatting
+  { src = 'mfussenegger/nvim-lint' }, -- Linting
+  { src = 'tpope/vim-fugitive' }, -- Git
+  -- Lsp
   { src = 'neovim/nvim-lspconfig' },
   { src = 'williamboman/mason.nvim' },
   { src = 'williamboman/mason-lspconfig.nvim' },
-  { src = 'folke/lazydev.nvim' },
-  -- Formatting
-  { src = 'stevearc/conform.nvim' },
-  -- Linting
-  { src = 'mfussenegger/nvim-lint' },
-  -- Completions
-  { src = 'Saghen/blink.cmp', version = vim.version.range '1.*' },
-  { src = 'Saghen/blink.nvim', version = 'main' },
-}
-
--- Treesitter
-add {
-  -- Official TS
+  -- Mini
+  { src = 'echasnovski/mini.ai' },
+  { src = 'echasnovski/mini.surround' },
+  -- Blink
+  { src = 'Saghen/blink.cmp' },
+  { src = 'Saghen/blink.nvim' },
+  -- Treesitter
   { src = 'nvim-treesitter/nvim-treesitter', version = 'master' },
   { src = 'nvim-treesitter/nvim-treesitter-context' },
   { src = 'nvim-treesitter/nvim-treesitter-textobjects' },
-  -- Unofficial TS
   { src = 'JoosepAlviste/nvim-ts-context-commentstring' },
   { src = 'windwp/nvim-ts-autotag' },
-}
-
---- UI
-add {
+  --- Telescope
+  { src = 'nvim-telescope/telescope.nvim' },
+  { src = 'nvim-telescope/telescope-fzf-native.nvim' },
+  --- UI
   { src = 'nvim-tree/nvim-web-devicons' },
   { src = 'j-hui/fidget.nvim' },
   { src = 'rebelot/kanagawa.nvim' },
   { src = 'shellRaining/hlchunk.nvim' },
   { src = 'NMAC427/guess-indent.nvim' },
   { src = 'numToStr/Comment.nvim' },
-}
-
---- Extras
-add {
-  { src = 'tpope/vim-fugitive' },
+  --- Extras
   { src = 'stevearc/oil.nvim' },
   { src = 'JezerM/oil-lsp-diagnostics.nvim' },
   { src = 'monaqa/dial.nvim' },
@@ -97,6 +75,10 @@ add {
   { src = 'kristijanhusak/vim-dadbod-ui' },
   { src = 'kristijanhusak/vim-dadbod-completion' },
   { src = 'MeanderingProgrammer/render-markdown.nvim' },
+  -- Dependencies
+  { src = 'nvim-lua/plenary.nvim' },
+  { src = 'rcarriga/nvim-notify' },
+  { src = 'MunifTanjim/nui.nvim' },
 }
 
 vim.schedule(function()
