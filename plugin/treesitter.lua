@@ -1,6 +1,6 @@
 --- TS Core
 require('nvim-treesitter.configs').setup {
-  sync_install = false,
+  sync_install = true,
   ensure_installed = {
     'lua',
     'yaml',

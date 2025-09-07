@@ -17,22 +17,14 @@ add {
   { src = 'nvimtools/hydra.nvim' },
   { src = 'lewis6991/hover.nvim' },
   { src = 'jbyuki/venn.nvim' },
-  -- Vim Pack Mods, pick one?
-  --- NOTE need setup
-  { src = 'L3MON4D3/LuaSnip' },
-  { src = 'rafamadriz/friendly-snippets' },
-  --- NOTE configuration review
+  --- TODO configuration review
   { src = 'coder/claudecode.nvim' },
   { src = 'onsails/lspkind.nvim' },
   { src = 'alexandre-abrioux/blink-cmp-npm.nvim' },
-  --- depricating
+  --- TODO: depricating
   { src = 'folke/snacks.nvim' }, -- TODO depricated
   { src = 'folke/which-key.nvim' }, -- mini.hint?
-  { src = 'sschleemilch/slimline.nvim' }, -- lualine or custom?
   { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' }, --bloat?
-}
-
-add {
   { src = 'adriankarlen/plugin-view.nvim' }, -- Plugin updates
   { src = 'folke/lazydev.nvim' }, -- Lua development
   { src = 'stevearc/conform.nvim' }, -- Formatting
@@ -45,9 +37,11 @@ add {
   -- Mini
   { src = 'echasnovski/mini.ai' },
   { src = 'echasnovski/mini.surround' },
-  -- Blink
+  -- Blink + Snippets
   { src = 'Saghen/blink.cmp' },
   { src = 'Saghen/blink.nvim' },
+  { src = 'L3MON4D3/LuaSnip' },
+  { src = 'rafamadriz/friendly-snippets' },
   -- Treesitter
   { src = 'nvim-treesitter/nvim-treesitter', version = 'master' },
   { src = 'nvim-treesitter/nvim-treesitter-context' },
