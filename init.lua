@@ -1,8 +1,4 @@
--- Install Plugins
-require 'pack'
-Ensure_plugins_built()
-
--- Defer the final setup
+require 'pack' -- Install Plugins
 vim.schedule(function()
   vim.cmd.colorscheme 'kanagawa-dragon'
   require('notify').setup()
