@@ -3,7 +3,7 @@
 A modern Neovim setup using native package management instead of external plugin managers.
 
 > [!IMPORTANT] Requires Neovim version 0.12+
-> `vim.pack.add` requrired for plugin management.
+> `vim.pack.add` used for plugin management.
 
 ## Requirements
 
