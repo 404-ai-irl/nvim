@@ -1,3 +1,13 @@
+require('fidget').setup {}
+require('plugin-view').setup {
+  win = {
+    title = 'Plugin List',
+    border = 'bold',
+    height = 70,
+    width = 70,
+  },
+}
+
 require('kanagawa').setup {
   compile = true,
   undercurl = false,
@@ -13,17 +23,10 @@ require('kanagawa').setup {
     palette = {},
     theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
   },
-  background = { -- map the value of 'background' option to a theme
-    dark = 'dragon', -- NOTE try "dragon"
+  background = {
+    dark = 'dragon',
     light = 'lotus',
   },
-}
-
----@diagnostic disable: missing-fields
-require('Comment').setup {
-  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-  sticky = true,
-  padding = true,
 }
 
 --- Auto Commands

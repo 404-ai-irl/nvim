@@ -11,7 +11,7 @@ local add = function(specs)
     :totable()
   vim.pack.add(specs)
 end
---- TODO Complete plugin updates
+
 add {
   ---TODO Testing
   { src = 'nvimtools/hydra.nvim' },
@@ -24,6 +24,9 @@ add {
   --- TODO: depricating
   { src = 'folke/snacks.nvim' }, -- TODO depricated
   { src = 'folke/which-key.nvim' }, -- mini.hint?
+
+  -- core
+  { src = 'adriankarlen/plugin-view.nvim' },
   { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' }, --bloat?
   { src = 'adriankarlen/plugin-view.nvim' }, -- Plugin updates
   { src = 'folke/lazydev.nvim' }, -- Lua development
@@ -36,6 +39,7 @@ add {
   { src = 'williamboman/mason-lspconfig.nvim' },
   -- Mini
   { src = 'echasnovski/mini.ai' },
+  { src = 'echasnovski/mini.comment' },
   { src = 'echasnovski/mini.surround' },
   -- Blink + Snippets
   { src = 'Saghen/blink.cmp' },
