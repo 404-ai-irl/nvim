@@ -16,19 +16,13 @@ add {
   ---TODO Testing
   { src = 'nvimtools/hydra.nvim' },
   { src = 'lewis6991/hover.nvim' },
-  { src = 'jbyuki/venn.nvim' },
-  --- TODO configuration review
   { src = 'coder/claudecode.nvim' },
   { src = 'onsails/lspkind.nvim' },
   { src = 'alexandre-abrioux/blink-cmp-npm.nvim' },
-  --- TODO: depricating
-  { src = 'folke/snacks.nvim' }, -- TODO depricated
   { src = 'folke/which-key.nvim' }, -- mini.hint?
-
   -- core
   { src = 'adriankarlen/plugin-view.nvim' },
   { src = 'akinsho/bufferline.nvim', version = vim.version.range '*' }, --bloat?
-  { src = 'adriankarlen/plugin-view.nvim' }, -- Plugin updates
   { src = 'folke/lazydev.nvim' }, -- Lua development
   { src = 'stevearc/conform.nvim' }, -- Formatting
   { src = 'mfussenegger/nvim-lint' }, -- Linting
@@ -38,7 +32,7 @@ add {
   { src = 'williamboman/mason.nvim' },
   { src = 'williamboman/mason-lspconfig.nvim' },
   -- Mini
-  { src = 'echasnovski/mini.ai' },
+  { src = 'nvim-mini/mini.ai' },
   { src = 'echasnovski/mini.comment' },
   { src = 'echasnovski/mini.surround' },
   -- Blink + Snippets

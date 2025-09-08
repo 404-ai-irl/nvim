@@ -16,7 +16,7 @@ vim.o.signcolumn = 'auto'
 vim.o.cmdheight = 0
 vim.o.termguicolors = true
 vim.o.showmode = true
-vim.o.conceallevel = 1
+vim.o.conceallevel = 2
 vim.o.showtabline = 1
 vim.o.list = true
 vim.opt.listchars = { tab = '->', trail = '·', nbsp = '␣' }

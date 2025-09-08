@@ -1,4 +1,3 @@
----@type wk.Opts
 local options = {
   preset = 'modern',
   delay = function(ctx)
@@ -148,7 +147,7 @@ wk.add {
         end,
       }, function(selected_action)
         if selected_action then
-          vim.lsp.buf.execute_command(selected_action.command)
+          vim.lsp.buf.code_action(selected_action.command)
         end
       end)
     end,
