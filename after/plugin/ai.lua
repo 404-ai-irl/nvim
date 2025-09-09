@@ -1,6 +1,6 @@
 ---@diagnostic disable-next-line
 require('claudecode').setup {
-  auto_start = false,
+  auto_start = true,
   connection_timeout = 99,
   connection_wait_delay = 200,
   log_level = 'info',
