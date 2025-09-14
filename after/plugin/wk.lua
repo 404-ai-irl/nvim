@@ -32,14 +32,6 @@ local db_wk_opts = { noremap = true, silent = true, mode = 'n' }
 wk.setup { options }
 
 wk.add {
-  {
-    '<leader>pm',
-    function()
-      require('plugin-view').open()
-    end,
-    desc = 'Package Manager',
-    icon = ' ',
-  },
   --Toggles
   {
     '<leader>ts',
@@ -83,21 +75,21 @@ wk.add {
   {
     '<leader>e',
     function()
-      vim.diagnostic.open_float()
+      require('hover').open()
     end,
-    desc = '󰙵 Open diagnostic float',
+    desc = '󰙵 Open hover',
   },
   {
     '<leader>ln',
     function()
-      vim.diagnostic.get_next()
+      require('hover').switch 'next'
     end,
     desc = '󰒭 Next diagnostic',
   },
   {
     '<leader>lp',
     function()
-      vim.diagnostic.get_prev()
+      require('hover').switch 'previous'
     end,
     desc = '󰒮 Previous diagnostic',
   },
@@ -116,7 +108,6 @@ wk.add {
     end,
     desc = '󰙵 Diagnostics to quickfix',
   },
-  -- TODO: Code Actions
   {
     '<leader>la',
     function()

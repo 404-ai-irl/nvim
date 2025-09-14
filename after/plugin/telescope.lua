@@ -1,3 +1,9 @@
+Add {
+  { src = 'nvim-telescope/telescope.nvim' },
+  { src = 'nvim-telescope/telescope-fzf-native.nvim' },
+  { src = 'nvim-telescope/telescope-symbols.nvim', build = 'make' },
+}
+
 local wk = require 'which-key'
 local scope = require 'telescope'
 local tb = require 'telescope.builtin'
@@ -16,10 +22,10 @@ scope.setup {
     },
   },
 }
--- Build plugins if needed
+
 scope.load_extension 'fzf'
 
---- keymaps
+-- keymaps
 wk.add {
   {
     '<leader><space>',
@@ -204,30 +210,3 @@ wk.add {
     desc = 'LSP Workspace Symbols',
   },
 }
-
--- Native toggle commands (replacing Snacks.toggle)
-vim.keymap.set('n', '<leader>us', function()
-  vim.opt.spell = not vim.opt.spell:get()
-end, { desc = 'Toggle Spelling' })
-vim.keymap.set('n', '<leader>uw', function()
-  vim.opt.wrap = not vim.opt.wrap:get()
-end, { desc = 'Toggle Wrap' })
-vim.keymap.set('n', '<leader>uL', function()
-  vim.opt.relativenumber = not vim.opt.relativenumber:get()
-end, { desc = 'Toggle Relative Number' })
-vim.keymap.set('n', '<leader>ul', function()
-  vim.opt.number = not vim.opt.number:get()
-end, { desc = 'Toggle Line Numbers' })
-vim.keymap.set('n', '<leader>ub', function()
-  vim.opt.background = vim.opt.background:get() == 'dark' and 'light' or 'dark'
-end, { desc = 'Toggle Background' })
-vim.keymap.set('n', '<leader>uh', function()
-  vim.opt.hlsearch = not vim.opt.hlsearch:get()
-end, { desc = 'Toggle Search Highlights' })
-vim.keymap.set('n', '<leader>uc', function()
-  local current = vim.opt.conceallevel:get()
-  vim.opt.conceallevel = current > 0 and 0 or 2
-end, { desc = 'Toggle Conceal Level' })
-vim.keymap.set('n', '<leader>ud', function()
-  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-end, { desc = 'Toggle Diagnostics' })

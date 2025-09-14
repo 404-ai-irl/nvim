@@ -1,3 +1,4 @@
+---
 --- Mason Config
 ---@class MasonSettings
 local mason_config = {
@@ -35,16 +36,39 @@ local lsp_config = {
 require('mason').setup(mason_config)
 require('mason-lspconfig').setup(lsp_config)
 
+--- LSP Server Configurations ---
+local lspconfig = require('lspconfig')
+
+-- Lua Language Server configuration for Neovim
+lspconfig.lua_ls.setup {
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true),
+        checkThirdParty = false,
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
 --- Lint Config ---
 local lint = require 'lint'
 lint.linters_by_ft = {}
 
 --- Auto Commands ---
 local lint_group = vim.api.nvim_create_augroup('tbone.lint', { clear = true })
-local makeAutoCmd = vim.api.nvim_create_autocmd
 -- Autolint
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
-  group = lsp_group,
+  group = lint_group,
   callback = function()
     -- configured with `linters_by_ft` above
     require('lint').try_lint()

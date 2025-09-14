@@ -1,13 +1,4 @@
 require('fidget').setup {}
-require('plugin-view').setup {
-  win = {
-    title = 'Plugin List',
-    border = 'bold',
-    height = 70,
-    width = 70,
-  },
-}
-
 require('kanagawa').setup {
   compile = true,
   undercurl = false,
@@ -29,12 +20,10 @@ require('kanagawa').setup {
   },
 }
 
---- Auto Commands
--- Setup hlchunk on BufReadPre and BufNewFile events
-local group = vim.api.nvim_create_augroup('IndentSetup', { clear = true })
+--- UI autocmds
+-- block guides via hlchunk
 vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
-  group = group,
-  once = true, -- Only run once to avoid multiple setups
+  once = true,
   callback = function()
     require('hlchunk').setup {
       chunk = {
@@ -42,12 +31,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
         use_treesitter = true,
       },
       line_num = {
-        enable = true,
-        style = { fg = 'Background' },
-      },
-      blank = {
         enable = false,
-        chars = { '󱕆' },
         style = { fg = 'Background' },
       },
     }

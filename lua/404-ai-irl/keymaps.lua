@@ -2,8 +2,6 @@
 -- Leave insert mode ( jj / jk )
 vim.keymap.set('i', 'jj', '<Esc>', { desc = 'JJ Esc' })
 vim.keymap.set('i', 'jk', '<Esc>', { desc = 'JK Esc' })
--- Toggle Highlights
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Escape to clear search highlight' })
 
 --- Window / Panes
 -- Navigation
