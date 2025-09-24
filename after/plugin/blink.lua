@@ -41,7 +41,7 @@ require('blink.cmp').setup {
         max_height = 20,
       },
     },
-
+    --- cmp.Menu
     menu = {
       draw = {
         components = {
@@ -65,8 +65,7 @@ require('blink.cmp').setup {
         },
       },
     },
-
-    --- List
+    --- cmp.List
     list = {
       cycle = {
         from_bottom = true,
