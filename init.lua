@@ -48,7 +48,6 @@ function Add(specs) -- Global function to add plugins
   vim.pack.add(specs)
 end
 
-
 -- Autocmd to automatically build plugins when installed or updated
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(event)
@@ -99,7 +98,7 @@ vim.api.nvim_create_user_command('Build', function(opts)
   -- Prompt user for build command
   vim.ui.input({
     prompt = 'Build command for ' .. plugin_name .. ': ',
-    default = 'make'
+    default = 'make',
   }, function(build_cmd)
     if build_cmd and build_cmd ~= '' then
       BuildPlugin(plugin_name, build_cmd)
@@ -117,29 +116,37 @@ end, {
       table.insert(plugins, name)
     end
     return plugins
-  end
+  end,
 })
 
 Add {
+  -- dependencies
+  { src = 'nvim-lua/plenary.nvim' },
+  { src = 'MunifTanjim/nui.nvim' },
   -- core
   { src = 'neovim/nvim-lspconfig' },
   { src = 'williamboman/mason.nvim' },
   { src = 'williamboman/mason-lspconfig.nvim' },
   { src = 'stevearc/conform.nvim' },
   { src = 'mfussenegger/nvim-lint' },
-  { src = 'coder/claudecode.nvim' },
+  { src = 'monaqa/dial.nvim' },
+  -- QoL
   { src = 'folke/which-key.nvim' },
-  -- QoL Collections
   { src = 'folke/snacks.nvim' },
   -- Treesitter
   { src = 'nvim-treesitter/nvim-treesitter', version = 'master' },
   { src = 'nvim-treesitter/nvim-treesitter-context' },
   { src = 'nvim-treesitter/nvim-treesitter-textobjects' },
   { src = 'windwp/nvim-ts-autotag' },
-  --- Telescope
+  --- File Explorers
   { src = 'nvim-telescope/telescope.nvim' },
   { src = 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   { src = 'nvim-telescope/telescope-symbols.nvim' },
+  { src = 'stevearc/oil.nvim' },
+  { src = 'JezerM/oil-lsp-diagnostics.nvim' },
+  --- Extras
+  { src = 'coder/claudecode.nvim' },
+  { src = 'gruvw/strudel.nvim', build = 'npm install' },
   --- UI
   { src = 'nvim-tree/nvim-web-devicons' },
   { src = 'akinsho/bufferline.nvim' },
@@ -149,18 +156,13 @@ Add {
   { src = 'shellRaining/hlchunk.nvim' },
   { src = 'NMAC427/guess-indent.nvim' },
   { src = 'obsidian-nvim/obsidian.nvim' },
-  { src = 'MeanderingProgrammer/render-markdown.nvim' },
+  -- { src = 'MeanderingProgrammer/render-markdown.nvim' },
+  { src = 'OXY2DEV/markview.nvim' },
+  { src = 'alex-popov-tech/store.nvim' },
   --- DB Management
   { src = 'tpope/vim-dadbod' },
   { src = 'kristijanhusak/vim-dadbod-ui' },
   { src = 'kristijanhusak/vim-dadbod-completion' },
-  --- Extras
-  { src = 'stevearc/oil.nvim' },
-  { src = 'JezerM/oil-lsp-diagnostics.nvim' },
-  { src = 'monaqa/dial.nvim' },
-  -- Dependencies
-  { src = 'nvim-lua/plenary.nvim' },
-  { src = 'MunifTanjim/nui.nvim' },
 }
 
 vim.schedule(function()
