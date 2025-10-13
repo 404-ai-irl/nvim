@@ -130,6 +130,12 @@ Add {
   { src = 'stevearc/conform.nvim' },
   { src = 'mfussenegger/nvim-lint' },
   { src = 'monaqa/dial.nvim' },
+  -- AI
+  { src = 'yetone/avante.nvim', build = 'make', version = 'main' },
+  { src = 'HakonHarnes/img-clip.nvim' },
+  { src = 'zbirenbaum/copilot.lua' },
+  { src = 'HakonHarnes/img-clip.nvim' },
+  { src = 'zbirenbaum/copilot.lua' },
   -- QoL
   { src = 'folke/which-key.nvim' },
   { src = 'folke/snacks.nvim' },
@@ -144,9 +150,6 @@ Add {
   { src = 'nvim-telescope/telescope-symbols.nvim' },
   { src = 'stevearc/oil.nvim' },
   { src = 'JezerM/oil-lsp-diagnostics.nvim' },
-  --- Extras
-  { src = 'coder/claudecode.nvim' },
-  { src = 'gruvw/strudel.nvim', build = 'npm install' },
   --- UI
   { src = 'nvim-tree/nvim-web-devicons' },
   { src = 'akinsho/bufferline.nvim' },
@@ -159,6 +162,8 @@ Add {
   -- { src = 'MeanderingProgrammer/render-markdown.nvim' },
   { src = 'OXY2DEV/markview.nvim' },
   { src = 'alex-popov-tech/store.nvim' },
+  --- Extras
+  { src = 'gruvw/strudel.nvim', build = 'npm install' },
   --- DB Management
   { src = 'tpope/vim-dadbod' },
   { src = 'kristijanhusak/vim-dadbod-ui' },
