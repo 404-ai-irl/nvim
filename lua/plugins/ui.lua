@@ -1,6 +1,7 @@
-require('fidget').setup {}
-require('kanagawa').setup {
-  compile = true,
+return {
+  {"j-hui/fidget.nvim"},
+  {"rebelot/kanagawa.nvim", opts = {
+compile = true,
   undercurl = false,
   commentStyle = { italic = true },
   functionStyle = {},
@@ -18,22 +19,20 @@ require('kanagawa').setup {
     dark = 'dragon',
     light = 'lotus',
   },
-}
-
---- UI autocmds
--- block guides via hlchunk
-vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
-  once = true,
-  callback = function()
-    require('hlchunk').setup {
-      chunk = {
+  },
+},
+{
+  "shellRaining/hlchunk.nvim",
+  event = { "BufReadPre", "BufNewFile" },
+  config = function()
+    require("hlchunk").setup({chunk = {
         enable = true,
         use_treesitter = true,
       },
       line_num = {
         enable = false,
         style = { fg = 'Background' },
-      },
-    }
-  end,
-})
+      }})
+  end
+  }
+}

@@ -4,9 +4,15 @@ set -e
 
 echo "Resetting Neovim state, cache, and plugins..."
 
-# Remove Neovim data directory (state, shada, etc.)
+# Remove lazy.nvim plugin directory first (more specific)
+if [ -d "$HOME/.local/share/nvim/lazy" ]; then
+    echo "Removing lazy.nvim plugins..."
+    rm -rf "$HOME/.local/share/nvim/lazy"
+fi
+
+# Remove other Neovim data (keeping lazy separate for clarity)
 if [ -d "$HOME/.local/share/nvim" ]; then
-    echo "Removing Neovim data directory..."
+    echo "Removing remaining Neovim data..."
     rm -rf "$HOME/.local/share/nvim"
 fi
 
@@ -20,12 +26,6 @@ fi
 if [ -d "$HOME/.cache/nvim" ]; then
     echo "Removing Neovim cache directory..."
     rm -rf "$HOME/.cache/nvim"
-fi
-
-# Remove lazy.nvim plugin directory
-if [ -d "$HOME/.local/share/nvim/lazy" ]; then
-    echo "Removing lazy.nvim plugins..."
-    rm -rf "$HOME/.local/share/nvim/lazy"
 fi
 
 echo "Neovim reset complete!"
