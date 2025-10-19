@@ -64,6 +64,8 @@ return {
         },
         layout = "telescope",
       },
+      profiler = { enabled = true },
+      dashboard = { enabled = true },
     })
   end,
 }
