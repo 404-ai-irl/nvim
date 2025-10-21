@@ -2,18 +2,17 @@ return {
   {
     'saghen/blink.cmp',
     dependencies = {
-      'L3MON4D3/LuaSnip',
+      'rafamadriz/friendly-snippets',
     },
     version = '1.*',
     build = 'cargo build --release',
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
     opts = {
       fuzzy = { implementation = 'prefer_rust_with_warning' },
       --- Sources
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
         per_filetype = {
+          codecompanion = { 'codecompanion' },
           sql = { 'snippets', 'dadbod', 'buffer' },
         },
         --- Providers
@@ -25,7 +24,12 @@ return {
           lazydev = {
             name = 'LazyDev',
             module = 'lazydev.integrations.blink',
-            score_offset = 100, -- show at top of completion
+            score_offset = 100,
+          },
+          snippets = {
+            opts = {
+              friendly_snippets = true,
+            },
           },
         },
       },
@@ -93,7 +97,7 @@ return {
         enabled = true,
         window = {
           show_documentation = true,
-          border = 'rounded',
+          border = 'bold',
           winblend = 30,
         },
       },
@@ -103,15 +107,35 @@ return {
 
       --- Appearence
       appearance = {
-        nerd_font_variant = 'normal',
+        nerd_font_variant = 'mono',
       },
     },
   },
   {
     'saghen/blink.nvim',
-    build = 'cargo build --release',
-    config = function()
-      require('blink.chartoggle').setup { enabled = true }
-    end,
+    build = 'cargo build --release', -- for delimiters
+    keys = {
+      -- chartoggle
+      {
+        '<C-;>',
+        function()
+          require('blink.chartoggle').toggle_char_eol ';'
+        end,
+        mode = { 'n', 'v' },
+        desc = 'Toggle ; at eol',
+      },
+      {
+        ',',
+        function()
+          require('blink.chartoggle').toggle_char_eol ','
+        end,
+        mode = { 'n', 'v' },
+        desc = 'Toggle , at eol',
+      },
+    },
+    lazy = false,
+    opts = {
+      chartoggle = { enabled = true },
+    },
   },
 }
