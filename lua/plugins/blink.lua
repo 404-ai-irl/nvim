@@ -10,7 +10,7 @@ return {
       fuzzy = { implementation = 'prefer_rust_with_warning' },
       --- Sources
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
         per_filetype = {
           codecompanion = { 'codecompanion' },
           sql = { 'snippets', 'dadbod', 'buffer' },
@@ -35,15 +35,15 @@ return {
       },
       --- Keymaps
       keymap = {
-        ["<Tab>"] = {
-          "snippet_forward",
+        ['<Tab>'] = {
+          'snippet_forward',
           function()
-            return require("sidekick").nes_jump_or_apply()
+            return require('sidekick').nes_jump_or_apply()
           end,
-          "fallback",
+          'fallback',
         },
       },
-      
+
       --- Completions
       completion = {
         accept = {

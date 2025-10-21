@@ -206,44 +206,51 @@ return {
   },
   opts = {
     -- Available layout presets: bottom, default, dropdown, ivy, ivy_split, left, right, select, sidebar, telescope, top, vertical, vscode
-    picker = { 
+    picker = {
       enabled = true,
       layout = {
-        preset = "ivy_split",
+        preset = 'ivy_split',
       },
       layouts = {
         ivy_split = {
           layout = {
-            border = "rounded",
-          }
-        }
-      }
+            border = 'rounded',
+          },
+        },
+      },
     },
     profiler = { enabled = true },
-    dashboard = { 
+    dashboard = {
       enabled = true,
       sections = {
-        { section = "header" },
-        { section = "keys", gap = 1, padding = 1 },
-        { section = "startup" },
+        { section = 'header' },
+        { section = 'keys', gap = 1, padding = 1 },
+        { section = 'startup' },
       },
       preset = {
         header = [[
- _   _                      
-| |_| |__   ___  _ __   ___ 
-| __| '_ \ / _ \| '_ \ / _ \
-| |_| |_) | (_) | | | |  __/
- \__|_.__/ \___/|_| |_|\___|
+ _     _                      
+| |_  | `__   ___  _ __   ___ 
+| __| | |_ \ / _ \| '_ \ / _ \
+| |_  | |_) | (_) | | | |  __/
+ \__| |.___/ \___/|_| |_|\___|
                            
 ]],
         keys = {
-          { icon = " ", key = "f", desc = "Find File", action = ":lua require('snacks').picker.files()" },
-          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-          { icon = " ", key = "r", desc = "Recent Files", action = ":lua require('snacks').picker.recent()" },
-          { icon = " ", key = "g", desc = "Find Text", action = ":lua require('snacks').picker.grep()" },
-          { icon = " ", key = "c", desc = "Config", action = ":lua require('snacks').picker.files({cwd = vim.fn.stdpath('config')})" },
-          { icon = " ", key = "s", desc = "Store", action = function() vim.cmd("Lazy") end },
-          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          { icon = ' ', key = 'f', desc = 'Find File', action = ":lua require('snacks').picker.files()" },
+          { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
+          { icon = ' ', key = 'r', desc = 'Recent Files', action = ":lua require('snacks').picker.recent()" },
+          { icon = ' ', key = 'g', desc = 'Find Text', action = ":lua require('snacks').picker.grep()" },
+          { icon = ' ', key = 'c', desc = 'Config', action = ":lua require('snacks').picker.files({cwd = vim.fn.stdpath('config')})" },
+          {
+            icon = ' ',
+            key = 's',
+            desc = 'Store',
+            action = function()
+              vim.cmd 'Store'
+            end,
+          },
+          { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
         },
       },
     },
@@ -255,4 +262,3 @@ return {
     words = { enabled = true },
   },
 }
-
