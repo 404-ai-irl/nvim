@@ -33,6 +33,17 @@ return {
           },
         },
       },
+      --- Keymaps
+      keymap = {
+        ["<Tab>"] = {
+          "snippet_forward",
+          function()
+            return require("sidekick").nes_jump_or_apply()
+          end,
+          "fallback",
+        },
+      },
+      
       --- Completions
       completion = {
         accept = {
