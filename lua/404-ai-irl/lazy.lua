@@ -18,7 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require('lazy').setup {
   spec = {
-    { import = 'plugins' },
+    { import = '404-ai-irl/plugins' },
   },
   install = { colorscheme = { 'kanagawa-dragon' } },
   checker = { enabled = true },

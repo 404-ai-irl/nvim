@@ -15,6 +15,7 @@ return {
   },
   {
     'HakonHarnes/img-clip.nvim',
+    event = 'VeryLazy',
     opts = {
       filetypes = {
         codecompanion = {
@@ -23,6 +24,7 @@ return {
           use_absolute_path = true,
         },
       },
+      keys = { { '<leader>p', '<cmd>PasteImage<cr>', desc = 'Paste image from system clipboard' } },
     },
   },
 

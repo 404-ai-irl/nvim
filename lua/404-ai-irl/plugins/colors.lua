@@ -1,6 +1,7 @@
 return {
   {
     'EdenEast/nightfox.nvim',
+    colorscheme = { 'carbonfox' },
     opts = {
       options = {
         transparent = true,
@@ -13,24 +14,6 @@ return {
           },
         },
       },
-    },
-  },
-  {
-    'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = {
-      style = 'night',
-      transparent = true,
-      terminal_colors = true,
-    },
-  },
-  {
-    'rebelot/kanagawa.nvim',
-    opts = {
-      theme = 'dragon',
-      transparent = true,
-      commentStyle = { italic = true },
     },
   },
   {
