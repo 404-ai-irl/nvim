@@ -254,6 +254,7 @@ return {
         },
       },
     },
+    image = { enabled = true },
     rename = { enabled = true },
     bigfile = { enabled = true },
     notifier = { enabled = true },

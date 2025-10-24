@@ -3,6 +3,9 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
+-- add bun to PATH
+vim.env.PATH = vim.env.PATH .. ':' .. vim.fn.expand('~/.bun/bin')
+
 vim.g.db_ui_auto_execute_table_helpers = 1
 vim.g.db_ui_save_location = vim.fn.stdpath 'data' .. '/dadbod_ui'
 vim.g.db_ui_show_database_icon = 1

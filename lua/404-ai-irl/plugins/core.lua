@@ -2,26 +2,27 @@ return {
   --- LSP
   {
     'mason-org/mason-lspconfig.nvim',
-    opts = {},
+    opts = {
+      ensure_installed = {
+        'lua_ls',
+        'ts_ls',
+        'lua_ls',
+        'biome',
+        'tailwindcss',
+        'html',
+        'cssls',
+        'jsonls',
+        'yamlls',
+      },
+      automatic_enable = true,
+      automatic_installation = true,
+      max_concurrent_installers = 6,
+      check_outdated_packages_on_open = true,
+    },
     dependencies = {
       {
         'mason-org/mason.nvim',
-        opts = {
-          ensure_installed = {
-            'lua_ls',
-            'ts_ls',
-            'lua_ls',
-            'biome',
-            'tailwindcss',
-            'html',
-            'cssls',
-            'jsonls',
-            'yamlls',
-          },
-          automatic_installation = true,
-          max_concurrent_installers = 6,
-          check_outdated_packages_on_open = true,
-        },
+        opts = {},
       },
       'neovim/nvim-lspconfig',
     },

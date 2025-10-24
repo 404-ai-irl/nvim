@@ -1,6 +1,3 @@
--- Plugin: folke/which-key.nvim
--- Installed via store.nvim
-
 return {
   'folke/which-key.nvim',
   event = 'VeryLazy',
@@ -10,7 +7,7 @@ return {
     delay = function(ctx)
       return ctx.operator and 0 or 200
     end,
-    expand = 2, -- Reduce expand to avoid clutter
+    expand = 2,
     notify = true,
     replace = {
       key = {
@@ -21,18 +18,22 @@ return {
       },
     },
     icons = {
-      breadcrumb = '»', -- symbol used in the command line area that shows your active key combo
-      separator = '-', -- symbol used between a key and it's label
-      goup = '+', -- symbol prepended to a group
+      breadcrumb = '»',
+      separator = '-',
+      group = '+',
     },
     spec = {
-      -- Core groups
-      { '<leader>g', group = 'Git', icon = '󰊢' },
-      { '<leader>t', group = 'Toggle' },
-      { '<leader>l', group = 'Diagnostics', icon = '󰒡' },
-      { '<leader>a', group = 'AI', icon = '󰒡' },
+      { '<leader>a', group = 'AI', icon = '' },
+      { '<leader>c', group = 'Code', icon = '' },
       { '<leader>d', group = 'Database', icon = '󰆼' },
+      { '<leader>f', group = 'Find', icon = '' },
+      { '<leader>g', group = 'Git', icon = '󰊢' },
+      { '<leader>l', group = 'LSP', icon = '' },
+      { '<leader>la', vim.lsp.buf.code_action, desc = 'LSP Actions', icon = '󰒡' },
+      { '<leader>s', group = 'Search', icon = '' },
+      { '<leader>t', group = 'Toggle', icon = '' },
+      { '<leader>w', group = 'Wiki', icon = '󱓷' },
+      { '<leader>x', group = 'Diagnostics', icon = '󱖫' },
     },
   },
 }
-
