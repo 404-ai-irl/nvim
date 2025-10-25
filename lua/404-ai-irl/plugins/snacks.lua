@@ -209,7 +209,7 @@ return {
     picker = {
       enabled = true,
       layout = {
-        preset = 'ivy_split',
+        preset = 'sidebar',
       },
       layouts = {
         ivy_split = {
@@ -240,8 +240,14 @@ return {
           { icon = ' ', key = 'f', desc = 'Find File', action = ":lua require('snacks').picker.files()" },
           { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
           { icon = ' ', key = 'r', desc = 'Recent Files', action = ":lua require('snacks').picker.recent()" },
-          { icon = ' ', key = 'g', desc = 'Find Text', action = ":lua require('snacks').picker.grep()" },
-          { icon = ' ', key = 'c', desc = 'Config', action = ":lua require('snacks').picker.files({cwd = vim.fn.stdpath('config')})" },
+          {
+            icon = ' ',
+            key = 'l',
+            desc = 'Lazy',
+            action = function()
+              vim.cmd 'Lazy'
+            end,
+          },
           {
             icon = ' ',
             key = 's',
@@ -250,7 +256,7 @@ return {
               vim.cmd 'Store'
             end,
           },
-          { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
+          { icon = ' ', key = 'x', desc = 'exit', action = ':qa' },
         },
       },
     },

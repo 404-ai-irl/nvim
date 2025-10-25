@@ -1,33 +1,48 @@
 return {
-  -- Markdown rendering
   {
-    'OXY2DEV/markview.nvim',
-    lazy = false,
+    'echaya/neowiki.nvim',
     dependencies = {
-      'saghen/blink.cmp',
-    },
-    opts = {
-      preview = {
-        filetypes = { 'markdown', 'codecompanion' },
-        ignore_buftypes = {},
-      },
-    },
-  },
-  {
-    'HakonHarnes/img-clip.nvim',
-    event = 'VeryLazy',
-    opts = {
-      filetypes = {
-        codecompanion = {
-          prompt_for_file_name = true,
-          template = '[Image]($FILE_PATH)',
-          use_absolute_path = true,
+      {
+        'OXY2DEV/markview.nvim',
+        lazy = false,
+        dependencies = {
+          'saghen/blink.cmp',
+        },
+        opts = {
+          preview = {
+            filetypes = { 'markdown', 'codecompanion' },
+            ignore_buftypes = {},
+          },
         },
       },
-      keys = { { '<leader>p', '<cmd>PasteImage<cr>', desc = 'Paste image from system clipboard' } },
+      {
+        'HakonHarnes/img-clip.nvim',
+        event = 'VeryLazy',
+        opts = {
+          filetypes = {
+            codecompanion = {
+              prompt_for_file_name = true,
+              template = '[Image]($FILE_PATH)',
+              use_absolute_path = true,
+            },
+          },
+          keys = { { '<leader>p', '<cmd>PasteImage<cr>', desc = 'Paste image from system clipboard' } },
+        },
+      },
+    },
+    opts = {
+      wiki_dirs = {
+        {
+          name = 'TT.AI',
+          path = '~/documents/tt.ai.notes/',
+        },
+        {
+          name = 'dev',
+          path = '~/documents/notes/dev/',
+        },
+      },
     },
   },
-
   -- Obsidian integration
   -- {
   --   "epwalsh/obsidian.nvim",

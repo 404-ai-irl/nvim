@@ -4,7 +4,7 @@ return {
     wiki_dirs = {
       {
         name = 'TT.AI',
-        path = '~/code/tt.ai.monorepo/notes/',
+        path = '~/documents/tt.ai.notes/',
       },
       {
         name = 'dev',
