@@ -19,7 +19,7 @@ return {
     opts = {
       filetypes = {
         codecompanion = {
-          prompt_for_file_name = false,
+          prompt_for_file_name = true,
           template = '[Image]($FILE_PATH)',
           use_absolute_path = true,
         },

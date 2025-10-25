@@ -24,7 +24,6 @@ return {
     },
     spec = {
       { '<leader>a', group = 'AI', icon = '' },
-      { '<leader>c', group = 'Code', icon = '' },
       { '<leader>d', group = 'Database', icon = '󰆼' },
       { '<leader>f', group = 'Find', icon = '' },
       { '<leader>g', group = 'Git', icon = '󰊢' },

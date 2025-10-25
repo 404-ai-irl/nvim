@@ -1,14 +1,10 @@
--- Plugin: echaya/neowiki.nvim
--- Installed via store.nvim
-
 return {
   'echaya/neowiki.nvim',
   opts = {
     wiki_dirs = {
-      -- neowiki.nvim supports both absolute and tilde-expanded paths
       {
         name = 'TT.AI',
-        path = '~/code/beta.tt.ai/notes/',
+        path = '~/code/tt.ai.monorepo/notes/',
       },
       {
         name = 'dev',

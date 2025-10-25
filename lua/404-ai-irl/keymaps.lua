@@ -1,3 +1,6 @@
+local vset = vim.keymap.set
+local wk = require 'which-key'
+
 -- Leave insert mode ( jj / jk )
-vim.keymap.set('i', 'jj', '<Esc>', { desc = 'JJ Esc' })
-vim.keymap.set('i', 'jk', '<Esc>', { desc = 'JK Esc' })
+vset('i', 'jj', '<Esc>', { desc = 'JJ Esc' })
+vset('i', 'jk', '<Esc>', { desc = 'JK Esc' })

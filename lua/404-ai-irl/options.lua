@@ -1,20 +1,29 @@
 --- global settings
+-- leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.g.have_nerd_font = true
-
--- add bun to PATH
-vim.env.PATH = vim.env.PATH .. ':' .. vim.fn.expand('~/.bun/bin')
-
-vim.g.db_ui_auto_execute_table_helpers = 1
-vim.g.db_ui_save_location = vim.fn.stdpath 'data' .. '/dadbod_ui'
-vim.g.db_ui_show_database_icon = 1
-vim.g.db_ui_tmp_query_location = vim.fn.stdpath 'data' .. '/dadbod_ui/tmp'
-vim.g.db_ui_use_nerd_fonts = 1
-vim.g.db_ui_execute_on_save = 1
-vim.g.db_ui_winwidth = 30
+-- basic options
+vim.o.mouse = 'a'
+vim.o.confirm = true
+vim.o.undofile = true
+vim.o.swapfile = false
+vim.o.tabstop = 2
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
+vim.o.ignorecase = true
+vim.o.smartcase = true
+-- add bun packages to PATH
+vim.env.PATH = vim.env.PATH .. ':' .. vim.fn.expand '~/.bun/bin'
+-- system clipboard
+vim.schedule(function()
+  vim.o.clipboard = 'unnamedplus'
+end)
 
 --- UI options
+vim.g.have_nerd_font = true
+vim.o.number = true
+vim.o.relativenumber = true
 vim.o.winborder = 'bold'
 vim.o.signcolumn = 'auto:2'
 vim.o.cmdheight = 0
@@ -32,22 +41,19 @@ vim.o.breakindent = true
 vim.o.inccommand = 'split'
 vim.o.splitright = true
 vim.o.splitbelow = true
-
--- basic options
-vim.o.mouse = 'a'
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.confirm = true
-vim.o.undofile = false
-vim.o.swapfile = false
-vim.o.tabstop = 2
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.softtabstop = 2
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- system clipboard
-vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
-end)
+-- folding
+vim.o.foldenable = true
+vim.o.foldlevel = 99
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.o.foldtext = ''
+vim.opt.foldcolumn = '0'
+vim.opt.fillchars:append { fold = ' ' }
+--- dadbod_ui settings
+vim.g.db_ui_auto_execute_table_helpers = 1
+vim.g.db_ui_save_location = vim.fn.stdpath 'data' .. '/dadbod_ui'
+vim.g.db_ui_show_database_icon = 1
+vim.g.db_ui_tmp_query_location = vim.fn.stdpath 'data' .. '/dadbod_ui/tmp'
+vim.g.db_ui_use_nerd_fonts = 1
+vim.g.db_ui_execute_on_save = 1
+vim.g.db_ui_winwidth = 30
