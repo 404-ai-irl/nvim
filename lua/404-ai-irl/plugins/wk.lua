@@ -1,3 +1,8 @@
+local vset = vim.keymap.set
+-- Leave insert mode ( jj / jk )
+vset('i', 'jj', '<Esc>', { desc = 'JJ Esc' })
+vset('i', 'jk', '<Esc>', { desc = 'JK Esc' })
+
 return {
   'folke/which-key.nvim',
   event = 'VeryLazy',
@@ -32,7 +37,7 @@ return {
       { '<leader>s', group = 'Search', icon = '' },
       { '<leader>t', group = 'Toggle', icon = '' },
       { '<leader>w', group = 'Wiki', icon = '󱓷' },
-      { '<leader>x', group = 'Diagnostics', icon = '󱖫' },
+      { '<leader>x', group = 'Trouble', icon = '󱖫' },
     },
   },
 }
