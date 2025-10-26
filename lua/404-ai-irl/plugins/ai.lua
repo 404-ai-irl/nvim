@@ -1,4 +1,5 @@
 return {
+  ---@module  "sidekick"
   {
     'folke/sidekick.nvim',
     opts = {
@@ -39,13 +40,5 @@ return {
         desc = 'Toggle OpenCode CLI',
       },
     },
-  },
-  {
-    'Exafunction/codeium.vim',
-    cmd = { 'CodeiumToggle' },
-    config = function()
-      vim.g.codeium_enabled = false
-      vim.keymap.set('n', '<leader><CR>', ':CodeiumToggle<CR>')
-    end,
   },
 }

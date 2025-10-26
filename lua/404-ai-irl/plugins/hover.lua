@@ -1,10 +1,35 @@
+---@module "hover"
 return {
   'lewis6991/hover.nvim',
   keys = {
-    { 'K', function() require('hover').hover() end, desc = 'Hover' },
-    { 'gK', function() require('hover').hover_select() end, desc = 'Hover Select' },
-    { '<C-p>', function() require('hover').hover_switch('previous') end, desc = 'Previous Hover Source' },
-    { '<C-n>', function() require('hover').hover_switch('next') end, desc = 'Next Hover Source' },
+    {
+      'K',
+      function()
+        require('hover').open()
+      end,
+      desc = 'Hover',
+    },
+    {
+      'gK',
+      function()
+        require('hover').select()
+      end,
+      desc = 'Hover Select',
+    },
+    {
+      '<C-p>',
+      function()
+        require('hover').switch 'previous'
+      end,
+      desc = 'Previous Hover Source',
+    },
+    {
+      '<C-n>',
+      function()
+        require('hover').switch 'next'
+      end,
+      desc = 'Next Hover Source',
+    },
   },
   opts = {
     init = function()
@@ -16,7 +41,7 @@ return {
       require 'hover.providers.gh_user'
     end,
     preview_opts = {
-      border = 'single',
+      border = '',
     },
     preview_window = false,
     title = true,
@@ -27,3 +52,4 @@ return {
     mouse_delay = 1000,
   },
 }
+

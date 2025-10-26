@@ -1,5 +1,6 @@
 return {
   --- LSP
+  ---@module "mason-lspconfig"
   {
     'mason-org/mason-lspconfig.nvim',
     opts = {
@@ -28,6 +29,7 @@ return {
     },
   },
   --- TS
+  ---@module "nvim-treesitter"
   {
     'nvim-treesitter/nvim-treesitter',
     branch = 'main',
@@ -66,7 +68,6 @@ return {
   {
     'stevearc/conform.nvim',
     dependencies = { 'NMAC427/guess-indent.nvim', event = { 'BufReadPre', 'BufNewFile' }, opts = {} },
-
     opts = {
       formatters_by_ft = {
         lua = { 'stylua' },
@@ -88,7 +89,7 @@ return {
   --- Nvim / Lua lsp setup
   {
     'folke/lazydev.nvim',
-    ft = 'lua', -- only load on lua files
+    ft = 'lua',
     opts = {
       library = {
         {
@@ -103,17 +104,21 @@ return {
 
   --- TMUX integration
   {
-    'alexghergh/nvim-tmux-navigation',
-    opts = {
-      disable_when_zoomed = false,
-      keybindings = {
-        left = '<C-h>',
-        down = '<C-j>',
-        up = '<C-k>',
-        right = '<C-l>',
-        last_active = '<C-\\>',
-        next = '<C-Space>',
-      },
+    'christoomey/vim-tmux-navigator',
+    cmd = {
+      'TmuxNavigateLeft',
+      'TmuxNavigateDown',
+      'TmuxNavigateUp',
+      'TmuxNavigateRight',
+      'TmuxNavigatePrevious',
+      'TmuxNavigatorProcessList',
+    },
+    keys = {
+      { '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>' },
+      { '<c-j>', '<cmd><C-U>TmuxNavigateDown<cr>' },
+      { '<c-k>', '<cmd><C-U>TmuxNavigateUp<cr>' },
+      { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
+      { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
     },
   },
 }
