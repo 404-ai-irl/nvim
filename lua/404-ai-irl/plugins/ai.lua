@@ -2,6 +2,7 @@ return {
   ---@module  "sidekick"
   {
     'folke/sidekick.nvim',
+    ---@module 'sidekick.config'
     opts = {
       cli = {
         tools = {
@@ -11,8 +12,9 @@ return {
             env = { OPENCODE_THEME = 'system' },
           },
         },
+        nes = {},
         mux = {
-          backend = 'tmux',
+          backend = 'zellij',
           enabled = true,
         },
       },

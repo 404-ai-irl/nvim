@@ -10,7 +10,7 @@ return {
             type = 'split',
             relative = 'win',
             position = 'left',
-            size = 0.4,
+            size = 0.6,
           },
         },
         loclist = {
@@ -19,7 +19,7 @@ return {
             type = 'split',
             relative = 'win',
             position = 'right',
-            size = 0.4,
+            size = 0.6,
           },
         },
       },
