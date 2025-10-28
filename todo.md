@@ -1,5 +1,9 @@
 # list of things I want to work on
 
+## Multiplex
+
+- [ ] tmux
+- [ ] zellij
 ## UI
 
 - [ ] Statusline options review
