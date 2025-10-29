@@ -14,7 +14,7 @@ return {
         },
         nes = {},
         mux = {
-          backend = 'zellij',
+          backend = 'tmux',
           enabled = true,
         },
       },

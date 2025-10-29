@@ -26,6 +26,7 @@ return {
         opts = {},
       },
       'neovim/nvim-lspconfig',
+      'b0o/schemastore.nvim',
     },
   },
   --- TS

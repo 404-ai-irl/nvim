@@ -4,6 +4,7 @@ return {
     'saghen/blink.cmp',
     dependencies = {
       'rafamadriz/friendly-snippets',
+      'saghen/blink.compat',
     },
     version = '1.*',
     build = 'cargo build --release',
@@ -15,6 +16,7 @@ return {
         per_filetype = {
           codecompanion = { 'codecompanion' },
           sql = { 'snippets', 'dadbod', 'buffer' },
+          markdown = { 'lsp', 'path', 'snippets', 'buffer', 'obsidian', 'obsidian_new', 'obsidian_tags' },
         },
         --- Providers
         providers = {
@@ -27,6 +29,18 @@ return {
             module = 'lazydev.integrations.blink',
             -- make lazydev completions top priority (see `:h blink.cmp`)
             score_offset = 100,
+          },
+          obsidian = {
+            name = 'obsidian',
+            module = 'blink.compat.source',
+          },
+          obsidian_new = {
+            name = 'obsidian_new',
+            module = 'blink.compat.source',
+          },
+          obsidian_tags = {
+            name = 'obsidian_tags',
+            module = 'blink.compat.source',
           },
           snippets = {
             opts = {
