@@ -20,6 +20,6 @@ require('lazy').setup {
   spec = {
     { import = '404-ai-irl/plugins' },
   },
-  install = { colorscheme = { 'kanagawa-dragon' } },
+  install = { colorscheme = { 'eldritch' } },
   checker = { enabled = true },
 }

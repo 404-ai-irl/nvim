@@ -1,20 +1,20 @@
-require('lspconfig').jsonls.setup {
+vim.lsp.config('jsonls', {
   settings = {
     json = {
       schemas = require('schemastore').json.schemas(),
       validate = { enable = true },
     },
   },
-}
+})
 
-require('lspconfig').yamlls.setup {
+vim.lsp.config('yamlls', {
   settings = {
     yaml = {
       schemaStore = {
-        enable = false,
+        enable = true,
         url = '',
       },
     },
     schemas = require('schemastore').yaml.schemas(),
   },
-}
+})

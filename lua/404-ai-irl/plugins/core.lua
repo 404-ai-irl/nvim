@@ -9,6 +9,7 @@ return {
         'ts_ls',
         'lua_ls',
         'biome',
+        'eslint',
         'tailwindcss',
         'html',
         'cssls',
@@ -23,6 +24,7 @@ return {
     dependencies = {
       {
         'mason-org/mason.nvim',
+        ---@module 'mason'
         opts = {},
       },
       'neovim/nvim-lspconfig',
@@ -38,10 +40,12 @@ return {
     build = ':TSUpdate',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-context',
-      'windwp/nvim-ts-autotag',
+      {
+        'windwp/nvim-ts-autotag',
+      },
     },
     opts = {
-      sync_install = true,
+      ---@module 'nvim-treesitter.config'
       ensure_installed = {
         'lua',
         'javascript',
@@ -50,6 +54,7 @@ return {
         'markdown_inline',
         'latex',
         'regex',
+        'bash',
         'json',
         'yaml',
       },
