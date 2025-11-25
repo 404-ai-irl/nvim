@@ -1,35 +1,30 @@
 -- Markdown rendering configuration
 local M = {}
 
+---@module 'render-markdown'
 M.render_markdown_opts = {
-  -- Enable rendering by default
   enabled = true,
-
   -- Performance settings
   max_file_size = 10.0,
   debounce = 100,
-
   -- Render modes - show rendered view in normal, command, terminal
   render_modes = { 'n', 'c', 't' },
-
-  -- Anti-conceal for smooth editing experience
-  anti_conceal = {
+  anti_conceal = { -- Anti-conceal for smooth editing experience
     enabled = true,
-    above = 0,
-    below = 0,
+    above = 1,
+    below = 1,
     ignore = {
       code_background = true,
       sign = true,
     },
   },
-
   heading = {
     enabled = true,
     sign = false, -- Cleaner look without sign column
     position = 'overlay',
     icons = { '󰎤 ', '󰎧 ', '󰎪 ', '󰎭 ', '󰎱 ', '󰎳 ' }, -- Minimal, clean icons
     width = 'block', -- Use block width for cleaner, focused look
-    left_pad = 1,
+    left_pad = 0,
     right_pad = 1,
     min_width = 0,
     border = false, -- No borders for minimal aesthetic
@@ -51,12 +46,11 @@ M.render_markdown_opts = {
       'RenderMarkdownH6',
     },
   },
-
   code = {
     enabled = true,
-    sign = false, -- Cleaner without sign column
+    sign = true,
     style = 'full',
-    position = 'left',
+    position = 'center',
     disable_background = false,
     width = 'block', -- Focused block width
     left_pad = 1,
@@ -183,16 +177,8 @@ M.obsidian_opts = {
   legacy_commands = false,
   workspaces = {
     {
-      name = 'tt.ai',
-      path = '~/documents/notes/tt.ai/',
-    },
-    {
-      name = 'dev',
-      path = '~/documents/notes/dev/',
-    },
-    {
-      name = 'life',
-      path = '~/documents/notes/life',
+      name = 'notes',
+      path = '~/documents/notes',
     },
   },
   picker = {
@@ -213,7 +199,7 @@ M.obsidian_opts = {
   attachments = {
     img_folder = 'images',
     img_name_func = function()
-      return string.format('Pasted image %s', os.date '%Y%m%d%H%M%S')
+      return string.format('image_%s', os.date '%Y%m%d%H%M%S')
     end,
     confirm_img_paste = false,
   },

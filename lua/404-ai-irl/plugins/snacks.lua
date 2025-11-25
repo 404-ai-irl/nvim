@@ -227,13 +227,14 @@ return {
       },
       preset = {
         header = [[
+
  _     _                      
 | |_  | `__   ___  _ __   ___ 
 | __| | |_ \ / _ \| '_ \ / _ \
 | |_  | |_) | (_) | | | |  __/
  \__| |.___/ \___/|_| |_|\___|
                            
-]],
+      ]],
         keys = {
           { icon = ' ', key = 'f', desc = 'Find File', action = ":lua require('snacks').picker.files()" },
           { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
@@ -246,14 +247,23 @@ return {
               vim.cmd 'Lazy'
             end,
           },
+        },
       },
+      gh = { enabled = true },
+      bufdelete = { enabled = true },
+      animate = { enabled = true },
+      image = { enabled = true },
+      rename = { enabled = true },
+      bigfile = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
+      notifier = {
+        enabled = true,
+        timeout = 3000,
+      },
+      rename = { enabled = true },
     },
-    image = { enabled = true },
-    rename = { enabled = true },
-    bigfile = { enabled = true },
-    notifier = { enabled = true },
-    quickfile = { enabled = true },
-    statuscolumn = { enabled = true },
-    words = { enabled = true },
   },
 }

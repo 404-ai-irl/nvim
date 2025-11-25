@@ -1,8 +1,7 @@
 local markdown_config = require '404-ai-irl.configs.markdown'
 
 return {
-  --- Obsidian.nvim
-  {
+  { --- Obsidian.nvim
     'obsidian-nvim/obsidian.nvim',
     version = '*',
     ft = 'markdown',
@@ -14,8 +13,7 @@ return {
         filetype = { 'markdown', 'text' },
         opts = {},
       },
-      {
-        -- excalidraw integration
+      { -- excalidraw integration
         'marcocofano/excalidraw.nvim',
         config = function()
           require('excalidraw').setup {
@@ -29,17 +27,14 @@ return {
           }
         end,
       },
-      {
-        -- Treesitter syntax in .md files
+      { -- Treesitter syntax in .md files
         'jmbuhr/otter.nvim',
         opts = {},
       },
     },
     opts = markdown_config.obsidian_opts,
   },
-
-  -- Render Markdown Plugin
-  {
+  { -- Render Markdown Plugin
     'MeanderingProgrammer/render-markdown.nvim',
     opts = markdown_config.render_markdown_opts,
   },
