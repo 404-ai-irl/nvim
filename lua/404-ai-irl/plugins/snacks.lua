@@ -2,8 +2,7 @@ return {
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
-  keys = {
-    -- Core picker operations
+  keys = { -- Core picker operations
     {
       '<leader><space>',
       function()
@@ -205,11 +204,10 @@ return {
     },
   },
   opts = {
-    -- Available layout presets: bottom, default, dropdown, ivy, ivy_split, left, right, select, sidebar, telescope, top, vertical, vscode
     picker = {
       enabled = true,
       layout = {
-        preset = 'sidebar',
+        preset = 'ivy',
       },
       layouts = {
         ivy_split = {
@@ -248,16 +246,6 @@ return {
               vim.cmd 'Lazy'
             end,
           },
-          {
-            icon = ' ',
-            key = 's',
-            desc = 'Store',
-            action = function()
-              vim.cmd 'Store'
-            end,
-          },
-          { icon = ' ', key = 'x', desc = 'exit', action = ':qa' },
-        },
       },
     },
     image = { enabled = true },
