@@ -173,37 +173,4 @@ M.render_markdown_opts = {
   },
 }
 
-M.obsidian_opts = {
-  legacy_commands = false,
-  workspaces = {
-    {
-      name = 'notes',
-      path = '~/documents/notes',
-    },
-  },
-  picker = {
-    name = 'snacks.pick',
-    note_mappings = {
-      -- new = '<C-x>',
-      -- insert_link = '<C-l>',
-    },
-    tag_mappings = {
-      -- tag_note = '<C-x>',
-      -- insert_tag = '<C-l>',
-    },
-  },
-  ui = {
-    enable = false,
-    ignore_conceal_warn = true,
-  },
-  attachments = {
-    img_folder = 'images',
-    img_name_func = function()
-      return string.format('image_%s', os.date '%Y%m%d%H%M%S')
-    end,
-    confirm_img_paste = false,
-  },
-  completion = { blink = true, min_chars = 2, create_new = true },
-}
-
 return M

@@ -42,16 +42,11 @@ return {
       sources = {
         default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
          per_filetype = {
-           codecompanion = { 'codecompanion' },
-           sql = { 'snippets', 'dadbod', 'buffer' },
+           sql = { 'snippets', 'buffer' },
            markdown = { 'snippets', 'buffer' },
          },
         --- Providers
         providers = {
-           dadbod = {
-             name = 'DadBod',
-             module = 'vim_dadbod_completion.blink',
-           },
            lazydev = {
              name = 'LazyDev',
              module = 'lazydev.integrations.blink',
@@ -67,9 +62,6 @@ return {
       keymap = {
         ['<Tab>'] = {
           'snippet_forward',
-          function()
-            return require('sidekick').nes_jump_or_apply()
-          end,
           function()
             return vim.lsp.inline_completion.get()
           end,
@@ -162,11 +154,10 @@ return {
 
     -- download prebuilt binaries from github releases
     dependencies = 'saghen/blink.download',
-    -- OR build from source, requires nightly:
-    -- https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-    -- build = 'cargo build --release',
-    -- If you use nix, you can build from source using latest nightly rust with:
-    -- build = 'nix run .#build-plugin',
+    -- blink.pairs v0.6+ manages its own native library build/download and no
+    -- longer builds automatically without this hook (silently no-ops with an
+    -- ERROR notify() otherwise, not a Lua error, so it fails quietly):
+    build = function() require('blink.pairs').build():pwait(60000) end,
 
     --- @module 'blink.pairs'
     --- @type blink.pairs.Config
